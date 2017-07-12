@@ -35,7 +35,7 @@ public class EventSellerService extends EntityRepository<EventSeller>{
 	
 	//eliminar 
 	
-	public void removethisEventSeller(EventSeller eventSeller) {
-		removeFromDb(eventSeller);
-	}
+//	public void removethisEventSeller(EventSeller eventSeller) {
+//		removeFromDb(eventSeller);
+//	}
 }
