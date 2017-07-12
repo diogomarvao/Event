@@ -1,6 +1,7 @@
 package com.musicstadium.view;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -26,8 +27,28 @@ public class EventBean implements Serializable{
 		
 	@Inject
 	private EventService eventService;
-
 	
+	Event event = new Event();
+
+// adiconar Eventos
+	public void addEventToDb(){
+		eventService.addEvent(event);	
+	}
+	
+// editar eventos
+	public void editEventInDb(){
+		eventService.editEvent(activeEvent);
+	}
+	
+// eliminar Evento
+	public void delEventInDb(){
+		eventService.delEvent(activeEvent);
+	}
+	
+// Fazer print nas tabelas
+	public List<Event> getEventList(){
+		return eventService.getDbEvent();
+	}
 	
 	
 	
