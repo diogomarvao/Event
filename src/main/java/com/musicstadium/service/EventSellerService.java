@@ -7,6 +7,7 @@ import javax.inject.Named;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import com.musicstadium.model.Event;
 import com.musicstadium.model.EventSeller;
 import com.musicstadium.repository.EntityRepository;
 
@@ -33,9 +34,12 @@ public class EventSellerService extends EntityRepository<EventSeller>{
 		alterInDb(eventSeller);
 	}
 	
-	//eliminar 
-	
-//	public void removethisEventSeller(EventSeller eventSeller) {
-//		removeFromDb(eventSeller);
-//	}
+	// eliminar
+		@Override
+		@Transactional
+		public void removeFromDb(EventSeller eventSeller){
+			EventSeller activeEventSeller = getDb().find(EventSeller.class, eventSeller.getId());
+			getDb().remove(activeEventSeller);
+		}
+
 }
