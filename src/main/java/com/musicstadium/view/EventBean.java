@@ -6,6 +6,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.transaction.Transactional;
 
 import com.musicstadium.model.Event;
 import com.musicstadium.service.EventService;
@@ -45,6 +46,7 @@ public class EventBean implements Serializable{
 	}
 
 // adiconar Eventos
+
 	public void addEventToDb(){
 		eventService.addEvent(event);	
 	}
