@@ -3,15 +3,17 @@ package com.musicstadium.model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @javax.persistence.Entity
 @Table(name="ADRESS")
-public class Adress implements Serializable{
+public class Adress extends Entity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 //	variaveis
+	
 	@Column(name="STREET")
 	private String street;
 	

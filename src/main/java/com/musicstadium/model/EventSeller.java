@@ -1,8 +1,10 @@
 package com.musicstadium.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @javax.persistence.Entity
@@ -12,8 +14,9 @@ public class EventSeller extends Entity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 //	variaveis
-	@Column(name="EVENT ID")
-	private Integer eventId;
+	@OneToMany(mappedBy="id")
+	private List<Event> event;
+	//one to many biderectional
 	
 	@Column(name="SELLER")
 	private String seller;
@@ -25,13 +28,7 @@ public class EventSeller extends Entity implements Serializable {
 	private double price;
 
 //	setter & getter
-	public Integer getEventId() {
-		return eventId;
-	}
 
-	public void setEventId(Integer eventId) {
-		this.eventId = eventId;
-	}
 
 	public String getSeller() {
 		return seller;
@@ -60,6 +57,14 @@ public class EventSeller extends Entity implements Serializable {
 //	construtor
 	public EventSeller(){
 		
+	}
+
+	public List<Event> getEvent() {
+		return event;
+	}
+
+	public void setEvent(List<Event> event) {
+		this.event = event;
 	}
 	
 }

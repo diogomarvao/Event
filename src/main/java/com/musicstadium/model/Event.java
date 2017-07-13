@@ -15,10 +15,10 @@ public class Event extends Entity implements Serializable{
 	//	Variaveis
 	private String name;
 	
-	@Column(name="Date (Start)")
+	@Column(name="DATE_START")
 	private Date dateS;
 	
-	@Column(name="Date (End)")
+	@Column(name="DATE_END")
 	private Date dateF;
 	
 	@Column(name="Description")
