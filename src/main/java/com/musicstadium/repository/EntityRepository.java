@@ -24,7 +24,6 @@ public class EntityRepository<E extends Entity> {
 	public void removeFromDb(E entity){
 	}
 	
-	
 	@Transactional
 	public void alterInDb(E newEntity){
 		em.merge(newEntity);
