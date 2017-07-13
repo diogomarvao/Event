@@ -29,6 +29,20 @@ public class EventBean implements Serializable{
 	private EventService eventService;
 	
 	Event event = new Event();
+	
+	
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+	
+	//	adicionar adress
+	public void addAdressToEvent(){
+		
+	}
 
 // adiconar Eventos
 	public void addEventToDb(){
@@ -50,6 +64,7 @@ public class EventBean implements Serializable{
 		return eventService.getDbEvent();
 	}
 	
+//connections
 	
 	
 }
