@@ -42,7 +42,7 @@ public class EventBean implements Serializable{
 	
 // eliminar Evento
 	public void delEventInDb(){
-		eventService.delEvent(activeEvent);
+		eventService.removeFromDb(activeEvent);
 	}
 	
 // Fazer print nas tabelas
