@@ -20,11 +20,11 @@ public class EntityRepository<E extends Entity> {
 		em.persist(entity);
 	}
 	
-//	@Transactional
-//	public void removeFromDb(E entity){
-//	}
+	@Transactional
+	public void removeFromDb(E entity){
+	}
 	
-//	
+	
 	@Transactional
 	public void alterInDb(E newEntity){
 		em.merge(newEntity);
