@@ -70,9 +70,9 @@
 
 			
 							
-								<h:outputText value=": Morada" />
+								<h:outputText value="Morada: " />
 								<p:inputText value="#{adressBean.adress.street}" required="true" />
-								<h:outputText value="Localidade " />
+								<h:outputText value="Localidade: " />
 								<p:inputText value="#{adressBean.adress.local}" required="true" />
 								<h:outputText value="Codigo-postal: " />
 								<p:inputText value="#{adressBean.adress.cp4}" required="true" />
@@ -86,8 +86,8 @@
 
 				</h:form>
 
-				<h:form id="EditarAd >
-					<p:dialog class="diag header="Editar Adress" widgetVar="AdEdit"
+				<h:form id="EditarAd" >
+					<p:dialog class="diag" header="Editar Adress" widgetVar="AdEdit"
 						resizable="false">
 						<!-- painel -->
 						<p:outputPanel id="editAdress" style="text-align:center;">

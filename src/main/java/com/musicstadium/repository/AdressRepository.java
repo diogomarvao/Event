@@ -14,7 +14,7 @@ import com.musicstadium.model.Adress;
 public class AdressRepository extends EntityRepository<Adress>{
 
 	public List<Adress> getDbAdress() {
-		Query query = getDb().createQuery("FROM Product");
+		Query query = getDb().createQuery("FROM Adress");
 		List<Adress> dbElements = (List<Adress>) query.getResultList();
 		return dbElements;
 	}
