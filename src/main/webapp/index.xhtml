@@ -6,12 +6,83 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
-	<title>Eventos</title>
+	<title>adressos</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </h:head>
 <h:body>
 
-<h1> Fodasse a minha vida</h1>
 
+	<!-- adressos-->
+
+	
+		<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	
+			<!-- 1 - Menu principal adressos -->
+
+			<div id="Adress">
+
+				<div class="center">
+					<h:commandButton class="add" update="adress"
+						value="New adress" 
+						onclick="PF('adressNew').show();" />
+				</div>
+				<br />
+
+				<h:form id="adressDisplay">
+
+					<!-- 		1.1 - tabela dos produtos -->
+					<p:dataTable value="#{adressBean.getadressList()}"
+						var="adress" border="1">
+						<div class="header">
+							<p:column class="header" headerText="Id">
+								<div >#{adress.}</div>
+							</p:column>
+							<p:column class="header" headerText="Description">
+								<div class="tablecont">#{adress.description}</div>
+							</p:column>
+							<p:column class="header" headerText="Adress">
+								<div class="tablecont">#{adress.adress}</div>
+							</p:column>
+							<p:column class="header" headerText="genre">
+								<div class="tablecont">#{adress.genre}</div>
+							</p:column>
+							<p:column class="header" headerText="featured">
+								<div class="tablecont">#{adress.featured}</div>
+							</p:column>
+							
+
+						
+						</div>
+					</p:dataTable>
+				</h:form>
+
+				<!-- 	1.2 - Inserir detalhes do adress -->
+
+
+				<h:form>
+
+			
+							<h:panelGrid columns="2">
+
+								<h:outputText value=": description" />
+								<p:inputText value="#{adressBean.adress.description}"
+									required="true" />
+								<h:outputText value="genre " />
+								<p:inputText value="#{adressBean.adress.genre}" required="true" />
+								<h:outputText value="featured: " />
+								<p:inputText value="#{adressBean.adress.featured}" required="true" />
+								<br />
+
+							</h:panelGrid>
+
+							<h:commandButton value="Save" action="#{adressBean.addadressToDb()}" />
+							<h:commandButton value="Cancel" />
+
+				</h:form>
+
+				
+			</div>
+	
+	
 </h:body>
 </html>

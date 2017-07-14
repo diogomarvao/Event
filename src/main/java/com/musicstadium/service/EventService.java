@@ -2,7 +2,7 @@ package com.musicstadium.service;
 
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
@@ -11,12 +11,12 @@ import com.musicstadium.model.Event;
 import com.musicstadium.repository.EntityRepository;
 
 @Named("eventService")
-@RequestScoped
+@ApplicationScoped
 public class EventService extends EntityRepository<Event>{
 	
 // vai buscar os dados
 	public List<Event> getDbEvent(){
-		Query query = getDb().createQuery("FROM EVENT:");
+		Query query = getDb().createQuery("FROM Event");
 		List<Event> dbElements = (List<Event>) query.getResultList();
 		return dbElements;
 	}
