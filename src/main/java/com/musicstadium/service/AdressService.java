@@ -20,6 +20,14 @@ public class AdressService extends EntityRepository<Adress>{
 		return dbElements;
 	}
 	
+	public void addAdress(Adress adress){
+		addToDb(adress);
+	}
+	
+	public void editAdress(Adress adress){
+		alterInDb(adress);
+	}
+	
 	@Override
 	@Transactional
 	public void removeFromDb(Adress adress){
