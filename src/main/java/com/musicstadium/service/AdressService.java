@@ -5,12 +5,8 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.Query;
-import javax.transaction.Transactional;
-
 import com.musicstadium.model.Adress;
 import com.musicstadium.repository.AdressRepository;
-import com.musicstadium.repository.EntityRepository;
 import com.musicstadium.repository.EntityService;
 
 @Named("AdressService")
@@ -25,12 +21,12 @@ public class AdressService extends EntityService<Adress>{
 		return list;
 	}
 	
-	public void addProduct(Adress adress){
-		AdressRepository.addToDb(adress);
+	public void addAdress(Adress adress){
+		adressRepository.addToDb(adress);
 	}
 	
-	public void editProduct(Adress adress){
-			AdressRepository.alterInDb(adress);
+	public void editAdress(Adress adress){
+			adressRepository.alterInDb(adress);
 	}
 	
 	

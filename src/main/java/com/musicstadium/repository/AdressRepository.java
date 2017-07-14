@@ -21,8 +21,8 @@ public class AdressRepository extends EntityRepository<Adress>{
 	
 	@Override
 	@Transactional
-	public void removeFromDb(Adress product){
-		Adress activeAdress = getDb().find(Adress.class, Adress.getId());
+	public void removeFromDb(Adress adress){
+		Adress activeAdress = getDb().find(Adress.class, adress.getId());
 		getDb().remove(activeAdress);
 	}
 
