@@ -33,8 +33,8 @@ public class Event extends Entity implements Serializable {
 	@Column(name = "FEATURED")
 	private boolean featured;
 
-	@Column(name = "SELLER")
-	private EventSeller eventSeller;
+//	@Column(name = "SELLER")
+//	private EventSeller eventSeller;
 
 	// getter & setters
 	public String getName() {
@@ -93,13 +93,13 @@ public class Event extends Entity implements Serializable {
 		this.featured = featured;
 	}
 
-	public EventSeller getEventSeller() {
-		return eventSeller;
-	}
-
-	public void setEventSeller(EventSeller eventSeller) {
-		this.eventSeller = eventSeller;
-	}
+//	public EventSeller getEventSeller() {
+//		return eventSeller;
+//	}
+//
+//	public void setEventSeller(EventSeller eventSeller) {
+//		this.eventSeller = eventSeller;
+//	}
 
 	// Construtor Event
 	public Event() {

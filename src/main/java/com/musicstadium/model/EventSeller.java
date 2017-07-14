@@ -14,8 +14,8 @@ public class EventSeller extends Entity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 //	variaveis
-	@OneToMany(mappedBy="id")
-	private List<Event> event;
+//	@OneToMany(mappedBy="id")
+//	private List<Event> event;
 	//one to many biderectional
 	
 	@Column(name="SELLER")
@@ -59,12 +59,12 @@ public class EventSeller extends Entity implements Serializable {
 		
 	}
 
-	public List<Event> getEvent() {
-		return event;
-	}
-
-	public void setEvent(List<Event> event) {
-		this.event = event;
-	}
-	
+//	public List<Event> getEvent() {
+//		return event;
+//	}
+//
+//	public void setEvent(List<Event> event) {
+//		this.event = event;
+//	}
+//	
 }
