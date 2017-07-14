@@ -57,12 +57,12 @@ public class EventBean implements Serializable{
 	
 // eliminar Evento
 	public void delEventInDb(){
-		eventService.removeFromDb(activeEvent);
+		eventService.delEntity(eventService.getEventRepository(), event);
 	}
 	
 // Fazer print nas tabelas
 	public List<Event> getEventList(){
-		return eventService.getDbEvent();
+		return eventService.showEntities(eventService.getEventRepository());
 	}
 	
 //connections
