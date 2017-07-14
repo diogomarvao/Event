@@ -16,7 +16,6 @@ import com.musicstadium.service.EventService;
 public class EventBean implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-
 	private Event activeEvent = new Event();
 	
 	public Event getActiveEvent() {
@@ -45,7 +44,7 @@ public class EventBean implements Serializable{
 		
 	}
 
-// adiconar Eventos
+	// adiconar Eventos
 
 	public void addEventToDb(){
 		eventService.addEvent(event);	

@@ -3,7 +3,6 @@ package com.musicstadium.service;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
