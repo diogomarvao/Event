@@ -56,8 +56,8 @@ public class EventBean implements Serializable{
 	}
 	
 // eliminar Evento
-	public void delEventInDb(){
-		eventService.delEntity(eventService.getEventRepository(), event);
+	public void delEventInDb(Event activeEvent){
+		eventService.delEntity(eventService.getEventRepository(), activeEvent);
 	}
 	
 // Fazer print nas tabelas

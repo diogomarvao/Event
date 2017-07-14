@@ -58,7 +58,7 @@
 										target="#{eventBean.activeEvent}" />
 								</p:commandButton>
 								<p:commandButton value="Eliminar" class="bottab"
-									action="#{eventBean.delEventInDb()}"
+									action="#{eventBean.delEventInDb(event)}"
 									update="EventDisplay" />
 
 							</p:column>
@@ -105,9 +105,9 @@
 								<h:outputText value="description:" />
 								<p:inputText value="#{eventBean.activeEvent.description}" />
 
-								<h:outputText value="adress" />
+<!-- 								<h:outputText value="adress" />
 								<p:inputText value="#{eventBean.activeEvent.adress}"
-									required="true" />
+									required="true" /> -->
 
 								<h:outputText value="genre" />
 								<p:inputText value="#{eventBean.activeEvent.genre}"
