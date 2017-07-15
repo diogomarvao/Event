@@ -2,7 +2,9 @@ body{
 	background-color: grey;
 }
 
-
+xhtml{
+	background-color:grey;
+}
 
     .topnav{
     	background-color: #333;
@@ -12,15 +14,25 @@ body{
     }
 
     .bottomnav{
-    	position: fixed;
-    	bottom: 0;
-    	width: 100%;
+position:fixed;
+		width:100%;
+		bottom: 0;
+		left:0;
+		border-style: solid;
+		border-color: transparent;
+		box-shadow: 5px 5px 5px #000000;
+		
+		text-align: center;
+		font-family: "Lucida Console", Monaco, monospace; 
+		font-size: 10px;
+		color: white; 
     	background-color: #333;
+    	
     }
 
     .btn-menu{
 		margin-top: 10px;
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 		width: 100px;
 		height: 40;
 	}	
@@ -29,7 +41,7 @@ body{
         margin-left: 2000px;
     }
 
-		button{
+	button{
 		-webkit-border-radius: 30px;
 		-moz-border-radius: 30px;
 		border-radius: 30px;
