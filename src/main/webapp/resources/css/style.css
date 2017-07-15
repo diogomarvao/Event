@@ -1,59 +1,56 @@
-body{
+body {
 	background-color: grey;
 }
 
-xhtml{
-	background-color:grey;
+xhtml {
+	background-color: grey;
 }
 
-    .topnav{
-    	background-color: #333;
-    	position: fixed;
-    	top: 0;
-    	width: 100%
-    }
+.topnav {
+	background-color: #333;
+	position: fixed;
+	top: 0;
+	width: 100%
+}
 
-    .bottomnav{
-position:fixed;
-		width:100%;
-		bottom: 0;
-		left:0;
-		border-style: solid;
-		border-color: transparent;
-		box-shadow: 5px 5px 5px #000000;
-		
-		text-align: center;
-		font-family: "Lucida Console", Monaco, monospace; 
-		font-size: 10px;
-		color: white; 
-    	background-color: #333;
-    	
-    }
+.bottomnav {
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	border-style: solid;
+	border-color: transparent;
+	box-shadow: 5px 5px 5px #000000;
+	text-align: center;
+	font-family: "Lucida Console", Monaco, monospace;
+	font-size: 10px;
+	color: white;
+	background-color: #333;
+}
 
-    .btn-menu{
-		margin-top: 10px;
-		margin-bottom: 10px;
-		width: 100px;
-		height: 40;
-	}	
+.btn-menu {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 100px;
+	height: 40;
+}
 
-    .menubtn{
-        margin-left: 2000px;
-    }
+.menubtn {
+	margin-left: 2000px;
+}
 
-	button{
-		-webkit-border-radius: 30px;
-		-moz-border-radius: 30px;
-		border-radius: 30px;
+button {
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+}
 
-	}
+h1 {
+	color: white;
+	font-size: 200%;
+	display: inline-block;
+}
 
-    h1{
-        color: white;
-        font-size: 200%;
-        display: inline-block;
-    }
-
-    h5{
-        color: white;
-    }
+h5 {
+	color: white;
+}
