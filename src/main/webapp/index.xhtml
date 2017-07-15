@@ -40,11 +40,31 @@
 							<p:column class="header" headerText="Description">
 								<div class="tablecont">#{event.description}</div>
 							</p:column>
-							<p:column class="header" headerText="Adress">
-								<div class="tablecont">#{event.adress}</div>
-							</p:column>
+
+
+
 							<p:column class="header" headerText="genre">
 								<div class="tablecont">#{event.genre}</div>
+							</p:column>
+							<p:column class="header" headerText="Date Start">
+								<h:outputText value="#{event.dateS}">
+								<f:convertDateTime pattern="dd/MM/yyyy"/>
+								</h:outputText>
+							</p:column>
+							<p:column class="header" headerText="Date End">
+								<h:outputText value="#{event.dateF}">
+								<f:convertDateTime pattern="dd/MM/yyyy"/>
+								</h:outputText>
+							</p:column>
+							<p:column class="header" headerText="time Start">
+								<h:outputText value="#{event.hourS}" >
+									<f:convertDateTime pattern="HH:mm"/>
+								</h:outputText>
+							</p:column>
+							<p:column class="header" headerText="Date End">
+								<h:outputText value="#{event.hourF}">
+								<f:convertDateTime pattern="HH:mm"/>
+									</h:outputText>
 							</p:column>
 							<p:column class="header" headerText="featured">
 								<div class="tablecont">#{event.featured}</div>
@@ -76,11 +96,20 @@
 								<h:outputText value=": description" />
 								<p:inputText value="#{eventBean.event.description}"
 									required="true" />
-							<!-- 	<h:outputText value="adress " />
-								<p:inputText value="#{eventBean.event.adress}"
-									required="true" /> -->
+
 								<h:outputText value="genre " />
 								<p:inputText value="#{eventBean.event.genre}" required="true" />
+								
+								<p:outputLabel for="calPopupS" value="date start" />
+								<p:calendar id="calPopupS" value="#{eventBean.event.dateS}" pattern="dd/MM/yyyy" required="true"/>
+								<p:outputLabel for="calPopupF" value="date end" />
+								<p:calendar id="calPopupF" value="#{eventBean.event.dateF}" required="true" pattern="dd/MM/yyyy"/>
+								
+								<p:outputLabel for="timPopupS" value="time start" />
+								<p:calendar id="timPopupS" value="#{eventBean.event.hourS}" pattern="HH:mm" required="true" timeOnly="true"/>
+								<p:outputLabel for="timPopupF" value="time end" />
+								<p:calendar id="timPopupF" value="#{eventBean.event.hourF}" required="true" pattern="HH:mm" timeOnly="true"/>
+								
 								<h:outputText value="featured: " />
 								<p:inputText value="#{eventBean.event.featured}" required="true" />
 								<br />
@@ -104,10 +133,18 @@
 
 								<h:outputText value="description:" />
 								<p:inputText value="#{eventBean.activeEvent.description}" />
+								
+								<p:outputLabel for="calPopupS" value="date start" />
+								<p:calendar id="calPopupS" value="#{eventBean.activeEvent.dateS}" pattern="dd/MM/yyyy" required="true"/>
+								<p:outputLabel for="calPopupF" value="date end" />
+								<p:calendar id="calPopupF" value="#{eventBean.activeEvent.dateF}" required="true" pattern="dd/MM/yyyy"/>
+								
+								<p:outputLabel for="timPopupS" value="time start" />
+								<p:calendar id="timPopupS" value="#{eventBean.activeEvent.hourS}" pattern="HH:mm" required="true" timeOnly="true"/>
+								<p:outputLabel for="timPopupF" value="time end" />
+								<p:calendar id="timPopupF" value="#{eventBean.activeEvent.hourF}" required="true" pattern="HH:mm" timeOnly="true"/>
+								
 
-<!-- 								<h:outputText value="adress" />
-								<p:inputText value="#{eventBean.activeEvent.adress}"
-									required="true" /> -->
 
 								<h:outputText value="genre" />
 								<p:inputText value="#{eventBean.activeEvent.genre}"
