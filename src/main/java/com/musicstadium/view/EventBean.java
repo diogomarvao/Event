@@ -1,6 +1,8 @@
 package com.musicstadium.view;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -17,6 +19,8 @@ public class EventBean implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private Event activeEvent = new Event();
+	
+	private List<String> genreList = new ArrayList<String>();
 	
 	public Event getActiveEvent() {
 		return activeEvent;
@@ -39,6 +43,17 @@ public class EventBean implements Serializable{
 		this.event = event;
 	}
 	
+//	adicionar genre
+	public List<String> selectGenre(){
+	genreList.addAll(Arrays.asList("Varios", "Pop", "Rock", "Metal", "Hip Hop", "Rap", "Classica", "Opera", "Fado", "Electrónica" ));
+	return genreList;
+	}
+	public List<String> getGenreList() {
+		return genreList;
+	}
+	public void setGenreList(List<String> genreList) {
+		this.genreList = genreList;
+	}
 	//	adicionar adress
 	public void addAdressToEvent(){
 		

@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Future;
 
 @javax.persistence.Entity
 @Table(name = "EVENT")
@@ -18,9 +19,11 @@ public class Event extends Entity implements Serializable {
 	private String name;
 
 	@Column(name = "DATE_START")
+	@Future
 	private Date dateS;
 
 	@Column(name = "DATE_END")
+	@Future
 	private Date dateF;
 	
 	@Column(name = "HOUR_START")
