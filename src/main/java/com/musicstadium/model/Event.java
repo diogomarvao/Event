@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Future;
 
 @javax.persistence.Entity
 @Table(name = "EVENT")
@@ -16,16 +19,24 @@ public class Event extends Entity implements Serializable {
 	private String name;
 
 	@Column(name = "DATE_START")
+	@Future
 	private Date dateS;
 
 	@Column(name = "DATE_END")
+	@Future
 	private Date dateF;
+	
+	@Column(name = "HOUR_START")
+	private Date hourS;
+
+	@Column(name = "HOUR_END")
+	private Date hourF;
 
 	@Column(name = "DESCRIPTION")
 	private String description;
 
-	@Column(name = "LOCALIZATION")
-	private Adress adress;
+//	@Column(name = "LOCALIZATION")
+//	private Adress adress;
 
 	@Column(name = "GENRE")
 	private String genre;
@@ -33,8 +44,9 @@ public class Event extends Entity implements Serializable {
 	@Column(name = "FEATURED")
 	private boolean featured;
 
-	@Column(name = "SELLER")
-	private EventSeller eventSeller;
+//	@ManyToOne(optional=false)
+//	@JoinColumn(name = "SELLER", referencedColumnName="SELLER")
+//	private EventSeller eventSeller;
 
 	// getter & setters
 	public String getName() {
@@ -60,14 +72,30 @@ public class Event extends Entity implements Serializable {
 	public void setDateF(Date dateF) {
 		this.dateF = dateF;
 	}
-
-	public Adress getAdress() {
-		return adress;
+	
+	public Date getHourS() {
+		return hourS;
 	}
 
-	public void setAdress(Adress adress) {
-		this.adress = adress;
+	public void setHourS(Date hourS) {
+		this.hourS = hourS;
 	}
+
+	public Date getHourF() {
+		return hourF;
+	}
+
+	public void setHourF(Date hourF) {
+		this.hourF = hourF;
+	}
+
+//	public Adress getAdress() {
+//		return adress;
+//	}
+//
+//	public void setAdress(Adress adress) {
+//		this.adress = adress;
+//	}
 
 	public String getDescription() {
 		return description;
@@ -93,13 +121,13 @@ public class Event extends Entity implements Serializable {
 		this.featured = featured;
 	}
 
-	public EventSeller getEventSeller() {
-		return eventSeller;
-	}
-
-	public void setEventSeller(EventSeller eventSeller) {
-		this.eventSeller = eventSeller;
-	}
+//	public EventSeller getEventSeller() {
+//		return eventSeller;
+//	}
+//
+//	public void setEventSeller(EventSeller eventSeller) {
+//		this.eventSeller = eventSeller;
+//	}
 
 	// Construtor Event
 	public Event() {
