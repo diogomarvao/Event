@@ -6,12 +6,6 @@ xhtml {
 	background-color: grey;
 }
 
-.topnav {
-	background-color: #333;
-	position: fixed;
-	top: 0;
-	width: 100%
-}
 
 .bottomnav {
 	position: fixed;
@@ -28,27 +22,33 @@ xhtml {
 	background-color: #333;
 }
 
-.btn-menu {
-	margin-top: 10px;
-	margin-bottom: 10px;
-	width: 100px;
-	height: 40;
+.header{
+	
+	width:100%;
+	height:100%;
 }
 
-.menubtn {
-	margin-left: 2000px;
+
+.menu{
+	width:100%;
+	height:100%;
+}
+.content{
+	width:100%;
+	height:100%;
 }
 
-button {
-	-webkit-border-radius: 30px;
-	-moz-border-radius: 30px;
-	border-radius: 30px;
+.index{
+	position:fixed;
+	width:100%;
+	height:100%;
 }
+
 
 h1 {
 	color: white;
 	font-size: 200%;
-	display: inline-block;
+	
 }
 
 h5 {
