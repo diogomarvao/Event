@@ -14,7 +14,7 @@
 <h:body>
 
 
-	
+
 
 
 	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
@@ -24,15 +24,48 @@
 
 		<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
 		<ui:define name="content">
-			
+
 			<!-- PRimefaces / Multimedia / contentFlow-->
-			<h:form>
-				<p:contentFlow value="#{imagesView.images}" var="image">
-					<p:graphicImage name="demo/images/nature/#{image}"
-						styleClass="content" />
-					<div class="caption">#{image}</div>
-				</p:contentFlow>
-			</h:form>
+
+			<p:dataTable var="car" value="#{dtScrollView.cars1}" scrollable="true" scrollHeight="150" style = "margin-top:10px">
+				<p:column headerText="Event Id">
+					<h:outputText value="#{event.id}" />
+				</p:column>
+
+				<p:column headerText="Start Date">
+					<h:outputText value="#{car.year}" />
+				</p:column>
+
+				<p:column headerText="End Date">
+					<h:outputText value="#{car.brand}" />
+				</p:column>
+
+				<p:column headerText="Start Hour">
+					<h:outputText value="#{car.color}" />
+				</p:column>
+				
+				<p:column headerText="End Hour">
+					<h:outputText value="#{car.color}" />
+				</p:column>
+				
+				<p:column headerText="Event Description">
+					<h:outputText value="#{car.color}" />
+				</p:column>
+				
+				<p:column headerText="Local">
+					<h:outputText value="#{car.color}" />
+				</p:column>
+				
+				<p:column headerText="Event Genre">
+					<h:outputText value="#{car.color}" />
+				</p:column>
+				
+				<p:column headerText="Featured">
+					<h:outputText value="#{car.color}" />
+				</p:column>
+			</p:dataTable>
+
+
 		</ui:define>
 
 
