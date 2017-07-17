@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Eventos</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+</h:head>
+<h:body>
+
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+
+	<ui:composition template="CommonLayout.xhtml">
+
+		<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+		
+		
+		<ui:define name="content">
+		
+		<h:form id="AdressDisplay">
+
+					<!-- 		1.1 - tabela dos enderecos -->
+					<p:dataTable value="#{adressBean.getAdressList()}"
+						var="adress" border="1">
+						<div class="header">
+							<p:column class="header" headerText="Id">
+								<div >#{adress.id}</div>
+							</p:column>
+							<p:column class="header" headerText="Morada">
+								<div class="tablecont">#{adress.street}</div>
+							</p:column>
+							<p:column class="header" headerText="Localidade">
+								<div class="tablecont">#{adress.local}</div>
+							</p:column>
+							<p:column class="header" headerText="codigo postal">
+								<div class="tablecont">#{adress.cp4}-#{adress.cp3} </div>
+							</p:column>
+							<p:column class="header">				
+
+							</p:column>
+						</div>
+					</p:dataTable>
+				</h:form>
+		
+		
+		</ui:define>
+
+
+	</ui:composition>
+
+
+</h:body>
+</html>		
