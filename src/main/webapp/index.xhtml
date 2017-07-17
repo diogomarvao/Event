@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
-	<title>Eventos</title>
+	<title>"Events"</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
 	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
@@ -14,56 +14,44 @@
 <h:body>
 
 
-
-
-
 	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
 	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
 
 	<ui:composition template="CommonLayout.xhtml">
 
-		<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+		
+
 		<ui:define name="content">
 
-			<!-- PRimefaces / Multimedia / contentFlow-->
 
-			<p:dataTable var="car" value="#{dtScrollView.cars1}" scrollable="true" scrollHeight="150" style = "margin-top:10px">
-				<p:column headerText="Event Id">
-					<h:outputText value="#{event.id}" />
-				</p:column>
 
-				<p:column headerText="Start Date">
-					<h:outputText value="#{car.year}" />
-				</p:column>
+	<p:layout style="min-width:400px;min-height:200px;">
+    <p:layoutUnit position="west" resizable="true" size="100" minSize="40" maxSize="200">
+        West
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="center">
+        Center
+        <br/>
+          Center
+        <br/>
+          Center
+        <br/>
+          Center
+        <br/>
+          Center
+        <br/>
+          Center
+        <br/>
+          Center
+        <br/>
+          Center
+        <br/>
+          Center
+        <br/>
+    </p:layoutUnit>
+</p:layout>
 
-				<p:column headerText="End Date">
-					<h:outputText value="#{car.brand}" />
-				</p:column>
-
-				<p:column headerText="Start Hour">
-					<h:outputText value="#{car.color}" />
-				</p:column>
-				
-				<p:column headerText="End Hour">
-					<h:outputText value="#{car.color}" />
-				</p:column>
-				
-				<p:column headerText="Event Description">
-					<h:outputText value="#{car.color}" />
-				</p:column>
-				
-				<p:column headerText="Local">
-					<h:outputText value="#{car.color}" />
-				</p:column>
-				
-				<p:column headerText="Event Genre">
-					<h:outputText value="#{car.color}" />
-				</p:column>
-				
-				<p:column headerText="Featured">
-					<h:outputText value="#{car.color}" />
-				</p:column>
-			</p:dataTable>
 
 
 		</ui:define>
