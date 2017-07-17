@@ -28,6 +28,11 @@ xhtml {
 	height:100%;
 }
 
+.datatableevents{
+	margin-left:10px;
+	margin-right:10px;
+}
+
 
 .menu{
 	width:100%;
@@ -42,6 +47,7 @@ xhtml {
 	position:fixed;
 	width:100%;
 	height:100%;
+	background-color:grey;
 }
 
 
