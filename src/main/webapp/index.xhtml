@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Eventos</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+</h:head>
+<h:body>
+
+
+	
+
+
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+
+	<ui:composition template="CommonLayout.xhtml">
+
+		<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+		<ui:define name="content">
+			
+			<!-- PRimefaces / Multimedia / contentFlow-->
+			<h:form>
+				<p:contentFlow value="#{imagesView.images}" var="image">
+					<p:graphicImage name="demo/images/nature/#{image}"
+						styleClass="content" />
+					<div class="caption">#{image}</div>
+				</p:contentFlow>
+			</h:form>
+		</ui:define>
+
+
+	</ui:composition>
+
+
+</h:body>
+</html>
