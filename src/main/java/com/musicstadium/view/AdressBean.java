@@ -1,6 +1,7 @@
 package com.musicstadium.view;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -32,28 +33,41 @@ public class AdressBean implements Serializable{
 	Adress adress = new Adress();
 	
 	
-//	Adicionar Endereços
-	
-	
-	public void addAdress(){
-		adressService.addToDb(adress);
+	public Adress getAdress() {
+		return adress;
 	}
-	
-	
-	
-//	editar endereços
-	
-	public void editAdress(){
-		adressService.alterInDb(adress);
 
+	public void setAdress(Adress adress) {
+		this.adress = adress;
 	}
 	
-//	eliminar endreço
-	
-	public void delAdress(){
-		adressService.removeFromDb(adress);
+	//	adicionar Event
+	public void addAdressToEvent(){
+		
 	}
-	
-	
 
+	// adiconar adressos
+
+	public void addAdressToDb(){
+		adressService.addAdress(adress);	
+	}
+	
+// editar adressos
+	public void editAdressInDb(){
+		adressService.editAdress(activeAdress);
+	}
+	
+// eliminar adresso
+	public void delAdressInDb(Adress activeadress){
+		adressService.delEntity(adressService.getAdressRepository(), activeadress);
+	}
+	
+// Fazer print nas tabelas
+	public List<Adress> getAdressList(){
+		return adressService.showEntities(adressService.getAdressRepository());
+	}
+	
+//connections
+	
+	
 }

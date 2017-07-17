@@ -3,36 +3,36 @@ package com.musicstadium.service;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.Query;
-import javax.transaction.Transactional;
-
 import com.musicstadium.model.Adress;
-import com.musicstadium.repository.EntityRepository;
+import com.musicstadium.repository.AdressRepository;
 
-@Named("adressService")
+
+@Named("AdressService")
 @RequestScoped
-public class AdressService extends EntityRepository<Adress>{
+public class AdressService extends EntityService<Adress>{
+
+	@Inject
+	private AdressRepository adressRepository;
 	
-	public List<Adress> getDbAdress() {
-		Query query = getDb().createQuery("FROM Adress");
-		List<Adress> dbElements = (List<Adress>) query.getResultList();
-		return dbElements;
+	public List<Adress> showEntities(AdressRepository productRepository){
+		List<Adress> list = productRepository.getDbAdress();
+		return list;
 	}
 	
 	public void addAdress(Adress adress){
-		addToDb(adress);
+		adressRepository.addToDb(adress);
 	}
 	
 	public void editAdress(Adress adress){
-		alterInDb(adress);
+			adressRepository.alterInDb(adress);
 	}
 	
-	@Override
-	@Transactional
-	public void removeFromDb(Adress adress){
-		Adress activeAdress = getDb().find(Adress.class, adress.getId());
-		getDb().remove(activeAdress);
+	
+	//getter productRepository
+	public AdressRepository getAdressRepository(){	
+		return adressRepository;
 	}
-
+	
 }
