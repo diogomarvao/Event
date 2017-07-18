@@ -22,26 +22,108 @@
 
 		<ui:define name="content">
 
-			<div class="index">
+			<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	
+			<!-- 1 - Menu principal Seller-->
+
+			<div id="Seller">
+
+				<div class="center">
+					<h:commandButton class="add" update="seller"
+						value="New Seller" 
+						onclick="PF('sellerNew').show();" />
+				</div>
+				<br />
+
+				<h:form id="SellerDisplay">
+
+					<!-- 		1.1 - tabela dos sellers -->
+					<p:dataTable value="#{sellerBean.getSellerList()}"
+						var="s" border="1">
+						<div class="header">
+							<p:column class="header" headerText="Id">
+								<div >#{s.id}</div>
+							</p:column>
+							<p:column class="header" headerText="Seller">
+								<div class="tablecont">#{s.name}</div>
+							</p:column>
+							<p:column class="header" headerText="SellerUrl">
+								<div class="tablecont">#{s.sellerUrl}</div>
+							</p:column>
+							<p:column class="header" headerText="Price">
+								<div class="tablecont">#{s.price}</div>
+							</p:column>
+							
+							<p:column class="header">
+
+								<p:commandButton class="bottab" update=":EditarSe:editSeller" value="Editar" 
+									oncomplete="PF('SeEdit').show();">
+
+									<f:setPropertyActionListener value="#{seller}"
+										target="#{sellerBean.activeSeller}" />
+								</p:commandButton>
+								<p:commandButton value="Eliminar" class="bottab"
+									action="#{sellerBean.delSellerInDb(s)}" update="SellerDisplay" />
+
+							</p:column>
+						</div>
+					</p:dataTable>
+				</h:form>
+
+				<!-- 	1.2 - Inserir detalhes do seller -->
 
 
-				<p:layout fullPage="true">
-				
-				    <p:layoutUnit position="west" resizable="true" size="200" minSize="40" maxSize="200" visibility="hidden">
-        West
-    </p:layoutUnit>
-					    <p:layoutUnit position="east" resizable="true" size="200" minSize="40" maxSize="200">
-        West
-    </p:layoutUnit>
-
-					<p:layoutUnit position="center">
-					
-					
-    </p:layoutUnit>
-				</p:layout>
+				<h:form>
 
 
+								<h:outputText value="Seller: " />
+								<p:inputText value="#{sellerBean.seller.name}" required="true" />
+							
+								<h:outputText value="sellerUrl " />
+								<p:inputText value="#{sellerBean.seller.sellerUrl}" required="true" />
+								<h:outputText value="price: " />
+								<p:inputText value="#{sellerBean.seller.price}" required="true" />
+								<br />
+
+							
+
+							<h:commandButton value="Save" action="#{sellerBean.addSellerToDb()}" />
+							<h:commandButton value="Cancel" />
+
+				</h:form>
+
+				<h:form id="EditarSe" >
+					<p:dialog class="diag" header="Editar Seller" widgetVar="SeEdit"
+						resizable="false">
+						<!-- painel -->
+						<p:outputPanel id="editSeller" style="text-align:center;">
+							<p:panelGrid class="diagEdit"  columns="2">
+						
+								<h:outputText value="Id:" />
+								<h:inputText value="#{sellerBean.activeSeller.id}"/>
+
+								<h:outputText value="name:" />
+								<p:inputText value="#{sellerBean.activeSeller.name}" />
+
+								<h:outputText value="sellerUrl:" />
+								<p:inputText value="#{sellerBean.activeSeller.sellerUrl}" />
+
+								<h:outputText value="price" />
+								<p:inputText value="#{sellerBean.activeSeller.price}" required="true" />
+
+
+							</p:panelGrid>
+							<br />
+							<p:commandButton value="Submit"
+								action="#{sellerBean.editSellerInDb()}" update="SellerDisplay"/>
+						</p:outputPanel>
+					</p:dialog>
+				</h:form>
+								
+			
 			</div>
+	
+	
 
 		</ui:define>
 
