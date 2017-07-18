@@ -9,15 +9,13 @@ import javax.transaction.Transactional;
 
 import com.musicstadium.model.Seller;
 
-
-
 @Named("sellerRepository")
 @RequestScoped
 public class SellerRepository extends EntityRepository<Seller>{
 	
 	//vai buscar os dados e coloca numa tabela 
 	public List<Seller> getDbSeller() {
-		Query query = getDb().createNativeQuery("SELECT * FROM Seller");
+		Query query = getDb().createQuery("FROM Seller");
 		List<Seller> dbElements = (List<Seller>) query.getResultList();
 		return dbElements; 
 	}

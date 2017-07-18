@@ -18,10 +18,8 @@ public class SellerBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Seller activeSeller = new Seller();	
 	
-	@Inject
-	private SellerService sellerService;
-	
-	public void setActiveEventSeller(Seller activeSeller) {
+		
+	public void setActiveSeller(Seller activeSeller) {
 		this.activeSeller = activeSeller;
 	}
 		
@@ -29,7 +27,9 @@ public class SellerBean implements Serializable{
 		return activeSeller;
 	}
 	
-	
+	@Inject
+	private SellerService sellerService;
+		
 	Seller seller = new Seller();
 
 	public Seller getSeller() {
@@ -40,37 +40,30 @@ public class SellerBean implements Serializable{
 		this.seller = seller;
 	}
 
-//	Adicionar Endereços
+//	Adicionar seller
 	
 	public void addSellerToDb(){
 		sellerService.addSeller(seller);
 	}
 	
 	
-	
-//	editar endereços
+//	editar seller
 	
 	public void editSellerInDb(){
-		sellerService.editSeller(seller);
-
+		sellerService.editSeller(activeSeller);
 	}
 	
-//	eliminar endereço
+//	eliminar seller
 	
 	public void delSellerInDb (Seller activeSeller){
-		sellerService.delEntity(sellerService.getSellerRepository(),activeSeller);
+		sellerService.delEntity(sellerService.getSellerRepository(), activeSeller);
 	}
 	
 	// Fazer print nas tabelas
 		public List<Seller> getSellerList(){
-			return sellerService.showEntities();
+			return sellerService.showEntities(sellerService.getSellerRepository());
 		}
 	
-	
-	
-	
-	
-	
-	
+
 }
 	

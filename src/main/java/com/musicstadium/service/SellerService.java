@@ -17,7 +17,11 @@ public class SellerService extends EntityService<Seller>{
 	@Inject
 	private SellerRepository sellerRepository;
 	
-	Seller seller = new Seller();
+	public List<Seller> showEntities(SellerRepository sellerRepository){
+		List<Seller> list = sellerRepository.getDbSeller();
+		return list;
+	}
+
 	
 	//adicionar
 	public void addSeller(Seller seller){
@@ -28,14 +32,9 @@ public class SellerService extends EntityService<Seller>{
 	public void editSeller(Seller seller){
 		sellerRepository.alterInDb(seller);
 	}
-	
+	 //getter SellerRepository
 	public SellerRepository getSellerRepository() {
 		return sellerRepository;
-	}
-	
-	public List<Seller> showEntities(){
-		List<Seller> list = sellerRepository.getDbSeller();
-		return list;
 	}
 	
 }
