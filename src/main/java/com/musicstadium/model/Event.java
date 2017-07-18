@@ -16,6 +16,7 @@ public class Event extends Entity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	// Variaveis
+	@Column(name = "EVENT_NAME")
 	private String name;
 
 	@Column(name = "DATE_START")
@@ -35,6 +36,7 @@ public class Event extends Entity implements Serializable {
 	@Column(name = "DESCRIPTION")
 	private String description;
 
+	
 //	@Column(name = "LOCALIZATION")
 //	private Adress adress;
 
