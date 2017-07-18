@@ -6,15 +6,22 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
-	<title>Eventos</title>
+	<title>"Events"</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
 	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+
+=======
+
+
 </h:head>
 <h:body>
 
 
+=======
 
+
+	<ui:composition template="CommonLayout.xhtml">
 
 
 	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
@@ -22,24 +29,34 @@
 
 	<ui:composition template="CommonLayout.xhtml">
 
-		<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+		
 		<ui:define name="content">
 
-	<!-- 1 - Menu principal eventos -->
 
-	<div id="Events">
 
-		<div class="center">
-			<h:commandButton class="add" update="event" value="New Event"
-				onclick="PF('eventNew').show();" />
-		</div>
-		<br />
+		<ui:define name="content">
 
-		<h:form id="EventDisplay">
+			<div class="index">
 
-			<!-- 		1.1 - tabela dos produtos -->
-			<p:dataTable value="#{eventBean.getEventList()}" var="event"
-				border="1">
+
+				<p:layout fullPage="true">
+				
+				    <p:layoutUnit position="west" resizable="true" size="200" minSize="40" maxSize="200" visibility="hidden">
+        West
+    </p:layoutUnit>
+					    <p:layoutUnit position="east" resizable="true" size="200" minSize="40" maxSize="200">
+        West
+    </p:layoutUnit>
+
+					<p:layoutUnit position="center">
+					
+					<div class="datatableevents">
+					<h:form id="EventDisplay">
+       	<p:dataTable value="#{eventBean.getEventList()}" var="event"
+				border="1" rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15" style="margin-top:10px">
 				<div class="header">
 					<p:column class="header" headerText="Id">
 						<div>#{event.id}</div>
@@ -176,7 +193,11 @@
 		</h:form>
 
 	</div>
+    </p:layoutUnit>
+				</p:layout>
 
+
+			</div>
 
 		</ui:define>
 
