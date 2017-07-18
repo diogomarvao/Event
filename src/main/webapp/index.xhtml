@@ -36,48 +36,7 @@
 
 					<p:layoutUnit position="center">
 					
-					<div class="datatableevents">
-       	<p:dataTable var="car" value="#{dtScrollView.cars1}" rows="10"
-                         paginator="true"
-                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15" style="margin-top:10px">
-						<p:column headerText="Event Id">
-							<h:outputText value="#{event.id}" />
-						</p:column>
-
-						<p:column headerText="Start Date">
-							<h:outputText value="#{car.year}" />
-						</p:column>
-
-						<p:column headerText="End Date">
-							<h:outputText value="#{car.brand}" />
-						</p:column>
-
-						<p:column headerText="Start Hour">
-							<h:outputText value="#{car.color}" />
-						</p:column>
-
-						<p:column headerText="End Hour">
-							<h:outputText value="#{car.color}" />
-						</p:column>
-
-						<p:column headerText="Event Description">
-							<h:outputText value="#{car.color}" />
-						</p:column>
-
-						<p:column headerText="Local">
-							<h:outputText value="#{car.color}" />
-						</p:column>
-
-						<p:column headerText="Event Genre">
-							<h:outputText value="#{car.color}" />
-						</p:column>
-
-						<p:column headerText="Featured">
-							<h:outputText value="#{car.color}" />
-						</p:column>
-					</p:dataTable>
-					</div>
+					
     </p:layoutUnit>
 				</p:layout>
 
