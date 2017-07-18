@@ -18,6 +18,23 @@
 		<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
 	
 			<!-- 1 - Menu principal Seller-->
+				<ui:composition template="CommonLayout.xhtml">
+			
+					<ui:define name="content">
+
+			<div class="index">
+
+
+				<p:layout fullPage="true">
+				
+				    <p:layoutUnit position="west" resizable="true" size="200" minSize="40" maxSize="200" visibility="hidden">
+        West
+    </p:layoutUnit>
+					    <p:layoutUnit position="east" resizable="true" size="200" minSize="40" maxSize="200">
+        West
+    </p:layoutUnit>
+
+					<p:layoutUnit position="center">
 
 			<div id="Seller">
 
@@ -115,7 +132,13 @@
 								
 			
 			</div>
-	
-	
+	    </p:layoutUnit>
+				</p:layout>
+
+
+			</div>
+
+		</ui:define>
+		</ui:composition>
 </h:body>
 </html>
