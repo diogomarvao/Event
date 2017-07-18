@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Eventos</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+</h:head>
+<h:body>
+
+
+
+
+
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+
+	<ui:composition template="CommonLayout.xhtml">
+
+		<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+		<ui:define name="content">
+
+			<h:form id="EventDisplay">
+
+			<!-- 		1.1 - tabela dos produtos -->
+			<p:dataTable value="#{eventBean.getEventList()}" var="event"
+				border="1">
+				<div class="header">
+					<p:column class="header" headerText="Id">
+						<div>#{event.id}</div>
+					</p:column>
+					
+					<p:column class="header" headerText="Date Start">
+						<h:outputText value="#{event.dateS}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column class="header" headerText="Date End">
+						<h:outputText value="#{event.dateF}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					
+					
+					<p:column class="header">
+
+						<p:commandButton class="bottab" update=":Inf:maisInf"
+							value="Mais Informações" oncomplete="PF('EvInf').show();">
+
+							<f:setPropertyActionListener value="#{event}"
+								target="#{eventBean.activeEvent}" />
+						</p:commandButton>
+						
+
+					</p:column>
+				</div>
+			</p:dataTable>
+		</h:form>
+
+		<h:form id="Inf">
+			<p:dialog class="diag" header="informacoes" widgetVar="EvInf"
+				resizable="false">
+				<!-- painel -->
+				<p:outputPanel id="maisInf" style="text-align:center;">
+					<p:panelGrid class="diagEdit" columns="2">
+
+						<h:outputText value="Id:" />
+						<h:outputText value="#{eventBean.activeEvent.id}" />
+
+						<h:outputText value="description:" />
+						<h:outputText value="#{eventBean.activeEvent.description}" />
+
+						<h:outputText for="calPopupS" value="date start" />
+						<h:outputText value="#{eventBean.activeEvent.dateS}"
+							pattern="dd/MM/yyyy"/>
+						<h:outputText value="#{eventBean.activeEvent.dateF}"
+							pattern="dd/MM/yyyy" />
+
+						<h:outputText for="timPopupS" value="time start" />
+						<h:outputText value="#{eventBean.activeEvent.hourS}"
+							pattern="HH:mm" />
+						<h:outputText value="time end" />
+						<h:outputText value="#{eventBean.activeEvent.hourF}"
+							pattern="HH:mm" timeOnly="true" />
+
+						<h:outputText value="genre" />
+						<h:outputText value="#{eventBean.activeEvent.genre}"
+							/>
+
+
+					</p:panelGrid>
+					
+				</p:outputPanel>
+			</p:dialog>
+		</h:form>
+
+		</ui:define>
+
+
+	</ui:composition>
+
+
+</h:body>
+</html>
