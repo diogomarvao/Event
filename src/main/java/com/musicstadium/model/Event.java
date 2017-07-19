@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Future;
 
@@ -34,9 +36,9 @@ public class Event extends Entity implements Serializable {
 	@Column(name = "DESCRIPTION")
 	private String description;
 
-	
-//	@Column(name = "LOCALIZATION")
-//	private Adress adress;
+	@ManyToOne(optional=false)
+	@JoinColumn(name="MORADA",referencedColumnName="LOCAL")
+	private Adress adress;
 
 	@Column(name = "GENRE")
 	private String genre;
@@ -44,9 +46,9 @@ public class Event extends Entity implements Serializable {
 	@Column(name = "FEATURED")
 	private boolean featured;
 
-//	@ManyToOne(optional=false)
-//	@JoinColumn(name = "SELLER", referencedColumnName="SELLER")
-//	private EventSeller eventSeller;
+	@ManyToOne(optional=false)
+	@JoinColumn(name = "SELLER", referencedColumnName="NAME")
+	private Seller Seller;
 
 	// getter & setters
 	public String getName() {
@@ -89,13 +91,13 @@ public class Event extends Entity implements Serializable {
 		this.hourF = hourF;
 	}
 
-//	public Adress getAdress() {
-//		return adress;
-//	}
-//
-//	public void setAdress(Adress adress) {
-//		this.adress = adress;
-//	}
+	public Adress getAdress() {
+		return adress;
+	}
+
+	public void setAdress(Adress adress) {
+		this.adress = adress;
+	}
 
 	public String getDescription() {
 		return description;
@@ -121,13 +123,13 @@ public class Event extends Entity implements Serializable {
 		this.featured = featured;
 	}
 
-//	public EventSeller getEventSeller() {
-//		return eventSeller;
-//	}
-//
-//	public void setEventSeller(EventSeller eventSeller) {
-//		this.eventSeller = eventSeller;
-//	}
+	public Seller getSeller() {
+		return Seller;
+	}
+
+	public void setSeller(Seller seller) {
+		Seller = seller;
+	}
 
 	// Construtor Event
 	public Event() {
