@@ -24,11 +24,11 @@ public class Adress extends Entity implements Serializable {
 	@Column(name="STREET")
 	private String street;
 	
-	@Column(name="CP4")
-	private Integer cp4;
+	@Column(name="CODIGOPOSTAL")
+	private String codigoPostal;
 	
-	@Column(name="CP3")
-	private Integer cp3;
+	@Column(name="NOME")
+	private String name;
 	
 	@Column(name="LOCAL")
 	private String local;
@@ -42,20 +42,12 @@ public class Adress extends Entity implements Serializable {
 		this.street = street;
 	}
 
-	public Integer getCp4() {
-		return cp4;
+	public String getCodigoPostal() {
+		return codigoPostal;
 	}
 
-	public void setCp4(Integer cp4) {
-		this.cp4 = cp4;
-	}
-
-	public Integer getCp3() {
-		return cp3;
-	}
-
-	public void setCp3(Integer cp3) {
-		this.cp3 = cp3;
+	public void setCodigoPostal(String codigoPostal) {
+		this.codigoPostal = codigoPostal;
 	}
 
 	public String getLocal() {
