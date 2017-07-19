@@ -39,9 +39,8 @@
 			<div id="Seller">
 
 				<div class="center">
-					<h:commandButton class="add" update="seller"
-						value="New Seller" 
-						onclick="PF('sellerNew').show();" />
+					<h:commandButton class="add" update="seller" value="New Seller"
+						onclick="PF('AdNew').show();" />
 				</div>
 				<br />
 
@@ -84,9 +83,11 @@
 				<!-- 	1.2 - Inserir detalhes do seller -->
 
 
-				<h:form>
-
-
+				<h:form id="NewAd">
+					<p:dialog class="diag" header="Novo Vendedor" widgetVar="AdNew"
+						resizable="false">
+						<p:outputPanel id="editSeller" style="text-align:center;">
+<p:panelGrid class="diagEdit" columns="2">
 								<h:outputText value="Seller: " />
 								<p:inputText value="#{sellerBean.seller.name}" required="true" />
 							
@@ -94,13 +95,15 @@
 								<p:inputText value="#{sellerBean.seller.sellerUrl}" required="true" />
 								<h:outputText value="price: " />
 								<p:inputText value="#{sellerBean.seller.price}" required="true" />
+								</p:panelGrid>
 								<br />
 
 							
 
 							<h:commandButton value="Save" action="#{sellerBean.addSellerToDb()}" />
 							<h:commandButton value="Cancel" />
-
+</p:outputPanel>
+					</p:dialog>
 				</h:form>
 
 				<h:form id="EditarSe" >
