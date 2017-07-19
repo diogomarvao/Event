@@ -1,9 +1,11 @@
 package com.musicstadium.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @javax.persistence.Entity
@@ -13,6 +15,11 @@ public class Adress extends Entity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 //	variaveis
+	
+	@OneToMany(mappedBy="id")
+	private List<Event> event;
+	
+	
 	
 	@Column(name="STREET")
 	private String street;

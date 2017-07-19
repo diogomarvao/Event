@@ -44,20 +44,19 @@ public class EventBean implements Serializable{
 	}
 	
 //	adicionar genre
-	public List<String> selectGenre(){
-	genreList.addAll(Arrays.asList("Varios", "Pop", "Rock", "Metal", "Hip Hop", "Rap", "Classica", "Opera", "Fado", "Electrónica" ));
-	return genreList;
-	}
-	public List<String> getGenreList() {
-		return genreList;
-	}
-	public void setGenreList(List<String> genreList) {
-		this.genreList = genreList;
-	}
-	//	adicionar adress
-	public void addAdressToEvent(){
-		
-	}
+	
+//	public List<String> selectGenre(){
+//	genreList.addAll(Arrays.asList("Varios", "Pop", "Rock", "Metal", "Hip Hop", "Rap", "Classica", "Opera", "Fado", "Electrónica" ));
+//	return genreList;
+//	}
+//	public List<String> getGenreList() {
+//		return genreList;
+//	}
+//	public void setGenreList(List<String> genreList) {
+//		this.genreList = genreList;
+//	}
+
+	
 
 	// adiconar Eventos
 

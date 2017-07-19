@@ -29,8 +29,8 @@
 
 	<ui:composition template="CommonLayout.xhtml">
 
-		
-		
+
+
 
 
 
@@ -40,160 +40,204 @@
 
 
 				<p:layout fullPage="true">
-				
-				    <p:layoutUnit position="west" resizable="true" size="200" minSize="40" maxSize="200" visibility="hidden">
+
+					<p:layoutUnit position="west" resizable="true" size="200"
+						minSize="40" maxSize="200" visibility="hidden">
         West
     </p:layoutUnit>
-					    <p:layoutUnit position="east" resizable="true" size="200" minSize="40" maxSize="200">
+					<p:layoutUnit position="east" resizable="true" size="200"
+						minSize="40" maxSize="200">
         West
     </p:layoutUnit>
 
 					<p:layoutUnit position="center">
-					
-					<div class="datatableevents">
-					<h:form id="EventDisplay">
-       	<p:dataTable value="#{eventBean.getEventList()}" var="event"
-				border="1" rows="10"
-                         paginator="true"
-                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15" style="margin-top:10px">
-				<div class="header">
-					<p:column class="header" headerText="Id">
-						<div>#{event.id}</div>
-					</p:column>
-					<p:column class="header" headerText="Description">
-						<div class="tablecont">#{event.description}</div>
-					</p:column>
+
+						<div class="datatableevents">
+							<h:form id="EventDisplay">
+								<p:dataTable value="#{eventBean.getEventList()}" var="event"
+									border="1" rows="10" paginator="true"
+									paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+									rowsPerPageTemplate="5,10,15" style="margin-top:10px">
+
+									<div class="header">
+										<p:column class="header" headerText="Id">
+											<div>#{event.id}</div>
+										</p:column>
+										<p:column class="header" headerText="Evento">
+											<div class="tablecont">#{event.name}</div>
+										</p:column>
+										<p:column class="header" headerText="Description">
+											<div class="tablecont">#{event.description}</div>
+										</p:column>
+										<p:column class="header" headerText="genre">
+											<div class="tablecont">#{event.genre}</div>
+										</p:column>
+										<p:column class="header" headerText="Dia Inicial">
+											<h:outputText value="#{event.dateS}">
+												<f:convertDateTime pattern="dd/MM/yyyy" />
+											</h:outputText>
+										</p:column>
+										<p:column class="header" headerText="Dia Final">
+											<h:outputText value="#{event.dateF}">
+												<f:convertDateTime pattern="dd/MM/yyyy" />
+											</h:outputText>
+										</p:column>
+										<p:column class="header" headerText="Inicio">
+											<h:outputText value="#{event.hourS}">
+												<f:convertDateTime pattern="HH:mm" />
+											</h:outputText>
+										</p:column>
+										<p:column class="header" headerText="Fim Pervisto">
+											<h:outputText value="#{event.hourF}">
+												<f:convertDateTime pattern="HH:mm" />
+											</h:outputText>
+										</p:column>
+										<p:column class="header" headerText="Localização">
+											<div class="tablecont">#{event.adress}</div>
+										</p:column>
+										<p:column class="header" headerText="Vendedor">
+											<div class="tablecont">#{event.seller}</div>
+										</p:column>
+										<p:column class="header" headerText="Featured">
+											<div class="tablecont">#{event.featured}</div>
+										</p:column>
+										<p:column class="header">
+
+											<p:commandButton class="bottab" update=":EditarEv:editEvent"
+												value="Editar" oncomplete="PF('EvEdit').show();">
+
+												<f:setPropertyActionListener value="#{event}"
+													target="#{eventBean.activeEvent}" />
+											</p:commandButton>
+											<p:commandButton value="Eliminar" class="bottab"
+												action="#{eventBean.delEventInDb(event)}"
+												update="EventDisplay" />
+
+										</p:column>
+									</div>
+								</p:dataTable>
+							</h:form>
+
+							<!-- 	1.2 - Inserir detalhes do event -->
+
+
+							<h:form>
+
+								<h:outputText value="Evento :" />
+								<p:inputText value="#{eventBean.event.name}" required="true" />
+
+								<h:outputText value=": description" />
+								<p:inputText value="#{eventBean.event.description}"
+									required="true" />
+
+								<p:outputLabel for="genero" value="Genero: " />
+
+								<p:selectOneMenu id="genero" value="#{eventBean.event.genre}"
+									style="width:150px">
+
+									<f:selectItem itemLabel="Selecione o Genero" itemValue=""
+										noSelectionOption="true" />
+									<f:selectItems value="#{eventBean.event.genre}" />
+								</p:selectOneMenu>
+
+								<p:outputLabel for="local" value="Local: " />
+
+								<p:selectOneMenu id="local" value="#{eventBean.event.adress}"
+									style="width:150px">
+
+									<f:selectItem itemLabel="Selecione o Local" itemValue=""
+										noSelectionOption="true" />
+									<f:selectItems value="#{eventBean.event.adress}" />
+								</p:selectOneMenu>
+
+								<p:outputLabel for="seller" value="Vendedor: " />
+								
+								<p:selectOneMenu id="seller" value="#{eventBean.event.seller}"
+									style="width:150px">
+
+									<f:selectItem itemLabel="Selecione o Seller" itemValue=""
+										noSelectionOption="true" />
+									<f:selectItems value="#{eventBean.event.seller}" />
+								</p:selectOneMenu>
+
+
+								<p:outputLabel for="calPopupS" value="date start" />
+								<p:calendar id="calPopupS" value="#{eventBean.event.dateS}"
+									pattern="dd/MM/yyyy" required="true" />
+								<p:outputLabel for="calPopupF" value="date end" />
+								<p:calendar id="calPopupF" value="#{eventBean.event.dateF}"
+									required="true" pattern="dd/MM/yyyy" />
+
+								<p:outputLabel for="timPopupS" value="time start" />
+								<p:calendar id="timPopupS" value="#{eventBean.event.hourS}"
+									pattern="HH:mm" required="true" timeOnly="true" />
+								<p:outputLabel for="timPopupF" value="time end" />
+								<p:calendar id="timPopupF" value="#{eventBean.event.hourF}"
+									required="true" pattern="HH:mm" timeOnly="true" />
+
+								<h:outputText value="featured: " />
+								<p:inputText value="#{eventBean.event.featured}" required="true" />
+								<br />
 
 
 
-					<p:column class="header" headerText="genre">
-						<div class="tablecont">#{event.genre}</div>
-					</p:column>
-					<p:column class="header" headerText="Date Start">
-						<h:outputText value="#{event.dateS}">
-							<f:convertDateTime pattern="dd/MM/yyyy" />
-						</h:outputText>
-					</p:column>
-					<p:column class="header" headerText="Date End">
-						<h:outputText value="#{event.dateF}">
-							<f:convertDateTime pattern="dd/MM/yyyy" />
-						</h:outputText>
-					</p:column>
-					<p:column class="header" headerText="time Start">
-						<h:outputText value="#{event.hourS}">
-							<f:convertDateTime pattern="HH:mm" />
-						</h:outputText>
-					</p:column>
-					<p:column class="header" headerText="Date End">
-						<h:outputText value="#{event.hourF}">
-							<f:convertDateTime pattern="HH:mm" />
-						</h:outputText>
-					</p:column>
-					<p:column class="header" headerText="featured">
-						<div class="tablecont">#{event.featured}</div>
-					</p:column>
-					<p:column class="header">
+								<h:commandButton value="Save"
+									action="#{eventBean.addEventToDb()}" />
+								<h:commandButton value="Cancel" />
 
-						<p:commandButton class="bottab" update=":EditarEv:editEvent"
-							value="Editar" oncomplete="PF('EvEdit').show();">
+							</h:form>
 
-							<f:setPropertyActionListener value="#{event}"
-								target="#{eventBean.activeEvent}" />
-						</p:commandButton>
-						<p:commandButton value="Eliminar" class="bottab"
-							action="#{eventBean.delEventInDb(event)}" update="EventDisplay" />
+							<h:form id="EditarEv">
+								<p:dialog class="diag" header="Editar Event" widgetVar="EvEdit"
+									resizable="false">
+									<!-- painel -->
+									<p:outputPanel id="editEvent" style="text-align:center;">
+										<p:panelGrid class="diagEdit" columns="2">
 
-					</p:column>
-				</div>
-			</p:dataTable>
-		</h:form>
+											<h:outputText value="Id:" />
+											<h:inputText value="#{eventBean.activeEvent.id}" />
 
-		<!-- 	1.2 - Inserir detalhes do event -->
+											<h:outputText value="description:" />
+											<p:inputText value="#{eventBean.activeEvent.description}" />
 
+											<p:outputLabel for="calPopupS" value="date start" />
+											<p:calendar id="calPopupS"
+												value="#{eventBean.activeEvent.dateS}" pattern="dd/MM/yyyy"
+												required="true" />
+											<p:outputLabel for="calPopupF" value="date end" />
+											<p:calendar id="calPopupF"
+												value="#{eventBean.activeEvent.dateF}" required="true"
+												pattern="dd/MM/yyyy" />
 
-		<h:form>
+											<p:outputLabel for="timPopupS" value="time start" />
+											<p:calendar id="timPopupS"
+												value="#{eventBean.activeEvent.hourS}" pattern="HH:mm"
+												required="true" timeOnly="true" />
+											<p:outputLabel for="timPopupF" value="time end" />
+											<p:calendar id="timPopupF"
+												value="#{eventBean.activeEvent.hourF}" required="true"
+												pattern="HH:mm" timeOnly="true" />
 
 
 
-			<h:outputText value=": description" />
-			<p:inputText value="#{eventBean.event.description}" required="true" />
+											<h:outputText value="genre" />
+											<p:inputText value="#{eventBean.activeEvent.genre}"
+												required="true" />
 
-			<h:outputText value="genre " />
-			<p:inputText value="#{eventBean.event.genre}" required="true" />
+											<h:outputText value="featured" />
+											<p:inputText value="#{eventBean.activeEvent.featured}"
+												required="true" />
 
-			<p:outputLabel for="calPopupS" value="date start" />
-			<p:calendar id="calPopupS" value="#{eventBean.event.dateS}"
-				pattern="dd/MM/yyyy" required="true" />
-			<p:outputLabel for="calPopupF" value="date end" />
-			<p:calendar id="calPopupF" value="#{eventBean.event.dateF}"
-				required="true" pattern="dd/MM/yyyy" />
+										</p:panelGrid>
+										<br />
+										<p:commandButton value="Submit"
+											action="#{eventBean.editEventInDb()}" update="EventDisplay" />
+									</p:outputPanel>
+								</p:dialog>
+							</h:form>
 
-			<p:outputLabel for="timPopupS" value="time start" />
-			<p:calendar id="timPopupS" value="#{eventBean.event.hourS}"
-				pattern="HH:mm" required="true" timeOnly="true" />
-			<p:outputLabel for="timPopupF" value="time end" />
-			<p:calendar id="timPopupF" value="#{eventBean.event.hourF}"
-				required="true" pattern="HH:mm" timeOnly="true" />
-
-			<h:outputText value="featured: " />
-			<p:inputText value="#{eventBean.event.featured}" required="true" />
-			<br />
-
-
-
-			<h:commandButton value="Save" action="#{eventBean.addEventToDb()}" />
-			<h:commandButton value="Cancel" />
-
-		</h:form>
-
-		<h:form id="EditarEv">
-			<p:dialog class="diag" header="Editar Event" widgetVar="EvEdit"
-				resizable="false">
-				<!-- painel -->
-				<p:outputPanel id="editEvent" style="text-align:center;">
-					<p:panelGrid class="diagEdit" columns="2">
-
-						<h:outputText value="Id:" />
-						<h:inputText value="#{eventBean.activeEvent.id}" />
-
-						<h:outputText value="description:" />
-						<p:inputText value="#{eventBean.activeEvent.description}" />
-
-						<p:outputLabel for="calPopupS" value="date start" />
-						<p:calendar id="calPopupS" value="#{eventBean.activeEvent.dateS}"
-							pattern="dd/MM/yyyy" required="true" />
-						<p:outputLabel for="calPopupF" value="date end" />
-						<p:calendar id="calPopupF" value="#{eventBean.activeEvent.dateF}"
-							required="true" pattern="dd/MM/yyyy" />
-
-						<p:outputLabel for="timPopupS" value="time start" />
-						<p:calendar id="timPopupS" value="#{eventBean.activeEvent.hourS}"
-							pattern="HH:mm" required="true" timeOnly="true" />
-						<p:outputLabel for="timPopupF" value="time end" />
-						<p:calendar id="timPopupF" value="#{eventBean.activeEvent.hourF}"
-							required="true" pattern="HH:mm" timeOnly="true" />
-
-
-
-						<h:outputText value="genre" />
-						<p:inputText value="#{eventBean.activeEvent.genre}"
-							required="true" />
-
-						<h:outputText value="featured" />
-						<p:inputText value="#{eventBean.activeEvent.featured}"
-							required="true" />
-
-					</p:panelGrid>
-					<br />
-					<p:commandButton value="Submit"
-						action="#{eventBean.editEventInDb()}" update="EventDisplay" />
-				</p:outputPanel>
-			</p:dialog>
-		</h:form>
-
-	</div>
-    </p:layoutUnit>
+						</div>
+					</p:layoutUnit>
 				</p:layout>
 
 
