@@ -137,27 +137,28 @@
 
 									<f:selectItem itemLabel="Selecione o Genero" itemValue=""
 										noSelectionOption="true" />
-									<f:selectItems value="#{eventBean.event.genre}" />
+									<f:selectItems value="#{eventBean.event.genre}"  required="true"/>
 								</p:selectOneMenu>
 
 								<p:outputLabel for="local" value="Local: " />
 
 								<p:selectOneMenu id="local" value="#{eventBean.event.adress}"
-									style="width:150px">
+									style="width:150px"  required="true">
 
 									<f:selectItem itemLabel="Selecione o Local" itemValue=""
-										noSelectionOption="true" />
-									<f:selectItems value="#{eventBean.event.adress}" />
+										noSelectionOption="true"/>
+									<f:selectItems value="#{adressBean.getAdressList()}" var="local"  itemLabel="#{local.local}"  />
 								</p:selectOneMenu>
 
 								<p:outputLabel for="seller" value="Vendedor: " />
 								
 								<p:selectOneMenu id="seller" value="#{eventBean.event.seller}"
-									style="width:150px">
+									style="width:150px" required="true">
+									
 
 									<f:selectItem itemLabel="Selecione o Seller" itemValue=""
-										noSelectionOption="true" />
-									<f:selectItems value="#{sellerBean.getSellerList()}" var="seller" itemLabel="#{seller.name}" itemValue="#{seller.id}"/>
+										noSelectionOption="true"  />
+									<f:selectItems value="#{sellerBean.getSellerList()}" var="seller" itemLabel="#{seller.name}" itemValue="#{seller.id}" />
 								</p:selectOneMenu>
 
 
@@ -200,6 +201,32 @@
 											<h:outputText value="description:" />
 											<p:inputText value="#{eventBean.activeEvent.description}" />
 
+											<p:outputLabel for="local" value="Local: " />
+
+								<p:selectOneMenu id="local" value="#{eventBean.activeEvent.adress}"
+									style="width:150px">
+
+									<f:selectItem itemLabel="Selecione o Local" itemValue=""
+										noSelectionOption="true" />
+									<f:selectItems value="#{adressBean.getAdressList()}" var="local"  itemLabel="#{local.local}" />
+								</p:selectOneMenu>
+
+								<p:outputLabel for="seller" value="Vendedor: " />
+								
+								<p:selectOneMenu id="seller" value="#{eventBean.activeEvent}"
+									style="width:150px">
+									
+
+									<f:selectItem itemLabel="Selecione o Seller" itemValue=""
+										noSelectionOption="true" />
+									<f:selectItems value="#{sellerBean.getSellerList()}" var="seller" itemLabel="#{seller.name}" itemValue="#{seller.id}"/>
+								</p:selectOneMenu>
+											
+											
+											
+											
+											
+											
 											<p:outputLabel for="calPopupS" value="date start" />
 											<p:calendar id="calPopupS"
 												value="#{eventBean.activeEvent.dateS}" pattern="dd/MM/yyyy"
