@@ -14,7 +14,7 @@ public class Seller extends Entity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 //	variaveis
-	@OneToMany(mappedBy="id")
+	@OneToMany(mappedBy="seller")
 	private List<Event> event;
 	
 	@Column(name="NAME")
