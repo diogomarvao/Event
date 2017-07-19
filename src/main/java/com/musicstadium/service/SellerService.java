@@ -3,6 +3,8 @@ package com.musicstadium.service;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -12,6 +14,11 @@ import com.musicstadium.repository.SellerRepository;
 
 @Named("sellerService")
 @RequestScoped
+
+// DataBase - Filter 
+@ManagedBean(name = "sellerService")
+@ApplicationScoped
+
 public class SellerService extends EntityService<Seller>{
 	
 	@Inject
