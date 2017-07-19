@@ -16,7 +16,7 @@ public class Adress extends Entity implements Serializable {
 
 //	variaveis
 	
-	@OneToMany(mappedBy="id")
+	@OneToMany(mappedBy="adress")
 	private List<Event> event;
 	
 	

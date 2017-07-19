@@ -157,7 +157,7 @@
 
 									<f:selectItem itemLabel="Selecione o Seller" itemValue=""
 										noSelectionOption="true" />
-									<f:selectItems value="#{eventBean.event.seller}" />
+									<f:selectItems value="#{sellerBean.getSellerList()}" var="seller" itemLabel="#{seller.name}" itemValue="#{seller.id}"/>
 								</p:selectOneMenu>
 
 
