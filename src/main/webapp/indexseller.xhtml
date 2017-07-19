@@ -48,19 +48,20 @@
 				<h:form id="SellerDisplay">
 
 					<!-- 		1.1 - tabela dos sellers -->
-					<p:dataTable value="#{sellerBean.getSellerList()}"
-						var="s" border="1">
+					<p:dataTable value="#{sellerBean.getSellerList()}" var="s" 
+						border="1" widgetVar="sellerTable">
 						<div class="header">
 							<p:column class="header" headerText="Id">
+								
 								<div >#{s.id}</div>
 							</p:column>
-							<p:column class="header" headerText="Seller">
+							<p:column class="header" headerText="Seller" filterBy="#{s.name})" filterMatchMode="contains">
 								<div class="tablecont">#{s.name}</div>
 							</p:column>
-							<p:column class="header" headerText="SellerUrl">
+							<p:column class="header" headerText="SellerUrl" filterBy="#{s.sellerUrl})" filterMatchMode="contains">
 								<div class="tablecont">#{s.sellerUrl}</div>
 							</p:column>
-							<p:column class="header" headerText="Price">
+							<p:column class="header" headerText="Price" filterBy="#{s.price})" filterMatchMode="contains">
 								<div class="tablecont">#{s.price}</div>
 							</p:column>
 							
@@ -69,7 +70,7 @@
 								<p:commandButton class="bottab" update=":EditarSe:editSeller" value="Editar" 
 									oncomplete="PF('SeEdit').show();">
 
-									<f:setPropertyActionListener value="#{seller}"
+									<f:setPropertyActionListener value="#{s}"
 										target="#{sellerBean.activeSeller}" />
 								</p:commandButton>
 								<p:commandButton value="Eliminar" class="bottab"
