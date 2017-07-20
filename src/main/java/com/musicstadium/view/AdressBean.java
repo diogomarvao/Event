@@ -81,5 +81,10 @@ public class AdressBean implements Serializable{
 //	    return "";
 //	}
 	
+	// connections
+			@Override
+			public String toString() {
+			    return String.valueOf(adress.getName());
+			}
 	
 }

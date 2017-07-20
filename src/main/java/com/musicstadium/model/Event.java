@@ -96,6 +96,7 @@ public class Event extends Entity implements Serializable {
 	}
 
 	public void setAdress(Adress adress) {
+		System.out.println(adress);
 		this.adress = adress;
 	}
 
