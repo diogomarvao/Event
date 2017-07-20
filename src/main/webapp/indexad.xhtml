@@ -61,6 +61,9 @@
 							<p:column class="header" headerText="Id">
 								<div>#{adress.id}</div>
 							</p:column>
+							<p:column class="header" headerText="Nome">
+								<div>#{adress.name}</div>
+							</p:column>
 							<p:column class="header" headerText="Morada">
 								<div class="tablecont">#{adress.street}</div>
 							</p:column>
@@ -94,6 +97,8 @@
 						resizable="false">
 						<p:outputPanel id="editAdress" style="text-align:center;">
 							<p:panelGrid class="diagEdit" columns="2">
+								<h:outputText value="Nome:" />
+								<p:inputText value="#{adressBean.adress.name}" required="true" />
 								<h:outputText value="Morada:" />
 								<p:inputText value="#{adressBean.adress.street}" required="true" />
 								<h:outputText value="Localidade:" />
@@ -120,6 +125,8 @@
 								<h:outputText value="Id:" />
 								<h:inputText value="#{adressBean.activeAdress.id}"
 									readonly="readonly" />
+								<h:outputText value="Nome:" />
+								<p:inputText value="#{adressBean.activeAdress.name}" />
 								<h:outputText value="Morada:" />
 								<p:inputText value="#{adressBean.activeAdress.street}" />
 								<h:outputText value="Localidade" />
