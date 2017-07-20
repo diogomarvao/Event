@@ -59,13 +59,6 @@ public class Adress extends Entity implements Serializable {
 		return codigoPostal;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public void setCodigoPostal(String codigoPostal) {
 		this.codigoPostal = codigoPostal;
