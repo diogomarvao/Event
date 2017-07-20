@@ -50,15 +50,12 @@ public class Adress extends Entity implements Serializable {
 		this.street = street;
 	}
 
-	@Override
-	public String toString() {
-	    return String.valueOf(this.getLocal());
-	}
-
 	public String getCodigoPostal() {
 		return codigoPostal;
 	}
 
+
+=======
 
 	public void setCodigoPostal(String codigoPostal) {
 		this.codigoPostal = codigoPostal;
@@ -77,9 +74,5 @@ public class Adress extends Entity implements Serializable {
 		
 	}
 	
-	@Override
-	public boolean equals(Object adress){
-		return this.name.equals(((Adress) adress).getName());
-	}
 	
 }
