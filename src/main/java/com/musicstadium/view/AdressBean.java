@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -68,6 +70,16 @@ public class AdressBean implements Serializable{
 	}
 	
 //connections
+//	public String getAsString(FacesContext context, UIComponent component, Object modelValue) {
+//	    if (modelValue == null) {
+//	        return "";
+//	    }
+//
+//	    if (modelValue instanceof Adress) {
+//	        return String.valueOf(((Adress) modelValue).getId());
+//	    }
+//	    return "";
+//	}
 	
 	
 }
