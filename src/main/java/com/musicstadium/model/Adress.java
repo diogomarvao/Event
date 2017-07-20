@@ -19,8 +19,6 @@ public class Adress extends Entity implements Serializable {
 	@OneToMany(mappedBy="adress")
 	private List<Event> event;
 	
-	
-	
 	@Column(name="STREET")
 	private String street;
 	
@@ -34,8 +32,18 @@ public class Adress extends Entity implements Serializable {
 	private String local;
 	
 //	setter e getter
+	
+	
 	public String getStreet() {
 		return street;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public void setStreet(String street) {
