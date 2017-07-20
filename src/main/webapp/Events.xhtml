@@ -13,13 +13,6 @@
 </h:head>
 <h:body>
 
-
-
-
-
-	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
-	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
-
 	<ui:composition template="CommonLayout.xhtml">
 
 		<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
@@ -27,77 +20,76 @@
 
 			<h:form id="EventDisplay">
 
-			<!-- 		1.1 - tabela dos produtos -->
-			<p:dataTable value="#{eventBean.getEventList()}" var="event"
-				border="1">
-				<div class="header">
-					<p:column class="header" headerText="Id">
-						<div>#{event.id}</div>
-					</p:column>
-					
-					<p:column class="header" headerText="Date Start">
-						<h:outputText value="#{event.dateS}">
-							<f:convertDateTime pattern="dd/MM/yyyy" />
-						</h:outputText>
-					</p:column>
-					<p:column class="header" headerText="Date End">
-						<h:outputText value="#{event.dateF}">
-							<f:convertDateTime pattern="dd/MM/yyyy" />
-						</h:outputText>
-					</p:column>
-					
-					
-					<p:column class="header">
+				<!-- 		1.1 - tabela dos produtos -->
+				<p:dataTable value="#{eventBean.getEventList()}" var="event"
+					border="1">
+					<div class="header">
+						<p:column class="header" headerText="Id">
+							<div>#{event.id}</div>
+						</p:column>
 
-						<p:commandButton class="bottab" update=":Inf:maisInf"
-							value="Mais Informações" oncomplete="PF('EvInf').show();">
-
-							<f:setPropertyActionListener value="#{event}"
-								target="#{eventBean.activeEvent}" />
-						</p:commandButton>
-						
-
-					</p:column>
-				</div>
-			</p:dataTable>
-		</h:form>
-
-		<h:form id="Inf">
-			<p:dialog class="diag" header="informacoes" widgetVar="EvInf"
-				resizable="false">
-				<!-- painel -->
-				<p:outputPanel id="maisInf" style="text-align:center;">
-					<p:panelGrid class="diagEdit" columns="2">
-
-						<h:outputText value="Id:" />
-						<h:outputText value="#{eventBean.activeEvent.id}" />
-
-						<h:outputText value="description:" />
-						<h:outputText value="#{eventBean.activeEvent.description}" />
-
-						<h:outputText for="calPopupS" value="date start" />
-						<h:outputText value="#{eventBean.activeEvent.dateS}"
-							pattern="dd/MM/yyyy"/>
-						<h:outputText value="#{eventBean.activeEvent.dateF}"
-							pattern="dd/MM/yyyy" />
-
-						<h:outputText for="timPopupS" value="time start" />
-						<h:outputText value="#{eventBean.activeEvent.hourS}"
-							pattern="HH:mm" />
-						<h:outputText value="time end" />
-						<h:outputText value="#{eventBean.activeEvent.hourF}"
-							pattern="HH:mm" timeOnly="true" />
-
-						<h:outputText value="genre" />
-						<h:outputText value="#{eventBean.activeEvent.genre}"
-							/>
+						<p:column class="header" headerText="Date Start">
+							<h:outputText value="#{event.dateS}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</p:column>
+						<p:column class="header" headerText="Date End">
+							<h:outputText value="#{event.dateF}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</p:column>
 
 
-					</p:panelGrid>
-					
-				</p:outputPanel>
-			</p:dialog>
-		</h:form>
+						<p:column class="header">
+
+							<p:commandButton class="bottab" update=":Inf:maisInf"
+								value="Mais Informações" oncomplete="PF('EvInf').show();">
+
+								<f:setPropertyActionListener value="#{event}"
+									target="#{eventBean.activeEvent}" />
+							</p:commandButton>
+
+
+						</p:column>
+					</div>
+				</p:dataTable>
+			</h:form>
+
+			<h:form id="Inf">
+				<p:dialog class="diag" header="informacoes" widgetVar="EvInf"
+					resizable="false">
+					<!-- painel -->
+					<p:outputPanel id="maisInf" style="text-align:center;">
+						<p:panelGrid class="diagEdit" columns="2">
+
+							<h:outputText value="Id:" />
+							<h:outputText value="#{eventBean.activeEvent.id}" />
+
+							<h:outputText value="description:" />
+							<h:outputText value="#{eventBean.activeEvent.description}" />
+
+							<h:outputText for="calPopupS" value="date start" />
+							<h:outputText value="#{eventBean.activeEvent.dateS}"
+								pattern="dd/MM/yyyy" />
+							<h:outputText value="#{eventBean.activeEvent.dateF}"
+								pattern="dd/MM/yyyy" />
+
+							<h:outputText for="timPopupS" value="time start" />
+							<h:outputText value="#{eventBean.activeEvent.hourS}"
+								pattern="HH:mm" />
+							<h:outputText value="time end" />
+							<h:outputText value="#{eventBean.activeEvent.hourF}"
+								pattern="HH:mm" timeOnly="true" />
+
+							<h:outputText value="genre" />
+							<h:outputText value="#{eventBean.activeEvent.genre}" />
+
+
+						</p:panelGrid>
+
+					</p:outputPanel>
+				</p:dialog>
+			</h:form>
 
 		</ui:define>
 

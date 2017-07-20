@@ -38,8 +38,27 @@
 					
 					
 					
-					Wellcome to Music Stadium
-					
+					<h:form id="SellerDisplay">
+
+				 <p:carousel value="#{sellerBean.getSellerList()}" headerText="Sellers" var="s" itemStyle="text-align:center" responsive="true">
+        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+            <f:facet name="header">
+                <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
+            </f:facet>
+ 
+            <h:outputText value="seller:" />
+            <h:outputText value="#{s.name}" />
+ 
+            <h:outputText value="SellerUrl" />
+            <h:outputText value="#{s.sellerUrl}" />
+ 
+            <h:outputText value="Price:" />
+            <h:outputText value="#{s.price}" />
+ 
+        </p:panelGrid>
+    </p:carousel>
+				</h:form>
+			
 					
     </p:layoutUnit>
 				</p:layout>
