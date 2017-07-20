@@ -26,41 +26,70 @@
 
 
 				<p:layout fullPage="true">
-				
-				    <p:layoutUnit position="west" resizable="true" size="200" minSize="40" maxSize="200" visibility="hidden">
+
+					<p:layoutUnit position="west" resizable="true" size="200"
+						minSize="40" maxSize="200" visibility="hidden">
         West
     </p:layoutUnit>
-					    <p:layoutUnit position="east" resizable="true" size="200" minSize="40" maxSize="200">
+					<p:layoutUnit position="east" resizable="true" size="200"
+						minSize="40" maxSize="200">
         West
     </p:layoutUnit>
 
 					<p:layoutUnit position="center">
-					
-					
-					
-					<h:form id="SellerDisplay">
 
-				 <p:carousel value="#{sellerBean.getSellerList()}" headerText="Sellers" var="s" itemStyle="text-align:center" responsive="true">
-        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
-            <f:facet name="header">
-                <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
-            </f:facet>
- 
-            <h:outputText value="seller:" />
-            <h:outputText value="#{s.name}" />
- 
-            <h:outputText value="SellerUrl" />
-            <h:outputText value="#{s.sellerUrl}" />
- 
-            <h:outputText value="Price:" />
-            <h:outputText value="#{s.price}" />
- 
-        </p:panelGrid>
-    </p:carousel>
-				</h:form>
-			
-					
-    </p:layoutUnit>
+
+
+						<h:form id="SellerDisplay">
+
+							<p:carousel value="#{sellerBean.getSellerList()}"
+								headerText="Sellers" row="6" var="s"
+								itemStyle="text-align:center" responsive="true">
+								<p:panel header="#{s.name}" style="text-align:center">
+									<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
+										columnClasses="label,value" layout="grid"
+										styleClass="ui-panelgrid-blank">
+										<f:facet name="header">
+											<p:graphicImage library="images" name="sanday.JPG" style="width:50%" />
+										</f:facet>
+
+										<h:outputText value="seller:" />
+										<h:outputText value="#{s.name}" />
+
+										<h:outputText value="SellerUrl" />
+										<h:outputText value="#{s.sellerUrl}" url="#{s.sellerUrl}" />
+
+										<h:outputText value="Price:" />
+										<h:outputText value="#{s.price}" />
+
+										<h:outputText value="seller:" />
+										<h:outputText value="#{s.name}" />
+
+										<h:outputText value="SellerUrl" />
+										<h:outputText value="#{s.sellerUrl}" url="#{s.sellerUrl}" />
+
+										<h:outputText value="Price:" />
+										<h:outputText value="#{s.price}" />
+										<h:outputText value="seller:" />
+										<h:outputText value="#{s.name}" />
+
+										<h:outputText value="SellerUrl" />
+										<h:outputText value="#{s.sellerUrl}" url="#{s.sellerUrl}" />
+
+										<h:outputText value="Price:" />
+										<h:outputText value="#{s.price}" />
+									</p:panelGrid>
+								</p:panel>
+							</p:carousel>
+						</h:form>
+
+						<br />
+
+
+
+
+
+					</p:layoutUnit>
 				</p:layout>
 
 
