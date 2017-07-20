@@ -64,6 +64,10 @@ public class SellerBean implements Serializable{
 			return sellerService.showEntities(sellerService.getSellerRepository());
 		}
 	
-
+// connections
+		@Override
+		public String toString() {
+		    return String.valueOf(seller.getName());
+		}
 }
 	

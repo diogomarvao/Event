@@ -140,25 +140,26 @@
 								<p:outputLabel for="local" value="Local: " />
 
 								<p:selectOneMenu id="local" value="#{eventBean.event.adress}"
-									style="width:150px" required="true">
+									style="width:150px" required="true" converter="omnifaces.SelectItemsConverter">
 
 									<f:selectItem itemLabel="Selecione o Local" itemValue=""
 										noSelectionOption="true" />
 									<f:selectItems value="#{adressBean.getAdressList()}"
-										var="local" itemLabel="#{local.local}" />
+										var="local" itemLabel="#{local.local}" 
+										itemValue="#{local}"/>
 								</p:selectOneMenu>
 
 								<p:outputLabel for="seller" value="Vendedor: " />
 
 								<p:selectOneMenu id="seller" value="#{eventBean.event.seller}"
-									style="width:150px" required="true">
+									style="width:150px" required="true" converter="omnifaces.SelectItemsConverter">
 
 
 									<f:selectItem itemLabel="Selecione o Seller" itemValue=""
 										noSelectionOption="true" />
 									<f:selectItems value="#{sellerBean.getSellerList()}"
 										var="seller" itemLabel="#{seller.name}"
-										itemValue="#{seller.id}" />
+										itemValue="#{seller.name}" />
 								</p:selectOneMenu>
 
 

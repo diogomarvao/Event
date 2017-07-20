@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
@@ -56,9 +58,25 @@ public class EventBean implements Serializable{
 //		this.genreList = genreList;
 //	}
 
+//	conversores
 	
 
-	// adiconar Eventos
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+// adiconar Eventos
 
 	public void addEventToDb(){
 		eventService.addEvent(event);	
