@@ -42,42 +42,33 @@
 
 						<h:form id="PopularSellerDisplay">
 
-							<p:carousel value="#{sellerBean.getSellerList()}"
-								headerText="Popular Events" row="6" var="s"
+							<p:carousel value="#{eventBean.getEventList()}"
+								headerText="Most Popular events right now" row="6" var="e"
 								itemStyle="text-align:center" responsive="true">
-								<p:panel header="#{s.name}" style="text-align:center">
+								<p:panel header="#{e.name}" style="text-align:center">
 									<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
 										columnClasses="label,value" layout="grid"
 										styleClass="ui-panelgrid-blank">
 										<f:facet name="header">
 											<p:graphicImage library="images" name="sanday.JPG" style="width:50%" />
 										</f:facet>
-
+										
+										
+										<h:outputText value="Localização:" />
+										<h:outputText value="Lisboa" />
+										
 										<h:outputText value="seller:" />
-										<h:outputText value="#{s.name}" />
+										<h:outputText value="#{e.seller}" />
 
-										<h:outputText value="SellerUrl" />
-										<h:outputText value="#{s.sellerUrl}" url="#{s.sellerUrl}" />
+										<h:outputText value="Buy Now:" />
+										<h:outputText value="Seller URL" url="" />
+										
+										<h:outputText value="Start Date:" />
+										<h:outputText value="#{e.dateS}">
+										<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:outputText>
 
-										<h:outputText value="Price:" />
-										<h:outputText value="#{s.price}" />
-
-										<h:outputText value="seller:" />
-										<h:outputText value="#{s.name}" />
-
-										<h:outputText value="SellerUrl" />
-										<h:outputText value="#{s.sellerUrl}" url="#{s.sellerUrl}" />
-
-										<h:outputText value="Price:" />
-										<h:outputText value="#{s.price}" />
-										<h:outputText value="seller:" />
-										<h:outputText value="#{s.name}" />
-
-										<h:outputText value="SellerUrl" />
-										<h:outputText value="#{s.sellerUrl}" url="#{s.sellerUrl}" />
-
-										<h:outputText value="Price:" />
-										<h:outputText value="#{s.price}" />
+								
 									</p:panelGrid>
 								</p:panel>
 							</p:carousel>
@@ -92,18 +83,12 @@
 									rowsPerPageTemplate="5,10,15" style="margin-top:10px">
 
 									<div class="header">
-										<p:column class="header" headerText="Id">
-											<div>#{event.id}</div>
-										</p:column>
+										
 										<p:column class="header" headerText="Evento">
 											<div class="tablecont">#{event.name}</div>
 										</p:column>
-										<p:column class="header" headerText="Description">
-											<div class="tablecont">#{event.description}</div>
-										</p:column>
-										<p:column class="header" headerText="genre">
-											<div class="tablecont">#{event.genre}</div>
-										</p:column>
+									
+										
 										<p:column class="header" headerText="Dia Inicial">
 											<h:outputText value="#{event.dateS}">
 												<f:convertDateTime pattern="dd/MM/yyyy" />
@@ -119,32 +104,8 @@
 												<f:convertDateTime pattern="HH:mm" />
 											</h:outputText>
 										</p:column>
-										<p:column class="header" headerText="Fim Pervisto">
-											<h:outputText value="#{event.hourF}">
-												<f:convertDateTime pattern="HH:mm" />
-											</h:outputText>
-										</p:column>
 										<p:column class="header" headerText="Localização">
 											<div class="tablecont">#{event.adress}</div>
-										</p:column>
-										<p:column class="header" headerText="Vendedor">
-											<div class="tablecont">#{event.seller}</div>
-										</p:column>
-										<p:column class="header" headerText="Featured">
-											<div class="tablecont">#{event.featured}</div>
-										</p:column>
-										<p:column class="header">
-
-											<p:commandButton class="bottab" update=":EditarEv:editEvent"
-												value="Editar" oncomplete="PF('EvEdit').show();">
-
-												<f:setPropertyActionListener value="#{event}"
-													target="#{eventBean.activeEvent}" />
-											</p:commandButton>
-											<p:commandButton value="Eliminar" class="bottab"
-												action="#{eventBean.delEventInDb(event)}"
-												update="EventDisplay" />
-
 										</p:column>
 									</div>
 								</p:dataTable>
