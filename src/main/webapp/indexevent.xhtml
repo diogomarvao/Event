@@ -145,7 +145,7 @@
 									<f:selectItem itemLabel="Selecione o Local" itemValue="#{null}"
 										noSelectionOption="true" />
 									<f:selectItems value="#{adressBean.getAdressList()}"
-										var="local" itemLabel="#{local.local}" 
+										var="local" itemLabel="#{local.name}" 
 										itemValue="#{local}"/>
 								</p:selectOneMenu>
 
@@ -213,7 +213,7 @@
 													noSelectionOption="true" />
 												<f:selectItems value="#{adressBean.getAdressList()}"
 													var="local" itemLabel="#{local.local}"
-													temValue="#{local}" />
+													itemValue="#{local}" />
 											</p:selectOneMenu>
 
 											<p:outputLabel for="seller" value="Vendedor: " />
