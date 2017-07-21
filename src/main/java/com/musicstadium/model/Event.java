@@ -36,8 +36,8 @@ public class Event extends Entity implements Serializable {
 	@Column(name = "DESCRIPTION")
 	private String description;
 
-	@ManyToOne(optional=false)
-	@JoinColumn(name="ADRESS_ID")
+	@ManyToOne
+	//@JoinColumn(name="ID")
 	private Adress adress;
 
 	@Column(name = "GENRE")
@@ -46,8 +46,8 @@ public class Event extends Entity implements Serializable {
 	@Column(name = "FEATURED")
 	private boolean featured;
 
-	@ManyToOne(optional=false)
-	@JoinColumn(name = "SELLER_ID")
+	@ManyToOne
+	//@JoinColumn(name = "ID" ,  insert="false", update="false")
 	private Seller seller;
 
 	// getter & setters
@@ -96,6 +96,7 @@ public class Event extends Entity implements Serializable {
 	}
 
 	public void setAdress(Adress adress) {
+		System.out.println(adress);
 		this.adress = adress;
 	}
 

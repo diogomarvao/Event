@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
 
+import com.musicstadium.model.Adress;
 import com.musicstadium.model.Event;
 import com.musicstadium.service.EventService;
 
@@ -36,7 +37,16 @@ public class EventBean implements Serializable{
 	
 	Event event = new Event();
 	
+	Adress adressNew = new Adress();
 	
+	
+	public Adress getAdressNew() {
+		return adressNew;
+	}
+	public void setAdressNew(Adress adressNew) {
+		System.out.println(adressNew);
+		this.adressNew = adressNew;
+	}
 	public Event getEvent() {
 		return event;
 	}
@@ -58,23 +68,6 @@ public class EventBean implements Serializable{
 //		this.genreList = genreList;
 //	}
 
-//	conversores
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 // adiconar Eventos
 

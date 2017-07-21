@@ -25,7 +25,7 @@ public class Adress extends Entity implements Serializable {
 	@Column(name="CODIGOPOSTAL")
 	private String codigoPostal;
 	
-	@Column(name="NOME")
+	@Column(name="NAME")
 	private String name;
 	
 	@Column(name="LOCAL")
@@ -55,8 +55,6 @@ public class Adress extends Entity implements Serializable {
 	}
 
 
-
-
 	public void setCodigoPostal(String codigoPostal) {
 		this.codigoPostal = codigoPostal;
 	}
@@ -74,5 +72,9 @@ public class Adress extends Entity implements Serializable {
 		
 	}
 	
+//	@Override
+//	public boolean equals(Object adress){
+//		return this.name.equals(((Adress) adress).getName());
+//	}
 	
 }

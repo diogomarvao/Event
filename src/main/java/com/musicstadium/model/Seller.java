@@ -58,10 +58,10 @@ public class Seller extends Entity implements Serializable {
 		
 	}
 
-	@Override
-	public boolean equals(Object seller){
-		return this.name.equals(((Seller) seller).getName());
-	}
+//	@Override
+//	public boolean equals(Object seller){
+//		return this.name.equals(((Seller) seller).getName());
+//	}
 	
 //	public List<Event> getEvent() {
 //		return event;
