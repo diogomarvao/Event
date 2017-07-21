@@ -23,8 +23,6 @@ public class EventBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Event activeEvent = new Event();
 	
-	private List<String> genreList = new ArrayList<String>();
-	
 	public Event getActiveEvent() {
 		return activeEvent;
 	}
@@ -35,9 +33,9 @@ public class EventBean implements Serializable{
 	@Inject
 	private EventService eventService;
 	
-	Event event = new Event();
+	private Event event = new Event();
 	
-	Adress adressNew = new Adress();
+	private Adress adressNew = new Adress();
 	
 	
 	public Adress getAdressNew() {
@@ -85,8 +83,5 @@ public class EventBean implements Serializable{
 	public List<Event> getEventList(){
 		return eventService.showEntities(eventService.getEventRepository());
 	}
-	
-//connections
-	
 	
 }
