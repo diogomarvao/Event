@@ -19,6 +19,9 @@ public class Event extends Entity implements Serializable {
 	@Column(name = "EVENT_NAME")
 	private String name;
 
+	@Column(name = "IMG_URL")
+	private String imgUrl;
+	
 	@Column(name = "DATE_START")
 	@Future
 	private Date dateS;
@@ -57,6 +60,14 @@ public class Event extends Entity implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 
 	public Date getDateS() {
