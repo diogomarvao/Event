@@ -55,7 +55,6 @@ public class Adress extends Entity implements Serializable {
 	}
 
 
-
 	public void setCodigoPostal(String codigoPostal) {
 		this.codigoPostal = codigoPostal;
 	}
