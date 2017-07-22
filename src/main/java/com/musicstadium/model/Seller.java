@@ -3,7 +3,12 @@ package com.musicstadium.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -14,7 +19,12 @@ public class Seller extends Entity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 //	variaveis
-	@OneToMany(mappedBy="seller")
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(
+		      name="event_id",
+		      joinColumns=@JoinColumn(name="EVENT_ID", referencedColumnName="id"),
+		      inverseJoinColumns=@JoinColumn(name="SELLER_ID", referencedColumnName="id"))
+	//@JoinColumn(name = "ID" ,  insert="false", update="false")
 	private List<Event> event;
 	
 	@Column(name="NAME")

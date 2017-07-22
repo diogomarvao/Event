@@ -90,7 +90,7 @@
 												<div class="tablecont">#{event.adress}</div>
 											</p:column>
 											<p:column class="header" headerText="Vendedor">
-												<div class="tablecont">#{event.seller}</div>
+												<div class="tablecont">#{event.sellerList}</div>
 											</p:column>
 											<p:column class="header" headerText="Featured">
 												<div class="tablecont">#{event.featured}</div>
@@ -157,13 +157,13 @@
 												<p:outputLabel for="seller" value="Vendedor: " />
 
 												<p:selectOneMenu id="seller"
-													value="#{eventBean.event.seller}" style="width:150px"
+													value="#{eventBean.event.sellerList}" style="width:150px"
 													converter="omnifaces.SelectItemsConverter">
 
 
 													<f:selectItem itemLabel="Selecione o Seller"
 														itemValue="" noSelectionOption="true" />
-													<f:selectItems value="#{sellerBean.sellerList}"
+													<f:selectItems value="#{sellerBean.sellersInDb()}"
 														var="seller" itemLabel="#{seller.name}"
 														itemValue="#{seller}" />
 												</p:selectOneMenu>
@@ -249,7 +249,7 @@
 
 													<f:selectItem itemLabel="Selecione o Seller" itemValue=""
 														noSelectionOption="true" />
-													<f:selectItems value="#{sellerBean.sellerList}"
+													<f:selectItems value="#{sellerBean.sellersInDb()}"
 														var="seller" itemLabel="#{seller.name}"
 														itemValue="#{seller}" />
 												</p:selectOneMenu>
