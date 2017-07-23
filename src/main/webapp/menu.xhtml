@@ -13,32 +13,66 @@
 
 			<p:menubar class="top" header="Music Stadium">
 
-				<p:menuitem value="MUSIC STADIUM"  />
-				<p:menuitem value="Home" action="index"
-					icon="fa-home" />
-				<p:menuitem value="Events" action="indexevent"
-					icon="fa-home" />
-						<p:menuitem value="Services" action="indexseller"
-					icon="fa-home" />
-						<p:menuitem value="Adress" action="indexad"
-					icon="fa-home" />
-				<p:menuitem value="About" action="about"
-					icon="fa-home" />
+				<p:menuitem value="MUSIC STADIUM" action="index" />
 
+				<p:menuitem value="Events" action="Events" />
+				
+				<p:menuitem value="Contactos" action="contacts" />
+				<p:menuitem value="Sobre Nós" action="about" />
+
+				<p:submenu rendered="true" label="user">
+					<p:menuitem value="Os Meus Eventos" action="indexevent" />
+					<p:menuitem value="Editar Localizações" action="indexad" />
+					
+					<p:separator />
+					<p:menuitem value="Dados do Vendedor" action="indexseller" />
+					
+					<p:separator />
+					<p:menuitem value="Logout" action="#{userBean.logout()}" />
+				</p:submenu>
 
 
 				<f:facet name="options">
 					<h:outputText value="Logged-in User" style="margin-right:10px" />
-					<p:commandButton class="topbut" type="button" value="Logout"
-						action="index" icon="ui-icon-extlink" />
-					<p:commandButton class="topbut" type="button" value="Login"
-						action="index" icon="ui-icon-extlink" />
+				
+					<p:commandButton rendered="#{userBean.showLoginBt}"
+								class="topbut" type="button" value="Login"
+								onclick="PF('dlg').show();" />
 				</f:facet>
 
 
 			</p:menubar>
 
+
+
+
 		</h:form>
+
+		<h:form>
+					<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+							<p:dialog header="Login" widgetVar="dlg" resizable="false">
+								<h:panelGrid columns="2" cellpadding="5">
+									<h:outputLabel for="username" value="Username:" />
+									<p:inputText id="username" value="#{userBean.user.username}"
+										required="true" label="username" />
+
+									<h:outputLabel for="password" value="Password:" />
+									<p:password id="password" value="#{userBean.user.password}"
+										required="true" label="password" />
+
+									<f:facet name="footer">
+										<p:commandButton value="Login" update="growl"
+											actionListener="#{userBean.login()}"
+											/>
+
+									</f:facet>
+									</h:panelGrid>
+							</p:dialog>
+							</h:form>
+
+
 	</div>
+
 
 </ui:composition>
