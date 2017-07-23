@@ -1,15 +1,46 @@
-
-	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:c="http://java.sun.com/jsp/jstl/core" template="CommonLayout.xhtml">
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>"Events"</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
 
-		<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+</h:head>
+<h:body>
+
+
+
+	<ui:composition template="CommonLayout.xhtml">
+
+
+
 		<ui:define name="content">
 
-			<h:form id="EventDisplay">
+			<div class="index">
+
+
+				<p:layout fullPage="true">
+
+					<p:layoutUnit position="west" resizable="true" size="200"
+						minSize="40" maxSize="200" visibility="hidden">
+        West
+    </p:layoutUnit>
+					<p:layoutUnit position="east" resizable="true" size="200"
+						minSize="40" maxSize="200">
+        West
+    </p:layoutUnit>
+
+					<p:layoutUnit position="center">
+
+
+
+						<h:form id="EventDisplay">
 
 				<!-- 		1.1 - tabela dos produtos -->
 				<p:dataTable value="#{eventBean.getEventList()}" var="event"
@@ -81,8 +112,24 @@
 					</p:outputPanel>
 				</p:dialog>
 			</h:form>
+						
+
+
+
+
+
+
+					</p:layoutUnit>
+				</p:layout>
+
+
+			</div>
 
 		</ui:define>
 
 
 	</ui:composition>
+
+
+</h:body>
+</html>

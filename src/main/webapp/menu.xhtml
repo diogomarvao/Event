@@ -11,29 +11,29 @@
 		<h:form>
 			<p:growl id="messages" />
 
-			<p:menubar class="top" header="Music Stadium">
+			<p:menubar class="top" header="Music Stadium" style="color:black">
 
-				<p:menuitem value="MUSIC STADIUM" action="index" />
+				<p:menuitem value="MUSIC STADIUM" action="index" style="color:black"/>
 
-				<p:menuitem value="Events" action="Events" />
+				<p:menuitem value="Events" action="Events" style="color:black"/>
 				
-				<p:menuitem value="Contactos" action="contacts" />
-				<p:menuitem value="Sobre Nós" action="about" />
+				<p:menuitem value="Contactos" action="contacts" style="color:black"/>
+				<p:menuitem value="Sobre Nós" action="about" style="color:black" />
 
-				<p:submenu rendered="true" label="user">
-					<p:menuitem value="Os Meus Eventos" action="indexevent" />
-					<p:menuitem value="Editar Localizações" action="indexad" />
+				<p:submenu rendered="true" label="user" style="color:black">
+					<p:menuitem value="Os Meus Eventos" action="indexevent" style="color:black"/>
+					<p:menuitem value="Editar Localizações" action="indexad" style="color:black"/>
 					
 					<p:separator />
-					<p:menuitem value="Dados do Vendedor" action="indexseller" />
+					<p:menuitem value="Dados do Vendedor" action="indexseller" style="color:black"/>
 					
 					<p:separator />
-					<p:menuitem value="Logout" action="#{userBean.logout()}" />
+					<p:menuitem value="Logout" action="#{userBean.logout()}" style="color:black"/>
 				</p:submenu>
 
 
 				<f:facet name="options">
-					<h:outputText value="Logged-in User" style="margin-right:10px" />
+					<h:outputText value="Logged-in User" style="margin-right:10px; color:black" />
 				
 					<p:commandButton rendered="#{userBean.showLoginBt}"
 								class="topbut" type="button" value="Login"
