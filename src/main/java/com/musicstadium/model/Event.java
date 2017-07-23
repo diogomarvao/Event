@@ -2,9 +2,14 @@ package com.musicstadium.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Future;
@@ -40,7 +45,8 @@ public class Event extends Entity implements Serializable {
 	private String description;
 
 	@ManyToOne
-	//@JoinColumn(name="ID")
+//	@JoinTable (name = "EVADRESS" , joinColumns = @JoinColumn(name = "adress_id"),inverseJoinColumns=@JoinColumn(name = "event_id"))
+	@JoinColumn(name="adress_id")
 	private Adress adress;
 
 	@Column(name = "GENRE")
@@ -49,6 +55,15 @@ public class Event extends Entity implements Serializable {
 	@Column(name = "FEATURED")
 	private boolean featured;
 
+//	@ManyToMany(fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
+//	@JoinTable(
+//		      name="seller_id",
+//		      joinColumns=@JoinColumn(name="SELLER_ID", referencedColumnName="id"),
+//		      inverseJoinColumns=@JoinColumn(name="EVENT_ID", referencedColumnName="id"))
+//	@JoinTable (name = "EVSELLER" , joinColumns = @JoinColumn(name = "seller_id"),inverseJoinColumns=@JoinColumn(name = "event_id"))
+	//@JoinColumn(name = "ID" ,  insert="false", update="false")
+//	private List<Seller> sellerList;
+	
 	@ManyToOne
 	//@JoinColumn(name = "ID" ,  insert="false", update="false")
 	private Seller seller;
@@ -135,6 +150,15 @@ public class Event extends Entity implements Serializable {
 		this.featured = featured;
 	}
 
+//	public List<Seller> getSellerList() {
+//		return sellerList;
+//	}
+//
+//	public void setSellerList(List<Seller> sellerList) {
+//		this.sellerList = sellerList;
+//	}
+
+
 	public Seller getSeller() {
 		return seller;
 	}
@@ -143,6 +167,7 @@ public class Event extends Entity implements Serializable {
 		this.seller = seller;
 	}
 
+	
 	// Construtor Event
 	public Event() {
 

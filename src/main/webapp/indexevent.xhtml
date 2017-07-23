@@ -163,7 +163,7 @@
 
 													<f:selectItem itemLabel="Selecione o Seller"
 														itemValue="" noSelectionOption="true" />
-													<f:selectItems value="#{sellerBean.sellerList}"
+													<f:selectItems value="#{sellerBean.sellersInDb()}"
 														var="seller" itemLabel="#{seller.name}"
 														itemValue="#{seller}" />
 												</p:selectOneMenu>
@@ -249,7 +249,7 @@
 
 													<f:selectItem itemLabel="Selecione o Seller" itemValue=""
 														noSelectionOption="true" />
-													<f:selectItems value="#{sellerBean.sellerList}"
+													<f:selectItems value="#{sellerBean.sellersInDb()}"
 														var="seller" itemLabel="#{seller.name}"
 														itemValue="#{seller}" />
 												</p:selectOneMenu>
