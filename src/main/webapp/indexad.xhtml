@@ -43,19 +43,20 @@
 					<p:dataTable value="#{adressBean.getAdressList()}" var="adress"
 						border="1">
 						<div class="header">
-							<p:column class="header" headerText="Id">
+							<p:column class="header" headerText="Id" sortBy="#{adress.id}">
 								<div>#{adress.id}</div>
 							</p:column>
-							<p:column class="header" headerText="Nome">
+							<p:column class="header" headerText="Nome" sortBy="#{adress.name}">
 								<div>#{adress.name}</div>
 							</p:column>
-							<p:column class="header" headerText="Morada">
+							<p:column class="header" headerText="Morada" filterBy="#{adress.street}" filterMatchMode="contains">
 								<div class="tablecont">#{adress.street}</div>
 							</p:column>
-							<p:column class="header" headerText="Localidade">
+							<p:column class="header" headerText="Localidade"  filterBy="#{adress.local}"
+							filterMatchMode="contains" sortBy="#{adress.local}">
 								<div class="tablecont">#{adress.local}</div>
 							</p:column>
-							<p:column class="header" headerText="Código Postal">
+							<p:column class="header" headerText="Código Postal" sortBy="#{adress}.codigoPostal}">
 								<div class="tablecont">#{adress.codigoPostal}</div>
 							</p:column>
 							<p:column class="header">

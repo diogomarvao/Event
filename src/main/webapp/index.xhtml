@@ -84,27 +84,27 @@
 
 									<div class="header">
 										
-										<p:column class="header" headerText="Evento">
+										<p:column class="header" headerText="Evento" filterBy="#{event.name}" filterMatchMode="contains">
 											<div class="tablecont">#{event.name}</div>
 										</p:column>
 									
 										
-										<p:column class="header" headerText="Dia Inicial">
+										<p:column class="header" headerText="Dia Inicial" sortBy="#{event.dateS}">
 											<h:outputText value="#{event.dateS}">
 												<f:convertDateTime pattern="dd/MM/yyyy" />
 											</h:outputText>
 										</p:column>
-										<p:column class="header" headerText="Dia Final">
+										<p:column class="header" headerText="Dia Final" sortBy="#{event.dateF}">
 											<h:outputText value="#{event.dateF}">
 												<f:convertDateTime pattern="dd/MM/yyyy" />
 											</h:outputText>
 										</p:column>
-										<p:column class="header" headerText="Inicio">
+										<p:column class="header" headerText="Inicio" sortBy="#{event.hourS}">
 											<h:outputText value="#{event.hourS}">
 												<f:convertDateTime pattern="HH:mm" />
 											</h:outputText>
 										</p:column>
-										<p:column class="header" headerText="Localização">
+										<p:column class="header" headerText="Localização" filterBy="#{event.adress}" filterMatchMode="contains">
 											<div class="tablecont">#{event.adress}</div>
 										</p:column>
 									</div>
