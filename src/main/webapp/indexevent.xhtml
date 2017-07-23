@@ -90,7 +90,7 @@
 												<div class="tablecont">#{event.adress}</div>
 											</p:column>
 											<p:column class="header" headerText="Vendedor">
-												<div class="tablecont">#{event.sellerList}</div>
+												<div class="tablecont">#{event.seller}</div>
 											</p:column>
 											<p:column class="header" headerText="Featured">
 												<div class="tablecont">#{event.featured}</div>
@@ -157,7 +157,7 @@
 												<p:outputLabel for="seller" value="Vendedor: " />
 
 												<p:selectOneMenu id="seller"
-													value="#{eventBean.event.sellerList}" style="width:150px"
+													value="#{eventBean.event.seller}" style="width:150px"
 													converter="omnifaces.SelectItemsConverter">
 
 

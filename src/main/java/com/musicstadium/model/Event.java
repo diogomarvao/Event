@@ -55,14 +55,18 @@ public class Event extends Entity implements Serializable {
 	@Column(name = "FEATURED")
 	private boolean featured;
 
-	@ManyToMany(fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
-	@JoinTable(
-		      name="seller_id",
-		      joinColumns=@JoinColumn(name="SELLER_ID", referencedColumnName="id"),
-		      inverseJoinColumns=@JoinColumn(name="EVENT_ID", referencedColumnName="id"))
+//	@ManyToMany(fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
+//	@JoinTable(
+//		      name="seller_id",
+//		      joinColumns=@JoinColumn(name="SELLER_ID", referencedColumnName="id"),
+//		      inverseJoinColumns=@JoinColumn(name="EVENT_ID", referencedColumnName="id"))
 //	@JoinTable (name = "EVSELLER" , joinColumns = @JoinColumn(name = "seller_id"),inverseJoinColumns=@JoinColumn(name = "event_id"))
 	//@JoinColumn(name = "ID" ,  insert="false", update="false")
-	private List<Seller> sellerList;
+//	private List<Seller> sellerList;
+	
+	@ManyToOne
+	//@JoinColumn(name = "ID" ,  insert="false", update="false")
+	private Seller seller;
 
 	// getter & setters
 	public String getName() {
@@ -146,14 +150,24 @@ public class Event extends Entity implements Serializable {
 		this.featured = featured;
 	}
 
-	public List<Seller> getSellerList() {
-		return sellerList;
+//	public List<Seller> getSellerList() {
+//		return sellerList;
+//	}
+//
+//	public void setSellerList(List<Seller> sellerList) {
+//		this.sellerList = sellerList;
+//	}
+
+
+	public Seller getSeller() {
+		return seller;
 	}
 
-	public void setSellerList(List<Seller> sellerList) {
-		this.sellerList = sellerList;
+	public void setSeller(Seller seller) {
+		this.seller = seller;
 	}
 
+	
 	// Construtor Event
 	public Event() {
 
