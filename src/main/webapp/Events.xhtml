@@ -46,20 +46,26 @@
 				<p:dataTable value="#{eventBean.getEventList()}" var="event"
 					border="1">
 					<div class="header">
-						<p:column class="header" headerText="Id" sortBy="#{event.id}">
-							<div>#{event.id}</div>
+						<p:column class="header" headerText="Event" sortBy="#{event.id}">
+							<div>#{event.name}</div>
 						</p:column>
-
-						<p:column class="header" headerText="Date Start" sortBy="#{event.dateS}">
+						
+						<p:column class="header" headerText="Start Date" sortBy="#{event.dateS}">
 							<h:outputText value="#{event.dateS}">
 								<f:convertDateTime pattern="dd/MM/yyyy" />
 							</h:outputText>
 						</p:column>
-						<p:column class="header" headerText="Date End" sortBy="#{event.dateF}">
-							<h:outputText value="#{event.dateF}">
-								<f:convertDateTime pattern="dd/MM/yyyy" />
+						
+							<p:column class="header" headerText="Local" sortBy="#{event.adress}">
+							<h:outputText value="#{event.adress}">
 							</h:outputText>
 						</p:column>
+
+						<p:column class="header" headerText="Price" sortBy="#{event.seller}">
+							<h:outputText value="#{event.seller}">
+							</h:outputText>
+						</p:column>
+						
 
 
 						<p:column class="header">
