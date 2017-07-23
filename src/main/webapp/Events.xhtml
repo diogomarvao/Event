@@ -105,23 +105,23 @@
 
 							<h:outputText value="Descrição:" />
 
-							<br />
+							
 
 							<h:outputText value="#{eventBean.activeEvent.description}" />
-
+<br />
 							
 							<h:outputText value="Género:" />
 
 							<h:outputText value="#{eventBean.activeEvent.genre}" />
 
-							
+							<br />
 
-							<div id="DayTime">
+							
 								<h:outputText value="Sessões" />
 
-								<div id="Days">
+							<br />
 									<h:outputText value="Periodo do Envento:" />
-									<br />
+									
 									<h:outputText value="#{eventBean.activeEvent.dateS}">
 										<f:convertDateTime pattern="dd/MM/yyyy" />
 									</h:outputText>
@@ -129,8 +129,8 @@
 									<h:outputText value="#{eventBean.activeEvent.dateF}">
 										<f:convertDateTime pattern="dd/MM/yyyy" />
 									</h:outputText>
-								</div>
-								<div id="Time">
+								<br />
+								
 									<h:outputText value="Inicio: " />
 
 									<h:outputText value="#{eventBean.activeEvent.hourS}">
@@ -141,8 +141,7 @@
 									<h:outputText value="#{eventBean.activeEvent.hourF}">
 										<f:convertDateTime pattern="HH:mm" />
 									</h:outputText>
-								</div>
-							</div>
+						
 
 
 						</h:column>
