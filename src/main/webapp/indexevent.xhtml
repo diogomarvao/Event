@@ -158,12 +158,12 @@
 
 												<p:selectOneMenu id="seller"
 													value="#{eventBean.event.seller}" style="width:150px"
-													converter="omnifaces.SelectItemsConverter">
+													converter="omnifaces.SelectItemsConverter" immediate="true">
 
 
 													<f:selectItem itemLabel="Selecione o Seller"
 														itemValue="" noSelectionOption="true" />
-													<f:selectItems value="#{sellerBean.sellersInDb()}"
+													<f:selectItems value="#{sellerBean.sellerList}"
 														var="seller" itemLabel="#{seller.name}"
 														itemValue="#{seller}" />
 												</p:selectOneMenu>
@@ -209,14 +209,15 @@
 												<h:outputText value="Id:" />
 												<h:inputText value="#{eventBean.activeEvent.id}" />
 
+												<h:outputText value="Evento :" />
+												<p:inputText value="#{eventBean.activeEvent.name}"/>
+												
 												<h:outputText value="Imagen :" />
 												<p:inputText value="#{eventBean.activeEvent.imgUrl}"
 													required="true" />
 
 												<h:outputText value="Descrição:" />
 												<p:inputText value="#{eventBean.activeEvent.description}" />
-
-
 
 												<p:outputLabel for="genero" value="Genero: " />
 
@@ -237,9 +238,10 @@
 													<f:selectItem itemLabel="Selecione o Local" itemValue=""
 														noSelectionOption="true" />
 													<f:selectItems value="#{adressBean.adressList}"
-														var="local" itemLabel="#{local.local}"
+														var="local" itemLabel="#{local.name}"
 														itemValue="#{local}" />
 												</p:selectOneMenu>
+												
 
 												<p:outputLabel for="seller" value="Vendedor: " />
 
@@ -249,7 +251,7 @@
 
 													<f:selectItem itemLabel="Selecione o Seller" itemValue=""
 														noSelectionOption="true" />
-													<f:selectItems value="#{sellerBean.sellersInDb()}"
+													<f:selectItems value="#{sellerBean.sellerList}"
 														var="seller" itemLabel="#{seller.name}"
 														itemValue="#{seller}" />
 												</p:selectOneMenu>

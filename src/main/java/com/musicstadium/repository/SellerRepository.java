@@ -2,6 +2,7 @@ package com.musicstadium.repository;
 
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.Query;
@@ -10,7 +11,7 @@ import javax.transaction.Transactional;
 import com.musicstadium.model.Seller;
 
 @Named("sellerRepository")
-@RequestScoped
+@ApplicationScoped
 public class SellerRepository extends EntityRepository<Seller>{
 	
 	//vai buscar os dados e coloca numa tabela 

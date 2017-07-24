@@ -15,6 +15,7 @@ import javax.transaction.Transactional;
 
 import com.musicstadium.model.Adress;
 import com.musicstadium.model.Event;
+import com.musicstadium.model.Seller;
 import com.musicstadium.service.EventService;
 
 @Named("eventBean")
@@ -36,16 +37,6 @@ public class EventBean implements Serializable{
 	
 	private Event event = new Event();
 	
-	private Adress adressNew;
-	
-	
-	public Adress getAdressNew() {
-		return adressNew;
-	}
-	public void setAdressNew(Adress adressNew) {
-		System.out.println(adressNew.getLocal());
-		this.adressNew = adressNew;
-	}
 	public Event getEvent() {
 		return event;
 	}
@@ -53,6 +44,29 @@ public class EventBean implements Serializable{
 	public void setEvent(Event event) {
 		this.event = event;
 	}
+	
+//	adressnew
+	
+	private Adress adressNew;
+
+	public Adress getAdressNew() {
+		return adressNew;
+	}
+	public void setAdressNew(Adress adressNew) {
+		System.out.println(adressNew.getLocal());
+		this.adressNew = adressNew;
+	}
+
+//	sellernew
+	private Seller sellerNew;
+	
+	public Seller getSellerNew() {
+		return sellerNew;
+	}
+	public void setSellerNew(Seller sellerNew) {
+		this.sellerNew = sellerNew;
+	}
+	
 	
 //	adicionar genre
 	

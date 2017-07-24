@@ -14,17 +14,12 @@ import com.musicstadium.repository.SellerRepository;
 
 @Named("sellerService")
 @RequestScoped
-
-// DataBase - Filter 
-@ManagedBean(name = "sellerService")
-@ApplicationScoped
-
 public class SellerService extends EntityService<Seller>{
 	
 	@Inject
 	private SellerRepository sellerRepository;
 	
-	public List<Seller> showEntities(SellerRepository sellerRepository){
+	public List<Seller> showEntities(){
 		List<Seller> list = sellerRepository.getDbSeller();
 		return list;
 	}
@@ -39,6 +34,8 @@ public class SellerService extends EntityService<Seller>{
 	public void editSeller(Seller seller){
 		sellerRepository.alterInDb(seller);
 	}
+	
+	
 	 //getter SellerRepository
 	public SellerRepository getSellerRepository() {
 		return sellerRepository;
