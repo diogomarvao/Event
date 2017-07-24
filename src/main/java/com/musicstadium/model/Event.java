@@ -48,7 +48,6 @@ public class Event extends Entity implements Serializable {
 	private String description;
 
 	@ManyToOne
-	@MapsId
 //	@JoinTable (name = "EVADRESS" , joinColumns = @JoinColumn(name = "adress_id"),inverseJoinColumns=@JoinColumn(name = "event_id"))
 //	@JoinColumn(name="ADRESS_ID")
 	private Adress adress;
@@ -68,7 +67,7 @@ public class Event extends Entity implements Serializable {
 	//@JoinColumn(name = "ID" ,  insert="false", update="false")
 //	private List<Seller> sellerList;
 	
-	@ManyToOne
+	@OneToOne
 	//@JoinColumn(name = "ID" ,  insert="false", update="false")
 //	@JoinColumn(name="SELLER_ID")
 //	@MapsId
