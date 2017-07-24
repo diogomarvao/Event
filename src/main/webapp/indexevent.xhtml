@@ -144,9 +144,9 @@
 
 												<p:outputLabel for="local" value="Local: " />
 
-												<p:selectOneMenu id="local" value="#{eventBean.adressNew}"
+												<p:selectOneMenu id="local" value="#{eventBean.event.adress}"
 													style="width:150px"
-													converter="omnifaces.SelectItemsConverter">
+													converter="omnifaces.SelectItemsConverter" immediate="true">
 
 													<f:selectItem itemLabel="Selecione o Local"
 														itemValue="" noSelectionOption="true" />

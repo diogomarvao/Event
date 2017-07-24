@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Future;
 
@@ -44,9 +46,10 @@ public class Event extends Entity implements Serializable {
 	@Column(name = "DESCRIPTION")
 	private String description;
 
-	@ManyToOne
+	@OneToOne 
+	@MapsId
 //	@JoinTable (name = "EVADRESS" , joinColumns = @JoinColumn(name = "adress_id"),inverseJoinColumns=@JoinColumn(name = "event_id"))
-	@JoinColumn(name="adress_id")
+//	@JoinColumn(name="ADRESS_ID")
 	private Adress adress;
 
 	@Column(name = "GENRE")
@@ -66,6 +69,7 @@ public class Event extends Entity implements Serializable {
 	
 	@ManyToOne
 	//@JoinColumn(name = "ID" ,  insert="false", update="false")
+	@JoinColumn(name="SELLER_ID")
 	private Seller seller;
 
 	// getter & setters
@@ -122,7 +126,7 @@ public class Event extends Entity implements Serializable {
 	}
 
 	public void setAdress(Adress adress) {
-		System.out.println(adress);
+		//System.out.println(adress.GETLO);
 		this.adress = adress;
 	}
 

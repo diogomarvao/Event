@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -35,14 +36,14 @@ public class EventBean implements Serializable{
 	
 	private Event event = new Event();
 	
-	private Adress adressNew = new Adress();
+	private Adress adressNew;
 	
 	
 	public Adress getAdressNew() {
 		return adressNew;
 	}
 	public void setAdressNew(Adress adressNew) {
-		System.out.println(adressNew);
+		System.out.println(adressNew.getLocal());
 		this.adressNew = adressNew;
 	}
 	public Event getEvent() {
