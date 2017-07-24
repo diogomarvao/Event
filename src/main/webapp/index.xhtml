@@ -25,9 +25,9 @@
 			<div class="index">
 
 
-				<p:layout  fullPage="true">
+				<p:layout fullPage="true">
 
-					<p:layoutUnit  position="west" resizable="true" size="200"
+					<p:layoutUnit position="west" resizable="true" size="200"
 						minSize="40" maxSize="200" visibility="hidden">
         West
     </p:layoutUnit>
@@ -43,73 +43,82 @@
 						<h:form id="PopularSellerDisplay">
 
 							<p:carousel value="#{eventBean.getEventList()}"
-								headerText="Most Popular events right now" row="6" var="e"
+								headerText="EVENTOS A NÃO PERDER" row="6" var="e"
 								itemStyle="text-align:center" responsive="true">
 								<p:panel header="#{e.name}" style="text-align:center">
 									<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
 										columnClasses="label,value" layout="grid"
 										styleClass="ui-panelgrid-blank">
 										<f:facet name="header">
-											<p:graphicImage library="images" name="festivais-de-verao.jpg" style="width:100%" />
+											<p:graphicImage library="images"
+												name="festivais-de-verao.jpg" style="width:100%" />
 										</f:facet>
-										
-										
-										<h:outputText value="Localização:" />
-										<h:outputText value="Lisboa" />
-										
-										<h:outputText value="seller:" />
-										<h:outputText value="#{e.seller}" />
 
-										<h:outputText value="Buy Now:" />
-										<h:outputText value="Seller URL" url="" />
-										
-										<h:outputText value="Start Date:" />
+										<h:outputText value="Data:" />
 										<h:outputText value="#{e.dateS}">
-										<f:convertDateTime pattern="dd/MM/yyyy" />
+											<f:convertDateTime pattern="dd/MM/yyyy" />
 										</h:outputText>
-									
-								
+
+										<h:outputText value="Hora de Inicio:" />
+										<h:outputText value="#{e.hourS}">
+											<f:convertDateTime pattern="HH:mm" />
+										</h:outputText>
+
+										<h:outputText value="Localização:" />
+										<h:outputText value="#{e.adress.local}" />
+
+										<h:outputText value="Compra Agora:" />
+										<h:outputText value="#{e.seller.name}" />
+
+
+
 									</p:panelGrid>
 								</p:panel>
 							</p:carousel>
 						</h:form>
 
 						<br />
-						
-				<h:form id="EventDisplay">
-								<p:dataTable value="#{eventBean.getEventList()}" var="event"
-									border="1" rows="10" paginator="true"
-									paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-									rowsPerPageTemplate="5,10,15" style="margin-top:10px">
 
-									<div class="header">
-										
-										<p:column class="header" headerText="Evento" filterBy="#{event.name}" filterMatchMode="contains">
-											<div class="tablecont">#{event.name}</div>
-										</p:column>
-									
-										
-										<p:column class="header" headerText="Dia Inicial" sortBy="#{event.dateS}">
-											<h:outputText value="#{event.dateS}">
-												<f:convertDateTime pattern="dd/MM/yyyy" />
-											</h:outputText>
-										</p:column>
-										<p:column class="header" headerText="Dia Final" sortBy="#{event.dateF}">
-											<h:outputText value="#{event.dateF}">
-												<f:convertDateTime pattern="dd/MM/yyyy" />
-											</h:outputText>
-										</p:column>
-										<p:column class="header" headerText="Inicio" sortBy="#{event.hourS}">
-											<h:outputText value="#{event.hourS}">
-												<f:convertDateTime pattern="HH:mm" />
-											</h:outputText>
-										</p:column>
-										<p:column class="header" headerText="Localização" filterBy="#{event.adress}" filterMatchMode="contains">
-											<div class="tablecont">#{event.adress}</div>
-										</p:column>
-									</div>
-								</p:dataTable>
-							</h:form>
+						<h:form id="EventDisplay" >
+						<h:outputText value="EVENTOS A NÃO PERDER" />
+							<p:dataTable value="#{eventBean.getEventList()}" var="event"
+								border="1" rows="10" paginator="true"
+								paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+								rowsPerPageTemplate="5,10,15" style="margin-top:10px">
+
+								<div class="header">
+
+									<p:column class="header" headerText="Evento"
+										filterBy="#{event.name}" filterMatchMode="contains">
+										<div class="tablecont">#{event.name}</div>
+									</p:column>
+
+
+									<p:column class="header" headerText="Dia Inicial"
+										sortBy="#{event.dateS}">
+										<h:outputText value="#{event.dateS}">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:outputText>
+									</p:column>
+									<p:column class="header" headerText="Dia Final"
+										sortBy="#{event.dateF}">
+										<h:outputText value="#{event.dateF}">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:outputText>
+									</p:column>
+									<p:column class="header" headerText="Inicio"
+										sortBy="#{event.hourS}">
+										<h:outputText value="#{event.hourS}">
+											<f:convertDateTime pattern="HH:mm" />
+										</h:outputText>
+									</p:column>
+									<p:column class="header" headerText="Localização"
+										filterBy="#{event.adress}" filterMatchMode="contains">
+										<div class="tablecont">#{event.adress.name}</div>
+									</p:column>
+								</div>
+							</p:dataTable>
+						</h:form>
 
 
 

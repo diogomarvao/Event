@@ -41,7 +41,7 @@
 
 						<div id="Events">
 							<div class="center">
-								<h:commandButton class="add" update="event" value="New Event"
+								<h:commandButton class="add" update="event" value="Novo Evento"
 									onclick="PF('AdNew').show();" />
 							</div>
 							<br />
@@ -60,7 +60,7 @@
 											<p:column class="header" headerText="Evento">
 												<div class="tablecont">#{event.name}</div>
 											</p:column>
-											<p:column class="header" headerText="Description">
+											<p:column class="header" headerText="Descrição">
 												<div class="tablecont">#{event.description}</div>
 											</p:column>
 											<p:column class="header" headerText="Género">
@@ -87,10 +87,10 @@
 												</h:outputText>
 											</p:column>
 											<p:column class="header" headerText="Localização">
-												<div class="tablecont">#{event.adress}</div>
+												<div class="tablecont">#{event.adress.name}</div>
 											</p:column>
 											<p:column class="header" headerText="Vendedor">
-												<div class="tablecont">#{event.seller}</div>
+												<div class="tablecont">#{event.seller.name}</div>
 											</p:column>
 											<p:column class="header" headerText="Featured">
 												<div class="tablecont">#{event.featured}</div>
@@ -142,13 +142,13 @@
 														required="true" />
 												</p:selectOneMenu>
 
-												<p:outputLabel for="local" value="Local: " />
+												<p:outputLabel for="local" value="Localização: " />
 
 												<p:selectOneMenu id="local" value="#{eventBean.event.adress}"
 													style="width:150px"
 													converter="omnifaces.SelectItemsConverter" immediate="true">
 
-													<f:selectItem itemLabel="Selecione o Local"
+													<f:selectItem itemLabel="Selecione a Localização"
 														itemValue="" noSelectionOption="true" />
 													<f:selectItems value="#{adressBean.adressList}" var="local"
 														itemLabel="#{local.name}" itemValue="#{local}" />
@@ -161,7 +161,7 @@
 													converter="omnifaces.SelectItemsConverter" immediate="true">
 
 
-													<f:selectItem itemLabel="Selecione o Seller"
+													<f:selectItem itemLabel="Selecione o Vendedor"
 														itemValue="" noSelectionOption="true" />
 													<f:selectItems value="#{sellerBean.sellerList}"
 														var="seller" itemLabel="#{seller.name}"
@@ -169,29 +169,29 @@
 												</p:selectOneMenu>
 
 
-												<p:outputLabel for="calPopupS" value="date start" />
+												<p:outputLabel for="calPopupS" value="Dia (1º): " />
 												<p:calendar id="calPopupS" value="#{eventBean.event.dateS}"
 													pattern="dd/MM/yyyy" required="true" />
-												<p:outputLabel for="calPopupF" value="date end" />
+												<p:outputLabel for="calPopupF" value="Dia (Ultimo): " />
 												<p:calendar id="calPopupF" value="#{eventBean.event.dateF}"
 													required="true" pattern="dd/MM/yyyy" />
 
-												<p:outputLabel for="timPopupS" value="time start" />
+												<p:outputLabel for="timPopupS" value="Horas (Inicio): " />
 												<p:calendar id="timPopupS" value="#{eventBean.event.hourS}"
 													pattern="HH:mm" required="true" timeOnly="true" />
-												<p:outputLabel for="timPopupF" value="time end" />
+												<p:outputLabel for="timPopupF" value="Horas (Fim): " />
 												<p:calendar id="timPopupF" value="#{eventBean.event.hourF}"
 													required="true" pattern="HH:mm" timeOnly="true" />
 
-												<h:outputText value="featured: " />
+												<h:outputText value="Featured: " />
 												<p:selectBooleanCheckbox value="#{eventBean.event.featured}"
 													required="true" />
 											</p:panelGrid>
 											<br />
 
-											<h:commandButton value="Save"
+											<h:commandButton value="Guardar"
 												action="#{eventBean.addEventToDb()}" />
-											<h:commandButton value="Cancel" />
+										
 										</p:outputPanel>
 									</p:dialog>
 								</h:form>
@@ -230,12 +230,12 @@
 														required="true" />
 												</p:selectOneMenu>
 
-												<p:outputLabel for="local" value="Local: " />
+												<p:outputLabel for="local" value="Localidade: " />
 
 												<p:selectOneMenu id="local"
 													value="#{eventBean.activeEvent.adress}" style="width:150px">
 
-													<f:selectItem itemLabel="Selecione o Local" itemValue=""
+													<f:selectItem itemLabel="Selecione a Localidade" itemValue=""
 														noSelectionOption="true" />
 													<f:selectItems value="#{adressBean.adressList}"
 														var="local" itemLabel="#{local.name}"
@@ -249,7 +249,7 @@
 													value="#{eventBean.activeEvent}" style="width:150px">
 
 
-													<f:selectItem itemLabel="Selecione o Seller" itemValue=""
+													<f:selectItem itemLabel="Selecione o Vendedor" itemValue=""
 														noSelectionOption="true" />
 													<f:selectItems value="#{sellerBean.sellerList}"
 														var="seller" itemLabel="#{seller.name}"
@@ -257,32 +257,32 @@
 												</p:selectOneMenu>
 
 
-												<p:outputLabel for="calPopupS" value="date start" />
+												<p:outputLabel for="calPopupS" value="Dia (1º): " />
 												<p:calendar id="calPopupS"
 													value="#{eventBean.activeEvent.dateS}" pattern="dd/MM/yyyy"
 													required="true" />
-												<p:outputLabel for="calPopupF" value="date end" />
+												<p:outputLabel for="calPopupF" value="Dia (Ultimo): " />
 												<p:calendar id="calPopupF"
 													value="#{eventBean.activeEvent.dateF}" required="true"
 													pattern="dd/MM/yyyy" />
 
-												<p:outputLabel for="timPopupS" value="time start" />
+												<p:outputLabel for="timPopupS" value="Horas (Inicio): " />
 												<p:calendar id="timPopupS"
 													value="#{eventBean.activeEvent.hourS}" pattern="HH:mm"
 													required="true" timeOnly="true" />
-												<p:outputLabel for="timPopupF" value="time end" />
+												<p:outputLabel for="timPopupF" value="Horas (Fim): " />
 												<p:calendar id="timPopupF"
 													value="#{eventBean.activeEvent.hourF}" required="true"
 													pattern="HH:mm" timeOnly="true" />
 
 
-												<h:outputText value="featured: " />
+												<h:outputText value="Featured: " />
 												<p:selectBooleanCheckbox
 													value="#{eventBean.activeEvent.featured}" required="true" />
 
 											</p:panelGrid>
 											<br />
-											<p:commandButton value="Submit"
+											<p:commandButton value="Enviar"
 												action="#{eventBean.editEventInDb()}" update="EventDisplay" />
 										</p:outputPanel>
 									</p:dialog>
