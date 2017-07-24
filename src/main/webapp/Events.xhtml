@@ -42,6 +42,7 @@
 
 						<h:form id="EventDisplay">
 
+
 							<!-- 		1.1 - tabela dos produtos -->
 							<p:dataTable value="#{eventBean.getEventList()}" var="event"
 								border="1">
@@ -185,6 +186,149 @@
 								</p:dialog>
 							</h:form>
 						</div>
+
+			<!-- 		1.1 - tabela dos produtos -->
+			<p:dataTable value="#{eventBean.getEventList()}" var="event"
+				border="1">
+				<div class="header">
+					<p:column class="header" headerText="Event">
+						<div>#{event.name}</div>
+					</p:column>
+
+					<p:column class="header" headerText="Date Start">
+						<h:outputText value="#{event.dateS}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					
+					<p:column class="header" headerText="Local">
+						<div>#{event.adress}</div>
+					</p:column>
+					
+					<p:column class="header" headerText="Price">
+						<div>#{event.seller.price}</div>
+					</p:column>
+				
+					<p:column class="header">
+
+						<p:commandButton class="bottab" update=":Inf:maisInf"
+							value="Mais Informações" oncomplete="PF('EvInf').show();">
+
+							<f:setPropertyActionListener value="#{event}"
+								target="#{eventBean.activeEvent}" />
+						</p:commandButton>
+
+
+					</p:column>
+				</div>
+			</p:dataTable>
+		</h:form>
+       <div class="eventinfopopup">
+		<h:form id="Inf">
+			<p:dialog class="diag" header="Informações Do Evento"
+				widgetVar="EvInf" resizable="false" width="900" height="700">
+				<!-- painel -->
+
+				<p:outputPanel id="maisInf">
+					<h:panelGrid columns="1">
+						<f:facet name="header">
+							<h:outputText value="#{eventBean.activeEvent.name}" />
+						</f:facet>
+
+						<h:column>
+
+							<p:graphicImage library="images" name="sanday.JPG"
+								style="width:25%" />
+						</h:column>
+						<h:column>	
+							<p:media value="http://www.youtube.com/v/latV0YAR-0s" width="420"
+								height="315" player="flash" />
+
+						</h:column>
+
+						<h:column>
+
+							<h:outputText value="Descrição:" />
+
+							
+
+							<h:outputText value="#{eventBean.activeEvent.description}" />
+<br />
+							
+							<h:outputText value="Género:" />
+
+							<h:outputText value="#{eventBean.activeEvent.genre}" />
+
+							<br />
+
+							
+								<h:outputText value="Sessões" />
+
+							<br />
+									<h:outputText value="Periodo do Envento:" />
+									
+									<h:outputText value="#{eventBean.activeEvent.dateS}">
+										<f:convertDateTime pattern="dd/MM/yyyy" />
+									</h:outputText>
+									<h:outputText value=" até " />
+									<h:outputText value="#{eventBean.activeEvent.dateF}">
+										<f:convertDateTime pattern="dd/MM/yyyy" />
+									</h:outputText>
+								<br />
+								
+									<h:outputText value="Inicio: " />
+
+									<h:outputText value="#{eventBean.activeEvent.hourS}">
+										<f:convertDateTime pattern="HH:mm" />
+									</h:outputText>
+									<br />
+									<h:outputText value="Fim: " />
+									<h:outputText value="#{eventBean.activeEvent.hourF}">
+										<f:convertDateTime pattern="HH:mm" />
+									</h:outputText>
+						
+
+
+						</h:column>
+						<h:column>
+							<div id="Buy">
+								<h:outputText value="Comprar" />
+								<br />
+								<h:outputText value="Valores:" />
+								<br />
+								<h:outputText value="#{eventBean.activeEvent.seller.price}" />
+								<br />
+								<h:outputText value="#{eventBean.activeEvent.seller.name}" />
+								<a href="#{eventBean.activeEvent.seller.sellerUrl}" /> 
+								<br />
+							</div>
+
+							<div id="Localization">
+								<h:outputText value="Localização" />
+								<br />
+								<h:outputText value="#{eventBean.activeEvent.adress.name}" />
+								<br />
+								<h:outputText value="#{eventBean.activeEvent.adress.street}" />
+								<br />
+								<h:outputText value="#{eventBean.activeEvent.adress.local}" />
+								<br />
+								<h:outputText value="#{eventBean.activeEvent.adress.codigoPostal}" />
+								<br />
+								<h3 >GoogleMaps</h3>
+    
+    
+							</div>
+
+						</h:column>
+					</h:panelGrid>
+				</p:outputPanel>
+
+
+
+			</p:dialog>
+		</h:form>
+</div>
+
 
 
 					</p:layoutUnit>
