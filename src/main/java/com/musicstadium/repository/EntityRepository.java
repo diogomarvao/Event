@@ -17,7 +17,7 @@ public class EntityRepository<E extends Entity> {
 	
 	@Transactional
 	public void addToDb(E entity){
-		em.persist(entity);
+		em.merge(entity);
 	}
 	
 	@Transactional

@@ -19,13 +19,13 @@ public class Seller extends Entity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 //	variaveis
-//	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //	@JoinTable(
 //		      name="event_id",
 //		      joinColumns=@JoinColumn(name="EVENT_ID", referencedColumnName="id"),
 //		      inverseJoinColumns=@JoinColumn(name="SELLER_ID", referencedColumnName="id"))
-	//@JoinColumn(name = "ID" ,  insert="false", update="false")
 	@OneToMany(mappedBy="seller")
+	//@JoinColumn(name = "ID" ,  insert="false", update="false")
 	private List<Event> event;
 	
 	@Column(name="NAME")

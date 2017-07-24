@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import com.musicstadium.model.Adress;
 import com.musicstadium.model.Event;
 
 @Named("eventRepository")
@@ -26,6 +29,6 @@ public class EventRepository extends EntityRepository<Event>{
 		public void removeFromDb(Event event){
 			Event activeEvent = getDb().find(Event.class, event.getId());
 			getDb().remove(activeEvent);
-		}	
-	
+		}
+		
 }

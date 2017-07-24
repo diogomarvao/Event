@@ -16,7 +16,7 @@ public class AdressService extends EntityService<Adress>{
 	@Inject
 	private AdressRepository adressRepository;
 	
-	public List<Adress> showEntities(AdressRepository adressRepository){
+	public List<Adress> showEntities(){
 		List<Adress> list = adressRepository.getDbAdress();
 		return list;
 	}

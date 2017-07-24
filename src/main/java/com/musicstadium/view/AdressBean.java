@@ -66,7 +66,7 @@ public class AdressBean implements Serializable{
 	
 // Fazer print nas tabelas
 	public List<Adress> getAdressList(){
-		return adressService.showEntities(adressService.getAdressRepository());
+		return adressService.showEntities();
 	}
 	
 //connections
@@ -82,9 +82,6 @@ public class AdressBean implements Serializable{
 //	}
 	
 	// connections
-			@Override
-			public String toString() {
-			    return String.valueOf(adress.getName());
-			}
+	
 	
 }

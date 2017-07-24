@@ -16,8 +16,9 @@ public class Adress extends Entity implements Serializable {
 
 //	variaveis
 	
-	@OneToMany(mappedBy="adress")
-	private List<Event> event;
+//	@OneToMany(mappedBy="adress")
+//	//@JoinColumn(name = "ID" ,  insert="false", update="false")
+//	private List<Event> event;
 	
 	@Column(name="STREET")
 	private String street;
@@ -76,5 +77,24 @@ public class Adress extends Entity implements Serializable {
 //	public boolean equals(Object adress){
 //		return this.name.equals(((Adress) adress).getName());
 //	}
+	
+	@Override
+	public String toString() {
+	    return String.format("%s[id=%d]",getClass().getSimpleName(),getId());
+	}
+	
+	@Override
+    public boolean equals(Object other) {
+        return (other instanceof Adress) && (getId() != null)
+            ? getId().equals(((Adress) other).getId())
+            : (other == this);
+    }
+
+    @Override
+    public int hashCode() {
+        return (getId() != null)
+            ? (this.getClass().hashCode() + getId().hashCode())
+            : super.hashCode();
+    }
 	
 }
