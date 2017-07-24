@@ -12,6 +12,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Future;
@@ -46,7 +47,7 @@ public class Event extends Entity implements Serializable {
 	@Column(name = "DESCRIPTION")
 	private String description;
 
-	@OneToOne 
+	@OneToOne
 	@MapsId
 //	@JoinTable (name = "EVADRESS" , joinColumns = @JoinColumn(name = "adress_id"),inverseJoinColumns=@JoinColumn(name = "event_id"))
 //	@JoinColumn(name="ADRESS_ID")
