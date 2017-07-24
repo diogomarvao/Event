@@ -41,16 +41,17 @@ public class SellerBean implements Serializable{
 		this.seller = seller;
 	}
 
-	private List<Seller> sellerList;
 	
-	public List<Seller> getSellerList() {
-		sellerList  = sellersInDb(); 
-		return sellerList;
-	}
-
-	public void setSellerList(List<Seller> sellerList) {
-		this.sellerList = sellerList;
-	}
+//	private List<Seller> sellerList;
+//	
+//	public List<Seller> getSellerList() {
+//		sellerList  = sellersInDb(); 
+//		return sellerList;
+//	}
+//
+//	public void setSellerList(List<Seller> sellerList) {
+//		this.sellerList = sellerList;
+//	}
 
 //	Adicionar seller
 	
@@ -72,14 +73,11 @@ public class SellerBean implements Serializable{
 	}
 	
 	// Fazer print nas tabelas
-		public List<Seller> sellersInDb(){
-			return sellerService.showEntities(sellerService.getSellerRepository());
+		public List<Seller> getSellerList(){
+			return sellerService.showEntities();
 		}
 //	
 // connections
-		@Override
-		public String toString() {
-		    return String.valueOf(seller.getName());
-		}
+
 }
 	

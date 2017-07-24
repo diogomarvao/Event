@@ -67,9 +67,10 @@ public class Event extends Entity implements Serializable {
 	//@JoinColumn(name = "ID" ,  insert="false", update="false")
 //	private List<Seller> sellerList;
 	
-	@ManyToOne
+	@OneToOne
 	//@JoinColumn(name = "ID" ,  insert="false", update="false")
-	@JoinColumn(name="SELLER_ID")
+//	@JoinColumn(name="SELLER_ID")
+//	@MapsId
 	private Seller seller;
 
 	// getter & setters

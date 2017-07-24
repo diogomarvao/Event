@@ -24,9 +24,9 @@ public class Seller extends Entity implements Serializable {
 //		      name="event_id",
 //		      joinColumns=@JoinColumn(name="EVENT_ID", referencedColumnName="id"),
 //		      inverseJoinColumns=@JoinColumn(name="SELLER_ID", referencedColumnName="id"))
-	@OneToMany(mappedBy="seller")
-	//@JoinColumn(name = "ID" ,  insert="false", update="false")
-	private List<Event> event;
+//	@OneToMany(mappedBy="seller")
+//	//@JoinColumn(name = "ID" ,  insert="false", update="false")
+//	private List<Event> event;
 	
 	@Column(name="NAME")
 	private String name;
@@ -82,4 +82,22 @@ public class Seller extends Entity implements Serializable {
 //		this.event = event;
 //	}
 	
+	@Override
+	public String toString() {
+	    return String.format("%s[id=%d]",getClass().getSimpleName(),getId());
+	}
+	
+	@Override
+    public boolean equals(Object other) {
+        return (other instanceof Seller) && (getId() != null)
+            ? getId().equals(((Seller) other).getId())
+            : (other == this);
+    }
+
+    @Override
+    public int hashCode() {
+        return (getId() != null)
+            ? (this.getClass().hashCode() + getId().hashCode())
+            : super.hashCode();
+    }
 }
