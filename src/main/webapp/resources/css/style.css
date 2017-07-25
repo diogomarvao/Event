@@ -29,6 +29,7 @@ xhtml {
 
 .eventinfopopup{
 	text-align:center;
+	
 }
 
 .top {
@@ -74,6 +75,7 @@ h1 {
 }
 
 h5 {
+
 	color: black;
 }
 
@@ -93,3 +95,4 @@ color: white;
 box-shadow: 2px 2px 2px #000000;
 }
 
+}

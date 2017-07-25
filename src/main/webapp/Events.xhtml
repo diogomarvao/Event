@@ -2,12 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
-
-
-
-	<ui:composition 
-	xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -15,181 +10,169 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	template="CommonLayout.xhtml">
 
+	<ui:define name="content">
+
+		<div class="index">
 
 
-		<ui:define name="content">
+			<p:layout fullPage="true">
 
-			<div class="index">
-
-
-				<p:layout fullPage="true">
-
-					<p:layoutUnit position="west" resizable="true" size="200"
-						minSize="40" maxSize="200" visibility="hidden">
+				<p:layoutUnit position="west" resizable="true" size="200"
+					minSize="40" maxSize="200" visibility="hidden">
         West
     </p:layoutUnit>
-					<p:layoutUnit position="east" resizable="true" size="200"
-						minSize="40" maxSize="200">
+				<p:layoutUnit position="east" resizable="true" size="200"
+					minSize="40" maxSize="200">
         West
     </p:layoutUnit>
 
-					<p:layoutUnit position="center">
+				<p:layoutUnit position="center">
 
-<p:graphicImage library="images" name="events.jpg" 
-								style="width:100%"/>
+					<p:graphicImage library="images" name="events.jpg"
+						style="width:100%" />
 
-						<h:form id="EventDisplay">
+					<h:form id="EventDisplay">
 
-			<!-- 		1.1 - tabela dos produtos -->
-			<p:dataTable value="#{eventBean.getEventList()}" var="event"
-				border="1">
-				<div class="header">
-					<p:column class="header" headerText="Event">
-						<div>#{event.name}</div>
-					</p:column>
+						<!-- 		1.1 - tabela dos produtos -->
+						<p:dataTable value="#{eventBean.getEventList()}" var="event"
+							border="1">
+							<div class="header">
+								<p:column class="header" headerText="Event">
+									<div>#{event.name}</div>
+								</p:column>
 
-					<p:column class="header" headerText="Date Start">
-						<h:outputText value="#{event.dateS}">
-							<f:convertDateTime pattern="dd/MM/yyyy" />
-						</h:outputText>
-					</p:column>
-					
-					<p:column class="header" headerText="Local">
-						<div>#{event.adress}</div>
-					</p:column>
-					
-					<p:column class="header" headerText="Price">
-						<div>#{event.seller.price}</div>
-					</p:column>
-				
-					<p:column class="header">
+								<p:column class="header" headerText="Date Start">
+									<h:outputText value="#{event.dateS}">
+										<f:convertDateTime pattern="dd/MM/yyyy" />
+									</h:outputText>
+								</p:column>
 
-						<p:commandButton class="bottab" update=":Inf:maisInf"
-							value="Mais Informações" oncomplete="PF('EvInf').show();">
+								<p:column class="header" headerText="Local">
+									<div>#{event.adress}</div>
+								</p:column>
 
-							<f:setPropertyActionListener value="#{event}"
-								target="#{eventBean.activeEvent}" />
-						</p:commandButton>
+								<p:column class="header" headerText="Price">
+									<div>#{event.seller.price}</div>
+								</p:column>
+
+								<p:column class="header">
+
+									<p:commandButton class="bottab" update=":Inf:maisInf"
+										value="Mais Informações" oncomplete="PF('EvInf').show();">
+
+										<f:setPropertyActionListener value="#{event}"
+											target="#{eventBean.activeEvent}" />
+									</p:commandButton>
 
 
-					</p:column>
-				</div>
-			</p:dataTable>
-		</h:form>
-       <div class="eventinfopopup">
-		<h:form id="Inf">
-			<p:dialog class="diag" header="Informações Do Evento"
-				widgetVar="EvInf" resizable="false" width="900" height="500">
-				<!-- painel -->
+								</p:column>
+							</div>
+						</p:dataTable>
+					</h:form>
+					<div class="eventinfopopup">
+						<h:form id="Inf">
+							<p:dialog class="diag" header="Informações Do Evento"
+								widgetVar="EvInf" resizable="false" width="900" height="500">
+								<!-- painel -->
 
-				<p:outputPanel id="maisInf">
-					<h:panelGrid columns="1">
-						<f:facet name="header">
-							<h:outputText value="#{eventBean.activeEvent.name}" />
-						</f:facet>
-
-						<h:column>
-
-							<p:graphicImage library="images" name="festivais-de-verao.jpg" 
-								style="width:100%"/>
-						</h:column>
-						<h:column>	
-							<p:media value="http://www.youtube.com/v/latV0YAR-0s" width="500"
-								height="380" player="flash" />
-
-						</h:column>
-
-						<h:column>
-
-							<h:outputText value="Descrição:" />
-
-							
-
-							<h:outputText value="#{eventBean.activeEvent.description}" />
-<br />
-							
-							<h:outputText value="Género:" />
-
-							<h:outputText value="#{eventBean.activeEvent.genre}" />
-
-							<br />
-
-							
-								<h:outputText value="Sessões" />
-
-							<br />
-									<h:outputText value="Periodo do Envento:" />
+								<p:outputPanel id="maisInf">
 									
-									<h:outputText value="#{eventBean.activeEvent.dateS}">
-										<f:convertDateTime pattern="dd/MM/yyyy" />
-									</h:outputText>
-									<h:outputText value=" até " />
-									<h:outputText value="#{eventBean.activeEvent.dateF}">
-										<f:convertDateTime pattern="dd/MM/yyyy" />
-									</h:outputText>
-								<br />
-								
-									<h:outputText value="Inicio: " />
+										<f:facet name="header">
+											<h:outputText value="#{eventBean.activeEvent.name}" />
+										</f:facet>
 
-									<h:outputText value="#{eventBean.activeEvent.hourS}">
-										<f:convertDateTime pattern="HH:mm" />
-									</h:outputText>
-									<br />
-									<h:outputText value="Fim: " />
-									<h:outputText value="#{eventBean.activeEvent.hourF}">
-										<f:convertDateTime pattern="HH:mm" />
-									</h:outputText>
-						
+										
+
+											<p:graphicImage library="images"
+												name="festivais-de-verao.jpg" style="width:60%" />
+												
+										<br/><br/>
+											<p:media value="http://www.youtube.com/v/latV0YAR-0s"
+												width="500" height="380" player="flash" />
+
+										<br/><br/><br/>
+											<h:outputText value="Descrição:" />
+
+<br/>
+
+											<h:outputText value="#{eventBean.activeEvent.description}" />
+											<br />
+
+											<h:outputText value="Género:" />
+
+											<h:outputText value="#{eventBean.activeEvent.genre}" />
+
+											<br />
 
 
-						</h:column>
-						<h:column>
-							<div id="Buy">
-								<h:outputText value="Comprar" />
-								<br />
-								<h:outputText value="Valores:" />
-								<br />
-								<h:outputText value="#{eventBean.activeEvent.seller.price}" />
-								<br />
-								<h:outputText value="#{eventBean.activeEvent.seller.name}" />
-								<a href="#{eventBean.activeEvent.seller.sellerUrl}" /> 
-								<br />
-							</div>
+											<h:outputText value="Sessões" />
 
-							<div id="Localization">
-								<h:outputText value="Localização" />
-								<br />
-								<h:outputText value="#{eventBean.activeEvent.adress.name}" />
-								<br />
-								<h:outputText value="#{eventBean.activeEvent.adress.street}" />
-								<br />
-								<h:outputText value="#{eventBean.activeEvent.adress.local}" />
-								<br />
-								<h:outputText value="#{eventBean.activeEvent.adress.codigoPostal}" />
-								<br />
-								<h3 >GoogleMaps</h3>
-    
-    
-							</div>
+											<br />
+											<h:outputText value="Periodo do Envento:" />
 
-						</h:column>
-					</h:panelGrid>
-				</p:outputPanel>
+											<h:outputText value="#{eventBean.activeEvent.dateS}">
+												<f:convertDateTime pattern="dd/MM/yyyy" />
+											</h:outputText>
+											<h:outputText value=" até " />
+											<h:outputText value="#{eventBean.activeEvent.dateF}">
+												<f:convertDateTime pattern="dd/MM/yyyy" />
+											</h:outputText>
+											<br />
+
+											<h:outputText value="Inicio: " />
+
+											<h:outputText value="#{eventBean.activeEvent.hourS}">
+												<f:convertDateTime pattern="HH:mm" />
+											</h:outputText>
+											<br />
+											<h:outputText value="Fim: " />
+											<h:outputText value="#{eventBean.activeEvent.hourF}">
+												<f:convertDateTime pattern="HH:mm" />
+											</h:outputText>
 
 
 
-			</p:dialog>
-		</h:form>
-</div>
+										
+										
+											<div id="Buy">
+												<h:outputText value="Comprar" />
+												<br />
+												<h:outputText value="Valores:" />
+												<br />
+												<h:outputText value="#{eventBean.activeEvent.seller.price}" />
+												<br />
+												<h:outputText value="#{eventBean.activeEvent.seller.name}" />
+												<a href="#{eventBean.activeEvent.seller.sellerUrl}" /> <br />
+											</div>
+
+											<div id="Localization">
+												<h:outputText value="Localização" />
+												<br />
+												<h:outputText value="#{eventBean.activeEvent.adress.name}" />
+												<br />
+												<h:outputText value="#{eventBean.activeEvent.adress.street}" />
+												<br />
+												<h:outputText value="#{eventBean.activeEvent.adress.local}" />
+												<br />
+												<h:outputText
+													value="#{eventBean.activeEvent.adress.codigoPostal}" />
+												<br />
+												<h3>GoogleMaps</h3>
 
 
-					</p:layoutUnit>
-				</p:layout>
+											</div>
+
+								</p:outputPanel>
+							</p:dialog>
+						</h:form>
+					</div>
+				</p:layoutUnit>
+			</p:layout>
 
 
-			</div>
+		</div>
 
-		</ui:define>
+	</ui:define>
 
 
-	</ui:composition>
+</ui:composition>
