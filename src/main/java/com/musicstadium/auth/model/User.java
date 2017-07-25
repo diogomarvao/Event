@@ -1,33 +1,24 @@
 package com.musicstadium.auth.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import java.io.Serializable;
 
-@Entity
-@Table(name="user")
-public class User {
-		private Long id;
-		private String username;
-		private String password;
-		private String passwordConfirm;
-			
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+import javax.persistence.Column;
+
+import javax.persistence.Table;
+import com.musicstadium.model.Entity;
+
+@javax.persistence.Entity
+@Table(name="USER")
+public class User extends Entity implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	@Column(name="USERNAME")
+	private String username;
+	@Column(name="PASSWORD")
+	private String password;
 	
 	
-	
-	
-	public String getUsername() {
+	public String getUsername(){
 		return username;
 	}
 	public void setUsername(String username) {
@@ -38,14 +29,6 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	
-	@Transient
-	public String getPasswordConfirm() {
-		return passwordConfirm;
-	}
-	public void setPasswordConfirm(String passwordConfirm) {
-		this.passwordConfirm = passwordConfirm;
 	}
 	
 	
