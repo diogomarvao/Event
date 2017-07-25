@@ -76,18 +76,23 @@
 								<!-- painel -->
 
 								<p:outputPanel id="maisInf">
+								
+								<h:outputText value="#{eventBean.activeEvent.name}" style="font-size:40px;"/>			
 									
-										
-											<h:outputText value="#{eventBean.activeEvent.name}" style="font-size:40px;"/>			
 										<br/><br/><br/>
+									
+										<div class="Buy">
+											
 											<p:graphicImage library="images"
 												name="festivais-de-verao.jpg" style="width:60%" />
-												
+										</div>		
 										<br/><br/>
+										<div class="Buy">
 											<p:media value="http://www.youtube.com/v/latV0YAR-0s"
 												width="500" height="380" player="flash" />
-
+										</div>
 										<br/><br/><br/>
+										<div class="Buy">
 											<h:outputText value="Descrição: " />
 											<h:outputText value="#{eventBean.activeEvent.description}" />
 											<br />
@@ -120,7 +125,7 @@
 
 										
 										
-											<div id="Buy">
+											
 												<h:outputText value="Comprar: " />
 												<br />
 												<h:outputText value="Valores: " />
@@ -129,9 +134,9 @@
 												<h:outputText value="Vendedor: " />
 												<h:outputText value="#{eventBean.activeEvent.seller.name}" />
 												<a href="#{eventBean.activeEvent.seller.sellerUrl}" /> <br />
-											</div>
+											
 
-											<div id="Localization">
+										
 												<h:outputText value="Localização: " />
 												<br />
 												<h:outputText value="#{eventBean.activeEvent.adress.street}" />
@@ -141,10 +146,12 @@
 												<h:outputText
 													value="#{eventBean.activeEvent.adress.codigoPostal}" />
 												<br />
+												</div>
+												<br/>
 												<h3>GoogleMaps</h3>
 
 
-											</div>
+											
 
 								</p:outputPanel>
 							</p:dialog>

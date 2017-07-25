@@ -42,6 +42,22 @@ xhtml {
 	height:100%;
 }
 
+.Buy{
+	border-style: solid;
+	border-color: transparent;
+	box-shadow: 5px 5px 5px 5px  grey;
+	text-align: center;
+	font-family: "Lucida Console", Monaco, monospace;
+}
+
+.Buy1{
+	border-style: solid;
+	border-color: transparent;
+	box-shadow: 5px 5px  grey;
+	text-align: center;
+	font-family: "Lucida Console", Monaco, monospace;
+}
+
 .datatableevents{
 	margin-left:10px;
 	margin-right:10px;
