@@ -39,8 +39,8 @@
 				<p:graphicImage library="images" name="address.jpg" 
 								style="width:100%"/>
 				
-					<h:commandButton class="add" update="adress" value="New Adress"
-						onclick="PF('AdNew').show();" />
+					<p:commandButton class="add" icon="fa fa-fw fa-plus" update="adress" value="Novo"
+						onclick="PF('AdNew').show();" type="button"/>
 				</div>
 
 				<h:form id="AdressDisplay">
@@ -67,12 +67,13 @@
 							</p:column>
 							<p:column class="header">
 
-								<p:commandButton class="bottab" update=":EditarAd:editAdress"
+								<p:commandButton icon="fa fa-fw fa-edit" class="bottab" update=":EditarAd:editAdress"
 									value="Editar" oncomplete="PF('AdEdit').show();">
+									
 									<f:setPropertyActionListener value="#{adress}"
 										target="#{adressBean.activeAdress}" />
 								</p:commandButton>
-								<p:commandButton value="Eliminar" class="bottab"
+								<p:commandButton icon="fa fa-fw fa-remove" value="Eliminar" class="bottab"
 									action="#{adressBean.delAdressInDb(adress)}"
 									update="AdressDisplay" />
 

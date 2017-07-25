@@ -48,7 +48,7 @@
 								</p:column>
 
 								<p:column class="header" headerText="Local">
-									<div>#{event.adress}</div>
+									<div>#{event.adress.name}</div>
 								</p:column>
 
 								<p:column class="header" headerText="Price">
@@ -57,7 +57,7 @@
 
 								<p:column class="header">
 
-									<p:commandButton class="bottab" update=":Inf:maisInf"
+									<p:commandButton icon="fa fa-fw fa-file-text-o" class="bottab" update=":Inf:maisInf"
 										value="Mais Informações" oncomplete="PF('EvInf').show();">
 
 										<f:setPropertyActionListener value="#{event}"

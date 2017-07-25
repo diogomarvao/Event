@@ -97,18 +97,19 @@ h5 {
 
 /*button*/
 
-.add{
-	cursor: hand;
+.ui-icon { 
+	text-indent: 0; 
+	}
+
+/*.add{
+	
 	border:solid;
 	 margin:0 auto;
     display:block;
-    background-color:#191970;
-			border-color: #191970;
+  border-color:transparent;
 border-radius:100px;
     font-size:15px;
-font-weight: bold;
-color: white;
-box-shadow: 2px 2px 2px #000000;
-}
 
-}
+
+
+}*/
