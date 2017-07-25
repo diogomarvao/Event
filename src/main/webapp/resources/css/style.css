@@ -32,11 +32,15 @@
 	
 }
 
-
+.eventinfomargin{
+	margin-top:30px;
+}
 
 .eventinfopopup{
 	text-align:center;
-	
+}
+.ui-dialog{
+background-image: url("#{resource['images/dark-blue-background.jpg']}");
 }
 
 .top {
@@ -58,6 +62,7 @@
 }
 
 .Buy1{
+	
 	border-style: solid;
 	border-color: transparent;
 	box-shadow: 5px 5px  grey;
@@ -88,6 +93,8 @@
 	background-color:grey;
 }
 
+
+
 .label{
 	color:black;
 }
@@ -103,10 +110,12 @@ h5 {
 	color: white;
 }
 
-.ui-widget-content {   
-    color: red;
+.eventname{
+	color:white;
+	font-size:17px;
 }
 .ui-layout-unit{
+
 background-image: url("#{resource['images/dark-blue-background.jpg']}");
 }
 
