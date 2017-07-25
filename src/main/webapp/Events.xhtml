@@ -77,12 +77,9 @@
 
 								<p:outputPanel id="maisInf">
 									
-										<f:facet name="header">
-											<h:outputText value="#{eventBean.activeEvent.name}" />
-										</f:facet>
-
 										
-
+											<h:outputText value="#{eventBean.activeEvent.name}" style="font-size:40px;"/>			
+										<br/><br/><br/>
 											<p:graphicImage library="images"
 												name="festivais-de-verao.jpg" style="width:60%" />
 												
@@ -91,27 +88,16 @@
 												width="500" height="380" player="flash" />
 
 										<br/><br/><br/>
-											<h:outputText value="Descrição:" />
-
-<br/>
-
+											<h:outputText value="Descrição: " />
 											<h:outputText value="#{eventBean.activeEvent.description}" />
 											<br />
-
-											<h:outputText value="Género:" />
-
+											<h:outputText value="Género: " />
 											<h:outputText value="#{eventBean.activeEvent.genre}" />
-
 											<br />
-
-
 											<h:outputText value="Sessões" />
-
-											<br />
-											<h:outputText value="Periodo do Envento:" />
-
+											<h:outputText value="Periodo do Envento: " />
 											<h:outputText value="#{eventBean.activeEvent.dateS}">
-												<f:convertDateTime pattern="dd/MM/yyyy" />
+											<f:convertDateTime pattern="dd/MM/yyyy" />
 											</h:outputText>
 											<h:outputText value=" até " />
 											<h:outputText value="#{eventBean.activeEvent.dateF}">
@@ -135,20 +121,18 @@
 										
 										
 											<div id="Buy">
-												<h:outputText value="Comprar" />
+												<h:outputText value="Comprar: " />
 												<br />
-												<h:outputText value="Valores:" />
-												<br />
+												<h:outputText value="Valores: " />
 												<h:outputText value="#{eventBean.activeEvent.seller.price}" />
 												<br />
+												<h:outputText value="Vendedor: " />
 												<h:outputText value="#{eventBean.activeEvent.seller.name}" />
 												<a href="#{eventBean.activeEvent.seller.sellerUrl}" /> <br />
 											</div>
 
 											<div id="Localization">
-												<h:outputText value="Localização" />
-												<br />
-												<h:outputText value="#{eventBean.activeEvent.adress.name}" />
+												<h:outputText value="Localização: " />
 												<br />
 												<h:outputText value="#{eventBean.activeEvent.adress.street}" />
 												<br />
