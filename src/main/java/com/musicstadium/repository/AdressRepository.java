@@ -19,6 +19,14 @@ public class AdressRepository extends EntityRepository<Adress>{
 		return dbElements;
 	}
 	
+	public List<Adress> duplicate (Adress adress){
+		String s = adress.getName();
+		Query query = getDb().createQuery("SELECT c FROM Adress AS c WHERE c.name = :name ");
+		query.setParameter("name",s);
+		List<Adress> dbElements = (List<Adress>) query.getResultList();
+		return dbElements;
+	}
+	
 	@Override
 	@Transactional
 	public void removeFromDb(Adress adress){

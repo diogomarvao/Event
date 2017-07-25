@@ -3,6 +3,8 @@ package com.musicstadium.auth.service;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -23,7 +25,12 @@ import com.musicstadium.service.EntityService;
 		}
 		
 		public void addUser(User user){
-			userRepository.addToDb(user);
+			List<User> duplicateList = userRepository.duplicate(user);
+			if (duplicateList.isEmpty()){
+				userRepository.addToDb(user);
+			}else{
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro!", "Nome de Utilizador indisponivel!"));
+			}
 		}
 		
 		public void editUser(User user){
