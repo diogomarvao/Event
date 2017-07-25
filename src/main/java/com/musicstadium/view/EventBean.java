@@ -86,6 +86,9 @@ public class EventBean implements Serializable{
 	
 // editar eventos
 	public void editEventInDb(){
+		System.out.println(activeEvent.getAdress());	
+		System.out.println(activeEvent.getSeller());
+		System.out.println(activeEvent.getId());
 		eventService.editEvent(activeEvent);
 	}
 	
