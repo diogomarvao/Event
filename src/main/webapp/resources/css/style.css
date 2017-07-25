@@ -63,13 +63,16 @@ xhtml {
 	background-color:grey;
 }
 
+.label{
+	color:black;
+}
 
 h1 {
-	color: white;
+	color: black;
 	font-size: 200%;
 	
 }
 
 h5 {
-	color: white;
+	color: black;
 }
