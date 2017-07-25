@@ -4,8 +4,7 @@
 
 
 
-	<ui:composition 
-	xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -15,19 +14,19 @@
 
 
 
-		<ui:define name="content">
+	<ui:define name="content">
 
-			<div class="index">
-
-
-				<p:layout fullPage="true">
+		<div class="index">
 
 
+			<p:layout fullPage="true">
 
-					<p:layoutUnit position="center">
-<div class="midcenter">
-<p:graphicImage library="images" name="stadiumconcert.jpg" 
-								style="width:100%"/>
+
+
+				<p:layoutUnit position="center">
+					<div class="midcenter">
+						<p:graphicImage library="images" name="stadiumconcert.jpg"
+							style="width:100%" />
 						<h:form id="PopularSellerDisplay">
 
 							<p:carousel value="#{eventBean.getEventList()}"
@@ -67,12 +66,13 @@
 
 						<br />
 
-						<h:form id="EventDisplay" >
-						<p:graphicImage library="images" name="proxevent.jpg" 
-								style="width:100%"/>
+						<h:form id="EventDisplay">
+							<p:graphicImage library="images" name="proxevent.jpg"
+								style="width:100%" />
 
-							<p:dataTable headerText="PRÓXIMOS EVENTOS" value="#{eventBean.getEventList()}" var="event"
-								border="1" rows="10" paginator="true"
+							<p:dataTable headerText="PRÓXIMOS EVENTOS"
+								value="#{eventBean.getEventList()}" var="event" border="1"
+								rows="10" paginator="true"
 								paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 								rowsPerPageTemplate="5,10,15" style="margin-top:10px">
 
@@ -112,19 +112,19 @@
 
 
 
-</div>
+					</div>
 
 
-					</p:layoutUnit>
-				</p:layout>
+				</p:layoutUnit>
+			</p:layout>
 
 
-			</div>
+		</div>
 
-		</ui:define>
+	</ui:define>
 
 
-	</ui:composition>
+</ui:composition>
 
 
 
