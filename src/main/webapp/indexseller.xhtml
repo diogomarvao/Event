@@ -34,8 +34,8 @@
 				<p:graphicImage library="images" name="seller.jpg" 
 								style="width:100%"/>
 				
-					<h:commandButton class="add" update="seller" value="New Seller"
-						onclick="PF('AdNew').show();" />
+					<p:commandButton icon="fa fa-fw fa-plus" class="add" update="seller" value="Novo"
+						onclick="PF('AdNew').show();"  type="button"/>
 				</div>
 
 				<h:form id="SellerDisplay">
@@ -63,13 +63,13 @@
 							
 							<p:column class="header">
 
-								<p:commandButton class="bottab" update=":EditarSe:editSeller" value="Editar" 
+								<p:commandButton icon="fa fa-fw fa-edit" class="bottab" update=":EditarSe:editSeller" value="Editar" 
 									oncomplete="PF('SeEdit').show();">
 
 									<f:setPropertyActionListener value="#{s}"
 										target="#{sellerBean.activeSeller}"/>
 								</p:commandButton>
-								<p:commandButton value="Eliminar" class="bottab"
+								<p:commandButton icon="fa fa-fw fa-remove" value="Eliminar" class="bottab"
 									action="#{sellerBean.delSellerInDb(s)}"/>
 
 							</p:column>
