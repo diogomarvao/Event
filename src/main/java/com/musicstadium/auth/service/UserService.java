@@ -33,6 +33,19 @@ import com.musicstadium.service.EntityService;
 			}
 		}
 		
+		public void login(User user){
+			List<User> duplicateList = userRepository.duplicate(user);
+			if (duplicateList.isEmpty()){
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro!", "Utilizador Invalido!"));
+			}else{
+				if(duplicateList.get(0).getPassword() == user.getPassword()){
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Olá!!", "Bem Vindo "+ user.getUsername() + "!"));
+				}else{
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro!", "Password Invalida!"));
+				}
+			}
+		}
+		
 		public void editUser(User user){
 				userRepository.alterInDb(user);
 		}

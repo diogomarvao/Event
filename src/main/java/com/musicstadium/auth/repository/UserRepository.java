@@ -22,11 +22,12 @@ public class UserRepository extends EntityRepository<User>{
 	
 	public List<User> duplicate (User user){
 		String s = user.getUsername();
-		Query query = getDb().createQuery("SELECT c FROM User AS c WHERE c.user = :name ");
-		query.setParameter("name",s);
+		Query query = getDb().createQuery("SELECT c FROM User AS c WHERE c.username = :username ");
+		query.setParameter("username",s);
 		List<User> dbElements = (List<User>) query.getResultList();
 		return dbElements;
 	}
+
 	
 	@Override
 	@Transactional

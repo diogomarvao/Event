@@ -57,5 +57,8 @@ public class UserBean implements Serializable{
 		userService.delEntity(userService.getUserRepository(), activeUser);
 	}
 
+	public void login(){
+		userService.login(user);
+	}
 
 }
