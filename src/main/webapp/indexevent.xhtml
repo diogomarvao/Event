@@ -185,7 +185,7 @@
 													mask="9999-999" required="true" />
 											</p:panelGrid>
 											<br />
-											<h:commandButton value="Save"
+											<h:commandButton value="Save" update="EditarEv"
 												action="#{adressBean.addAdressToDb()}" />
 											<h:commandButton value="Cancel" />
 										</p:outputPanel>
@@ -232,15 +232,6 @@
 													<p:commandButton class="add" icon="fa fa-fw fa-plus"
 														onclick="PF('Adress').show();" type="button" />
 												</p:column>
-												<p:outputLabel for="seller" value="Vendedor: " />
-												<p:selectOneMenu id="seller"
-													value="#{eventBean.activeEvent.seller}" style="width:150px">
-													<f:selectItem itemLabel="Selecione o Vendedor" itemValue=""
-														noSelectionOption="true" />
-													<f:selectItems value="#{sellerBean.sellerList}"
-														var="seller" itemLabel="#{seller.name}"
-														itemValue="#{seller}" />
-												</p:selectOneMenu>
 												<p:outputLabel for="calPopupS" value="Dia (1º): " />
 												<p:calendar id="calPopupS"
 													value="#{eventBean.activeEvent.dateS}" pattern="dd/MM/yyyy"
@@ -263,7 +254,7 @@
 											</p:panelGrid>
 											<br />
 											<p:commandButton value="Enviar"
-												action="#{eventBean.editEventInDb()}" update="EventDisplay" />
+												action="#{eventBean.editEventInDb()}" update="EventDisplay"  oncomplete="PF('EvEdit').hide();"/>
 										</p:outputPanel>
 									</p:dialog>
 								</h:form>

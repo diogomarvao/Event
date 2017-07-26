@@ -132,7 +132,7 @@
 										<br />
 										<p:commandButton value="Submit"
 											action="#{sellerBean.editSellerInDb()}"
-											update="SellerDisplay" />
+											update="SellerDisplay" oncomplete="PF('SeEdit').hide();"/>
 									</p:outputPanel>
 								</p:dialog>
 							</h:form>
