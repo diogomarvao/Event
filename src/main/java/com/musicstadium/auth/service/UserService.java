@@ -38,7 +38,7 @@ import com.musicstadium.service.EntityService;
 			if (duplicateList.isEmpty()){
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro!", "Utilizador Invalido!"));
 			}else{
-				if(duplicateList.get(0).getPassword() == user.getPassword()){
+				if(duplicateList.get(0).getPassword().equals(user.getPassword())){
 					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Olá!!", "Bem Vindo "+ user.getUsername() + "!"));
 				}else{
 					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro!", "Password Invalida!"));
