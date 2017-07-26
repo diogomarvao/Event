@@ -31,9 +31,16 @@
 	margin-right:10%;
 	margin-top:2%;
 	margin-bottom:100px;
-	
 }
-
+.midcenter1{
+	
+	
+	text-align:center;
+	margin-left:10%;
+	margin-right:10%;
+	margin-top:2%;
+	margin-bottom:10px;
+}
 .eventinfomargin{
 	margin-top:30px;
 }
@@ -107,8 +114,13 @@ h1 {
 	
 }
 
-h5 {
-    font-size:70%;
+h5{
+	font-size:70%;
+	color:white;
+}
+
+.h55 {
+    font-size:20px;
 	color: white;
 }
 
@@ -121,6 +133,12 @@ h5 {
 background-image: url("#{resource['images/dark-blue-background.jpg']}");
 }
 
+.ui-outputpanel{
+	margin-left:10%;
+	margin-right:10%;
+	margin-top:2%;
+	margin-bottom:10px;
+}
 /*button*/
 
 .ui-icon { 
