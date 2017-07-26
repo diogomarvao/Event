@@ -23,16 +23,12 @@
 
 					<p:layoutUnit position="center">
 						<div class="midcenter">
-						<!-- 1 - Menu principal enderecos -->
-
-
-
-				
+						<!-- 1 - Menu principal enderecos -->			
 				
 				<p:graphicImage library="images" name="address.jpg" 
 								style="width:100%"/>
 				
-					<p:commandButton class="add" icon="fa fa-fw fa-plus" update="adress" value="Novo"
+					<p:commandButton class="add" icon="fa fa-fw fa-plus" update="adress"
 						onclick="PF('AdNew').show();" type="button"/>
 				
 
@@ -63,12 +59,12 @@
 							<p:column class="header">
 
 								<p:commandButton icon="fa fa-fw fa-edit" class="bottab" update=":EditarAd:editAdress"
-									value="Editar" oncomplete="PF('AdEdit').show();">
+									oncomplete="PF('AdEdit').show();">
 									
 									<f:setPropertyActionListener value="#{adress}"
 										target="#{adressBean.activeAdress}" />
 								</p:commandButton>
-								<p:commandButton icon="fa fa-fw fa-remove" value="Eliminar" class="bottab"
+								<p:commandButton icon="fa fa-fw fa-remove" class="bottab"
 									action="#{adressBean.delAdressInDb(adress)}"
 									update="AdressDisplay" />
 
@@ -81,7 +77,7 @@
 
 
 				<h:form id="NewAd">
-					<p:dialog class="diag" header="Novo Adress" widgetVar="AdNew"
+					<p:dialog class="diag" header="Nova Localização" widgetVar="AdNew"
 						resizable="false">
 						<p:outputPanel id="editAdress" style="text-align:center;">
 							<p:panelGrid class="diagEdit" columns="2">
@@ -91,20 +87,19 @@
 								<p:inputText value="#{adressBean.adress.street}" required="true" />
 								<h:outputText value="Localidade:" />
 								<p:inputText value="#{adressBean.adress.local}" required="true" />
-								<h:outputText value="Codigo-postal:" />
+								<h:outputText value="Código-Postal:" />
 								<p:inputMask value="#{adressBean.adress.codigoPostal}"
 									mask="9999-999" required="true" />
 							</p:panelGrid>
 							<br />
-							<h:commandButton value="Save"
-								action="#{adressBean.addAdressToDb()}" />
-							<h:commandButton value="Cancel" />
+							<h:commandButton value="Gravar"
+								action="#{adressBean.addAdressToDb()}"/>
 						</p:outputPanel>
 					</p:dialog>
 				</h:form>
 
 				<h:form id="EditarAd">
-					<p:dialog class="diag" header="Editar Adress" widgetVar="AdEdit"
+					<p:dialog class="diag" header="Editar Localização" widgetVar="AdEdit"
 						resizable="false">
 						<!-- painel -->
 						<p:outputPanel id="editAdress" style="text-align:center;">
@@ -120,13 +115,13 @@
 								<h:outputText value="Localidade" />
 								<p:inputText value="#{adressBean.activeAdress.local}"
 									required="true" />
-								<h:outputText value="Codigo postal" />
+								<h:outputText value="Código-Postal:" />
 								<p:inputMask value="#{adressBean.activeAdress.codigoPostal}"
 									mask="9999-999" required="true" />
 							</p:panelGrid>
 							<br />
-							<p:commandButton value="Submit"
-								action="#{adressBean.editAdressInDb()}" update="AdressDisplay" />
+							<p:commandButton value="Gravar Alterações"
+								action="#{adressBean.editAdressInDb()}" update="AdressDisplay"  oncomplete="PF('AdEdit').hide();"/>
 						</p:outputPanel>
 					</p:dialog>
 				</h:form>
