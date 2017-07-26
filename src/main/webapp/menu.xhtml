@@ -7,21 +7,23 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
-		
-	
-	<div class = "topnav">
+
+
+	<div class="topnav">
 
 		<h:form>
 			<p:growl id="messages" />
 
-			<p:menubar class="top" header="Music Stadium" >
+			<p:menubar class="top" header="Music Stadium">
 
-				<p:menuitem value="MUSIC STADIUM" action="index" style="color:black"/>
+				<p:menuitem value="MUSIC STADIUM" action="index" style="color:black" />
 
-				<p:menuitem value="Todos Eventos" action="Events" style="color:black"/>
-				
-				<p:menuitem value="Contactos" action="contacts" style="color:black"/>
+				<p:menuitem value="Todos Eventos" action="Events"
+					style="color:black" />
+
+				<p:menuitem value="Contactos" action="contacts" style="color:black" />
 				<p:menuitem value="Sobre Nós" action="about" style="color:black" />
+
 
 				<p:submenu icon="fa fa-user" rendered="true" label="user" style="color:black">
 					<p:menuitem icon="fa fa-music" value="Os Meus Eventos" action="indexevent" style="color:black"/>
@@ -32,10 +34,11 @@
 					
 					<p:separator />
 					<p:menuitem icon="fa fa-sign-out" value="Logout" action="#{userBean.logout()}" style="color:black"/>
+
 				</p:submenu>
 
-
 				<f:facet name="options">
+
 					<h:outputText value="Logged-in User" style="margin-right:10px; color:black" />
 				
 					<p:commandButton icon="fa fa-fw fa-sign-in" rendered="#{userBean.showLoginBt}"
@@ -44,35 +47,62 @@
 				</f:facet>
 
 
+					<p:commandButton class="topbut"
+						type="button" value="Sign Up" onclick="PF('sign').show();" />
+
+					<p:commandButton  class="topbut"
+						type="button" value="Login" onclick="PF('log').show();" />
+				</f:facet>
+
 			</p:menubar>
 
 
 
+		</h:form>
+		<h:form>
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
 
+			<p:dialog header="Login" widgetVar="log" resizable="false">
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputLabel for="username" value="Username:" />
+					<p:inputText id="username" value="#{userBean.user.username}"
+						required="true" label="username" />
+
+					<h:outputLabel for="password" value="Password:" />
+					<p:password id="password" value="#{userBean.user.password}"
+						required="true" label="password" />
+
+					<f:facet name="footer">
+						<p:commandButton value="Login" update="growl"
+							actionListener="#{userBean.login()}" />
+
+					</f:facet>
+				</h:panelGrid>
+			</p:dialog>
 		</h:form>
 
+
 		<h:form>
-					<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
 
-							<p:dialog header="Login" widgetVar="dlg" resizable="false">
-								<h:panelGrid columns="2" cellpadding="5">
-									<h:outputLabel for="username" value="Username:" />
-									<p:inputText id="username" value="#{userBean.user.username}"
-										required="true" label="username" />
+			<p:dialog header="Novo Utilizador" widgetVar="sign" resizable="false">
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputLabel for="username" value="Username" />
+					<p:inputText id="username" value="#{userBean.user.username}"
+						required="true" label="username" />
 
-									<h:outputLabel for="password" value="Password:" />
-									<p:password id="password" value="#{userBean.user.password}"
-										required="true" label="password" />
+					<h:outputLabel for="password" value="Password:" />
+					<p:password id="password" value="#{userBean.user.password}"
+						required="true" label="password" />
 
-									<f:facet name="footer">
-										<p:commandButton value="Login" update="growl"
-											actionListener="#{userBean.login()}"
-											/>
+					<f:facet name="footer">
+						<p:commandButton value="Criar Utilizador" update="growl"
+							actionListener="#{userBean.addUserToDb()}" />
 
-									</f:facet>
-									</h:panelGrid>
-							</p:dialog>
-							</h:form>
+					</f:facet>
+				</h:panelGrid>
+			</p:dialog>
+		</h:form>
 
 
 	</div>
