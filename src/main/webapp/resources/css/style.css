@@ -1,10 +1,7 @@
-body {
-	background-color: grey;
+.ui-layout-unit .ui-layout-unit-content {
+    background-color:transparent;
 }
 
-xhtml {
-	background-color: grey;
-}
 
 
 .bottomnav {
@@ -12,7 +9,7 @@ xhtml {
 	width: 100%;
 	bottom: 0;
 	left: 0;
-	border-style: solid;
+	border-radius:5px;
 	border-color: transparent;
 	box-shadow: 5px 5px 5px #000000;
 	text-align: center;
@@ -20,6 +17,8 @@ xhtml {
 	font-size: 10px;
 	color: white;
 	background-color: #333;
+	 z-index: 1000;
+	display: inline-block;
 }
 
 .topnav{
@@ -27,8 +26,23 @@ xhtml {
 	color:white:
 }
 
+.midcenter{
+	margin-left:10%;
+	margin-right:10%;
+	margin-top:2%;
+	margin-bottom:100px;
+	
+}
+
+.eventinfomargin{
+	margin-top:30px;
+}
+
 .eventinfopopup{
 	text-align:center;
+}
+.ui-dialog{
+background-image: url("#{resource['images/dark-blue-background.jpg']}");
 }
 
 .top {
@@ -39,6 +53,23 @@ xhtml {
 	
 	width:100%;
 	height:100%;
+}
+
+.Buy{
+	border-style: solid;
+	border-color: transparent;
+	box-shadow: 5px 5px 5px 5px  grey;
+	text-align: center;
+	font-family: "Lucida Console", Monaco, monospace;
+}
+
+.Buy1{
+	
+	border-style: solid;
+	border-color: transparent;
+	box-shadow: 5px 5px  grey;
+	text-align: center;
+	font-family: "Lucida Console", Monaco, monospace;
 }
 
 .datatableevents{
@@ -54,6 +85,7 @@ xhtml {
 .content{
 	width:100%;
 	height:100%;
+	background-color:transparent;
 }
 
 .index{
@@ -64,12 +96,35 @@ xhtml {
 }
 
 
+
+.label{
+	color:black;
+}
+
 h1 {
-	color: white;
+	color: black;
 	font-size: 200%;
 	
 }
 
 h5 {
+    font-size:70%;
 	color: white;
 }
+
+.eventname{
+	color:white;
+	font-size:17px;
+}
+.ui-layout-unit{
+
+background-image: url("#{resource['images/dark-blue-background.jpg']}");
+}
+
+/*button*/
+
+.ui-icon { 
+	text-indent: 0; 
+	}
+
+

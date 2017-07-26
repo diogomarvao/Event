@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">	
-	<!-- Eventos-->
+	
 
 	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -19,32 +19,30 @@
 
 				<p:layout fullPage="true">
 
-					<p:layoutUnit position="west" resizable="true" size="200"
-						minSize="40" maxSize="200" visibility="hidden">
-        West
-    </p:layoutUnit>
-					<p:layoutUnit position="east" resizable="true" size="200"
-						minSize="40" maxSize="200">
-        West
-    </p:layoutUnit>
+
 
 					<p:layoutUnit position="center">
-
+						<div class="midcenter">
 						<!-- 1 - Menu principal enderecos -->
 
-<div id="Adress">
 
-				<div class="center">
-					<h:commandButton class="add" update="adress" value="New Adress"
-						onclick="PF('AdNew').show();" />
-				</div>
-				<br />
+
+				
+				
+				<p:graphicImage library="images" name="address.jpg" 
+								style="width:100%"/>
+				
+					<p:commandButton class="add" icon="fa fa-fw fa-plus" update="adress" value="Novo"
+						onclick="PF('AdNew').show();" type="button"/>
+				
 
 				<h:form id="AdressDisplay">
 
 					<!-- 		1.1 - tabela dos enderecos -->
 					<p:dataTable value="#{adressBean.getAdressList()}" var="adress"
-						border="1">
+						border="1" rows="10" paginator="true"
+						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="5,10,15" style="margin-top:10px">
 						<div class="header">
 							<p:column class="header" headerText="Id" sortBy="#{adress.id}">
 								<div>#{adress.id}</div>
@@ -64,12 +62,13 @@
 							</p:column>
 							<p:column class="header">
 
-								<p:commandButton class="bottab" update=":EditarAd:editAdress"
+								<p:commandButton icon="fa fa-fw fa-edit" class="bottab" update=":EditarAd:editAdress"
 									value="Editar" oncomplete="PF('AdEdit').show();">
+									
 									<f:setPropertyActionListener value="#{adress}"
 										target="#{adressBean.activeAdress}" />
 								</p:commandButton>
-								<p:commandButton value="Eliminar" class="bottab"
+								<p:commandButton icon="fa fa-fw fa-remove" value="Eliminar" class="bottab"
 									action="#{adressBean.delAdressInDb(adress)}"
 									update="AdressDisplay" />
 
@@ -135,9 +134,11 @@
 			</div>
 						</p:layoutUnit>
 				</p:layout>
-
+						
+				
 
 			</div>
+			
 
 		</ui:define>
 

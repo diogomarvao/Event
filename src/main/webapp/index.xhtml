@@ -2,51 +2,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
-<h:head>
-	<title>"Events"</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
-	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
-
-</h:head>
-<h:body>
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="CommonLayout.xhtml">
 
 
 
-	<ui:composition template="CommonLayout.xhtml">
+	<ui:define name="content">
+
+		<div class="index">
+
+
+			<p:layout fullPage="true">
 
 
 
-		<ui:define name="content">
-
-			<div class="index">
-
-
-				<p:layout fullPage="true">
-
-					<p:layoutUnit position="west" resizable="true" size="200"
-						minSize="40" maxSize="200" visibility="hidden">
-        West
-    </p:layoutUnit>
-					<p:layoutUnit position="east" resizable="true" size="200"
-						minSize="40" maxSize="200">
-        West
-    </p:layoutUnit>
-
-					<p:layoutUnit position="center">
-
-
-
+				<p:layoutUnit position="center">
+					<div class="midcenter">
+						<p:graphicImage library="images" name="stadiumconcert.jpg"
+							style="width:100%" />
 						<h:form id="PopularSellerDisplay">
 
 							<p:carousel value="#{eventBean.getEventList()}"
-								headerText="EVENTOS A NÃO PERDER" row="6" var="e"
+								headerText="EVENTOS A NÃO PERDER!!!" row="6" var="e"
 								itemStyle="text-align:center" responsive="true">
 								<p:panel header="#{e.name}" style="text-align:center">
 									<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
@@ -82,10 +66,13 @@
 
 						<br />
 
-						<h:form id="EventDisplay" >
-						<h:outputText value="EVENTOS A NÃO PERDER" />
-							<p:dataTable value="#{eventBean.getEventList()}" var="event"
-								border="1" rows="10" paginator="true"
+						<h:form id="EventDisplay">
+							<p:graphicImage library="images" name="proxevent.jpg"
+								style="width:100%" />
+
+							<p:dataTable headerText="PRÓXIMOS EVENTOS"
+								value="#{eventBean.getEventList()}" var="event" border="1"
+								rows="10" paginator="true"
 								paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 								rowsPerPageTemplate="5,10,15" style="margin-top:10px">
 
@@ -125,20 +112,19 @@
 
 
 
+					</div>
+
+
+				</p:layoutUnit>
+			</p:layout>
+
+
+		</div>
+
+	</ui:define>
+
+
+</ui:composition>
 
 
 
-					</p:layoutUnit>
-				</p:layout>
-
-
-			</div>
-
-		</ui:define>
-
-
-	</ui:composition>
-
-
-</h:body>
-</html>

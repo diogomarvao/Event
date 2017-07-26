@@ -46,9 +46,11 @@ public class Event extends Entity implements Serializable {
 
 	@Column(name = "DESCRIPTION")
 	private String description;
+	
+	@Column(name = "VIDEOLINK")
+	private String videoLink;
 
 	@ManyToOne
-	@MapsId
 //	@JoinTable (name = "EVADRESS" , joinColumns = @JoinColumn(name = "adress_id"),inverseJoinColumns=@JoinColumn(name = "event_id"))
 //	@JoinColumn(name="ADRESS_ID")
 	private Adress adress;
@@ -68,7 +70,7 @@ public class Event extends Entity implements Serializable {
 	//@JoinColumn(name = "ID" ,  insert="false", update="false")
 //	private List<Seller> sellerList;
 	
-	@ManyToOne
+	@OneToOne
 	//@JoinColumn(name = "ID" ,  insert="false", update="false")
 //	@JoinColumn(name="SELLER_ID")
 //	@MapsId
@@ -138,6 +140,14 @@ public class Event extends Entity implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getVideoLink() {
+		return videoLink;
+	}
+
+	public void setVideoLink(String videoLink) {
+		this.videoLink = videoLink;
 	}
 
 	public String getGenre() {

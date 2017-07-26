@@ -2,60 +2,33 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
-<h:head>
-	<title>"Events"</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
-	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="CommonLayout.xhtml">
 
-</h:head>
-<h:body>
-
-	<ui:composition template="CommonLayout.xhtml">
-
-
-
-
-
-
-		<ui:define name="content">
-
-			<div class="index">
-
-
-				<p:layout fullPage="true">
-
-					<p:layoutUnit position="west" resizable="true" size="200"
-						minSize="40" maxSize="200" visibility="hidden">
-        West
-    </p:layoutUnit>
-					<p:layoutUnit position="east" resizable="true" size="200"
-						minSize="40" maxSize="200">
-        West
-    </p:layoutUnit>
-
-					<p:layoutUnit position="center">
-
+	<ui:define name="content">
+		<div class="index">
+			<p:layout fullPage="true">
+				<p:layoutUnit position="center">
+					<div class="midcenter">
+						<p:graphicImage library="images" name="events.jpg"
+							style="width:100%" />
 						<div id="Events">
 							<div class="center">
-								<h:commandButton class="add" update="event" value="Novo Evento"
-									onclick="PF('AdNew').show();" />
+								<p:commandButton class="add" icon="fa fa-fw fa-plus"
+									update="event" value="Novo" onclick="PF('AdNew').show();"
+									type="button" />
 							</div>
-							<br />
-
 							<div class="datatableevents">
 								<h:form id="EventDisplay">
 									<p:dataTable value="#{eventBean.getEventList()}" var="event"
 										border="1" rows="10" paginator="true"
 										paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 										rowsPerPageTemplate="5,10,15" style="margin-top:10px">
-
 										<div class="header">
 											<p:column class="header" headerText="Id">
 												<div>#{event.id}</div>
@@ -65,6 +38,12 @@
 											</p:column>
 											<p:column class="header" headerText="Descrição">
 												<div class="tablecont">#{event.description}</div>
+											</p:column>
+											<p:column class="header" headerText="LinkImagem">
+												<div class="tablecont">#{event.imgUrl}</div>
+											</p:column>
+											<p:column class="header" headerText="LinkVideo">
+												<div class="tablecont">#{event.videoLink}</div>
 											</p:column>
 											<p:column class="header" headerText="Género">
 												<div class="tablecont">#{event.genre}</div>
@@ -99,25 +78,20 @@
 												<div class="tablecont">#{event.featured}</div>
 											</p:column>
 											<p:column class="header">
-
-												<p:commandButton class="bottab" update=":EditarEv:editEvent"
-													value="Editar" oncomplete="PF('EvEdit').show();">
-
+												<p:commandButton icon="fa fa-fw fa-edit" class="bottab"
+													update=":EditarEv:editEvent" value="Editar"
+													oncomplete="PF('EvEdit').show();">
 													<f:setPropertyActionListener value="#{event}"
 														target="#{eventBean.activeEvent}" />
 												</p:commandButton>
-												<p:commandButton value="Eliminar" class="bottab"
-													action="#{eventBean.delEventInDb(event)}"
+												<p:commandButton icon="fa fa-fw fa-remove" value="Eliminar"
+													class="bottab" action="#{eventBean.delEventInDb(event)}"
 													update="EventDisplay" />
-
 											</p:column>
 										</div>
 									</p:dataTable>
 								</h:form>
-
 								<!-- 	1.2 - Inserir detalhes do event -->
-
-
 								<h:form id="NewAd">
 									<p:dialog class="diag" header="Novo Evento" widgetVar="AdNew"
 										resizable="false">
@@ -125,53 +99,48 @@
 											<p:panelGrid class="diagEdit" columns="2">
 												<h:outputText value="Evento :" />
 												<p:inputText value="#{eventBean.event.name}" required="true" />
-
 												<h:outputText value="Imagen :" />
 												<p:inputText value="#{eventBean.event.imgUrl}"
 													required="true" />
-
 												<h:outputText value="Descrição :" />
 												<p:inputText value="#{eventBean.event.description}"
 													required="true" />
-
+												<h:outputText value="Video :" />
+												<p:inputText value="#{eventBean.event.videoLink}"
+													required="true" />
 												<p:outputLabel for="genero" value="Genero: " />
-
 												<p:selectOneMenu id="genero"
 													value="#{eventBean.event.genre}" style="width:150px">
-
 													<f:selectItem itemLabel="Selecione o Genero" itemValue=""
 														noSelectionOption="true" />
 													<f:selectItems value="#{eventBean.selectGenre}"
 														required="true" />
 												</p:selectOneMenu>
-
 												<p:outputLabel for="local" value="Localização: " />
-
-												<p:selectOneMenu id="local" value="#{eventBean.event.adress}"
-													style="width:150px"
-													converter="omnifaces.SelectItemsConverter" immediate="true">
-
-													<f:selectItem itemLabel="Selecione a Localização"
-														itemValue="" noSelectionOption="true" />
-													<f:selectItems value="#{adressBean.adressList}" var="local"
-														itemLabel="#{local.name}" itemValue="#{local}" />
-												</p:selectOneMenu>
-
+												<p:column>
+													<p:selectOneMenu id="local"
+														value="#{eventBean.event.adress}" style="width:150px"
+														converter="omnifaces.SelectItemsConverter"
+														immediate="true">
+														<f:selectItem itemLabel="Selecione a Localização"
+															itemValue="" noSelectionOption="true" />
+														<f:selectItems value="#{adressBean.adressList}"
+															var="local" itemLabel="#{local.name}"
+															itemValue="#{local}" />
+													</p:selectOneMenu>
+													<p:commandButton class="add" icon="fa fa-fw fa-plus"
+														onclick="PF('Adress').show();" type="button" />
+												</p:column>
 												<p:outputLabel for="seller" value="Vendedor: " />
-
 												<p:selectOneMenu id="seller"
 													value="#{eventBean.event.seller}" style="width:150px"
 													converter="omnifaces.SelectItemsConverter" immediate="true">
-
-
-													<f:selectItem itemLabel="Selecione o Vendedor"
-														itemValue="" noSelectionOption="true" />
+													<f:selectItem itemLabel="Selecione o Vendedor" itemValue=""
+														noSelectionOption="true" />
 													<f:selectItems value="#{sellerBean.sellerList}"
 														var="seller" itemLabel="#{seller.name}"
 														itemValue="#{seller}" />
 												</p:selectOneMenu>
-
-
 												<p:outputLabel for="calPopupS" value="Dia (1º): " />
 												<p:calendar id="calPopupS" value="#{eventBean.event.dateS}"
 													pattern="dd/MM/yyyy" required="true" />
@@ -191,75 +160,87 @@
 													required="true" />
 											</p:panelGrid>
 											<br />
-
 											<h:commandButton value="Guardar"
 												action="#{eventBean.addEventToDb()}" />
-										
 										</p:outputPanel>
 									</p:dialog>
 								</h:form>
-
+								<!-- 	1.2.1 - Inserir detalhes do address -->
+								<h:form id="Adress">
+									<p:dialog class="diag" header="Novo Adress" widgetVar="Adress"
+										resizable="false">
+										<p:outputPanel id="editAdress" style="text-align:center;">
+											<p:panelGrid class="diagEdit" columns="2">
+												<h:outputText value="Nome:" />
+												<p:inputText value="#{adressBean.adress.name}"
+													required="true" />
+												<h:outputText value="Morada:" />
+												<p:inputText value="#{adressBean.adress.street}"
+													required="true" />
+												<h:outputText value="Localidade:" />
+												<p:inputText value="#{adressBean.adress.local}"
+													required="true" />
+												<h:outputText value="Codigo-postal:" />
+												<p:inputMask value="#{adressBean.adress.codigoPostal}"
+													mask="9999-999" required="true" />
+											</p:panelGrid>
+											<br />
+											<h:commandButton value="Save"
+												action="#{adressBean.addAdressToDb()}" />
+											<h:commandButton value="Cancel" />
+										</p:outputPanel>
+									</p:dialog>
+								</h:form>
 								<!-- 	1.2 - Editar detalhes do event -->
-
 								<h:form id="EditarEv">
 									<p:dialog class="diag" header="Editar Event" widgetVar="EvEdit"
 										resizable="false">
-
 										<!-- painel -->
 										<p:outputPanel id="editEvent" style="text-align:center;">
 											<p:panelGrid class="diagEdit" columns="2">
-
 												<h:outputText value="Id:" />
 												<h:inputText value="#{eventBean.activeEvent.id}" />
-
 												<h:outputText value="Evento :" />
-												<p:inputText value="#{eventBean.activeEvent.name}"/>
-												
+												<p:inputText value="#{eventBean.activeEvent.name}" />
 												<h:outputText value="Imagen :" />
 												<p:inputText value="#{eventBean.activeEvent.imgUrl}"
 													required="true" />
-
 												<h:outputText value="Descrição:" />
 												<p:inputText value="#{eventBean.activeEvent.description}" />
-
+												<h:outputText value="Video :" />
+												<p:inputText value="#{eventBean.activeEvent.videoLink}"
+													required="true" />
 												<p:outputLabel for="genero" value="Genero: " />
-
 												<p:selectOneMenu id="genero"
 													value="#{eventBean.activeEvent.genre}" style="width:150px">
-
 													<f:selectItem itemLabel="Selecione o Genero" itemValue=""
 														noSelectionOption="true" />
 													<f:selectItems value="#{eventBean.selectGenre}"
 														required="true" />
 												</p:selectOneMenu>
-
 												<p:outputLabel for="local" value="Localidade: " />
-
-												<p:selectOneMenu id="local"
-													value="#{eventBean.activeEvent.adress}" style="width:150px">
-
-													<f:selectItem itemLabel="Selecione a Localidade" itemValue=""
-														noSelectionOption="true" />
-													<f:selectItems value="#{adressBean.adressList}"
-														var="local" itemLabel="#{local.name}"
-														itemValue="#{local}" />
-												</p:selectOneMenu>
-												
-
+												<p:column>
+													<p:selectOneMenu id="local"
+														value="#{eventBean.activeEvent.adress}"
+														style="width:150px">
+														<f:selectItem itemLabel="Selecione a Localidade"
+															itemValue="" noSelectionOption="true" />
+														<f:selectItems value="#{adressBean.adressList}"
+															var="local" itemLabel="#{local.name}"
+															itemValue="#{local}" />
+													</p:selectOneMenu>
+													<p:commandButton class="add" icon="fa fa-fw fa-plus"
+														onclick="PF('Adress').show();" type="button" />
+												</p:column>
 												<p:outputLabel for="seller" value="Vendedor: " />
-
 												<p:selectOneMenu id="seller"
-													value="#{eventBean.activeEvent}" style="width:150px">
-
-
+													value="#{eventBean.activeEvent.seller}" style="width:150px">
 													<f:selectItem itemLabel="Selecione o Vendedor" itemValue=""
 														noSelectionOption="true" />
 													<f:selectItems value="#{sellerBean.sellerList}"
 														var="seller" itemLabel="#{seller.name}"
 														itemValue="#{seller}" />
 												</p:selectOneMenu>
-
-
 												<p:outputLabel for="calPopupS" value="Dia (1º): " />
 												<p:calendar id="calPopupS"
 													value="#{eventBean.activeEvent.dateS}" pattern="dd/MM/yyyy"
@@ -268,7 +249,6 @@
 												<p:calendar id="calPopupF"
 													value="#{eventBean.activeEvent.dateF}" required="true"
 													pattern="dd/MM/yyyy" />
-
 												<p:outputLabel for="timPopupS" value="Horas (Inicio): " />
 												<p:calendar id="timPopupS"
 													value="#{eventBean.activeEvent.hourS}" pattern="HH:mm"
@@ -277,12 +257,9 @@
 												<p:calendar id="timPopupF"
 													value="#{eventBean.activeEvent.hourF}" required="true"
 													pattern="HH:mm" timeOnly="true" />
-
-
 												<h:outputText value="Featured: " />
 												<p:selectBooleanCheckbox
 													value="#{eventBean.activeEvent.featured}" required="true" />
-
 											</p:panelGrid>
 											<br />
 											<p:commandButton value="Enviar"
@@ -290,20 +267,18 @@
 										</p:outputPanel>
 									</p:dialog>
 								</h:form>
-
 							</div>
 						</div>
-					</p:layoutUnit>
-				</p:layout>
+					</div>
+				</p:layoutUnit>
+			</p:layout>
+		</div>
+	</ui:define>
+</ui:composition>
 
 
-			</div>
-
-		</ui:define>
 
 
-	</ui:composition>
 
 
-</h:body>
-</html>
+
