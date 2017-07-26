@@ -17,16 +17,11 @@
 
 			<p:layout fullPage="true">
 
-				<p:layoutUnit position="west" resizable="true" size="200"
-					minSize="40" maxSize="200" visibility="hidden">
-        West
-    </p:layoutUnit>
-				<p:layoutUnit position="east" resizable="true" size="200"
-					minSize="40" maxSize="200">
-        West
-    </p:layoutUnit>
+
 
 				<p:layoutUnit position="center">
+				<div class="midcenter">
+				
 
 					<p:graphicImage library="images" name="events.jpg"
 						style="width:100%" />
@@ -70,28 +65,22 @@
 						</p:dataTable>
 					</h:form>
 					<div class="eventinfopopup">
+					
 						<h:form id="Inf">
 							<p:dialog class="diag" header="Informações Do Evento"
-								widgetVar="EvInf" resizable="false" width="900" height="500">
+								widgetVar="EvInf" resizable="false" width="800" height="700">
 								<!-- painel -->
-
+							<div class="eventinfomargin">
 								<p:outputPanel id="maisInf">
-								
+								<div class="eventname">
 								<h:outputText value="#{eventBean.activeEvent.name}" style="font-size:40px;"/>			
-									
-										<br/><br/><br/>
-									
-										<div class="Buy">
-											
+									</div>
+								<div class="eventinfomargin">	
 											<p:graphicImage library="images"
-												name="festivais-de-verao.jpg" style="width:60%" />
-										</div>		
-										<br/><br/>
-										<div class="Buy">
-											<p:media value="http://www.youtube.com/v/latV0YAR-0s"
-												width="500" height="380" player="flash" />
-										</div>
-										<br/><br/><br/>
+												name="festivais-de-verao.jpg" style="width:100%" />
+								</div>
+								<div class="eventinfomargin">
+											<div class="eventname">
 										<div class="Buy">
 											<h:outputText value="Descrição: " />
 											<h:outputText value="#{eventBean.activeEvent.description}" />
@@ -120,12 +109,7 @@
 											<h:outputText value="#{eventBean.activeEvent.hourF}">
 												<f:convertDateTime pattern="HH:mm" />
 											</h:outputText>
-
-
-
-										
-										
-											
+											<br />
 												<h:outputText value="Comprar: " />
 												<br />
 												<h:outputText value="Valores: " />
@@ -145,19 +129,35 @@
 												<br />
 												<h:outputText
 													value="#{eventBean.activeEvent.adress.codigoPostal}" />
-												<br />
+											
 												</div>
-												<br/>
+												</div>
+												</div>
+													<div class="eventinfomargin">
+									
+											<p:media value="http://www.youtube.com/v/latV0YAR-0s"
+												width="600" height="380" player="flash" />
+										
+								</div>
+												
+												<div class="eventinfomargin">
+												<div class="eventname">
 												<h3>GoogleMaps</h3>
-
+												</div>
+												</div>
 
 											
 
 								</p:outputPanel>
+								</div>
 							</p:dialog>
 						</h:form>
 					</div>
+					</div>
+					
+					
 				</p:layoutUnit>
+				
 			</p:layout>
 
 

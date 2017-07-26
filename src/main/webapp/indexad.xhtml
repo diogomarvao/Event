@@ -19,35 +19,30 @@
 
 				<p:layout fullPage="true">
 
-					<p:layoutUnit position="west" resizable="true" size="200"
-						minSize="40" maxSize="200" visibility="hidden">
-        West
-    </p:layoutUnit>
-					<p:layoutUnit position="east" resizable="true" size="200"
-						minSize="40" maxSize="200">
-        West
-    </p:layoutUnit>
+
 
 					<p:layoutUnit position="center">
-
+						<div class="midcenter">
 						<!-- 1 - Menu principal enderecos -->
 
-<div id="Adress">
 
-				<div class="center">
+
+				
 				
 				<p:graphicImage library="images" name="address.jpg" 
 								style="width:100%"/>
 				
 					<p:commandButton class="add" icon="fa fa-fw fa-plus" update="adress" value="Novo"
 						onclick="PF('AdNew').show();" type="button"/>
-				</div>
+				
 
 				<h:form id="AdressDisplay">
 
 					<!-- 		1.1 - tabela dos enderecos -->
 					<p:dataTable value="#{adressBean.getAdressList()}" var="adress"
-						border="1">
+						border="1" rows="10" paginator="true"
+						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="5,10,15" style="margin-top:10px">
 						<div class="header">
 							<p:column class="header" headerText="Id" sortBy="#{adress.id}">
 								<div>#{adress.id}</div>
@@ -139,9 +134,11 @@
 			</div>
 						</p:layoutUnit>
 				</p:layout>
-
+						
+				
 
 			</div>
+			
 
 		</ui:define>
 
