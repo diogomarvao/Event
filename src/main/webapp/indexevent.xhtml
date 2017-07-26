@@ -23,22 +23,8 @@
 
 			<p:layout fullPage="true">
 
-
-				<p:layoutUnit position="west" resizable="true" size="200"
-					minSize="40" maxSize="200" visibility="hidden">
-        West
-    </p:layoutUnit>
-				<p:layoutUnit position="east" resizable="true" size="200"
-					minSize="40" maxSize="200">
-        West
-    </p:layoutUnit>
-
-
-					<p:layoutUnit position="center">
-					
+				<p:layoutUnit position="center">
 					<div class="midcenter">
-
-
 					<p:graphicImage library="images" name="events.jpg"
 						style="width:100%" />
 
@@ -48,90 +34,6 @@
 								update="event" value="Novo" onclick="PF('AdNew').show();"
 								type="button" />
 						</div>
-
-						
-
-							<div class="datatableevents">
-								<h:form id="EventDisplay">
-									<p:dataTable value="#{eventBean.getEventList()}" var="event"
-										border="1" rows="10" paginator="true"
-										paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-										rowsPerPageTemplate="5,10,15" style="margin-top:10px">
-
-										<div class="header">
-											<p:column class="header" headerText="Id">
-												<div>#{event.id}</div>
-											</p:column>
-											<p:column class="header" headerText="Evento">
-												<div class="tablecont">#{event.name}</div>
-											</p:column>
-											<p:column class="header" headerText="Descrição">
-												<div class="tablecont">#{event.description}</div>
-											</p:column>
-											<p:column class="header" headerText="Género">
-												<div class="tablecont">#{event.genre}</div>
-											</p:column>
-											<p:column class="header" headerText="Dia Inicial">
-												<h:outputText value="#{event.dateS}">
-													<f:convertDateTime pattern="dd/MM/yyyy" />
-												</h:outputText>
-											</p:column>
-											<p:column class="header" headerText="Dia Final">
-												<h:outputText value="#{event.dateF}">
-													<f:convertDateTime pattern="dd/MM/yyyy" />
-												</h:outputText>
-											</p:column>
-											<p:column class="header" headerText="Inicio">
-												<h:outputText value="#{event.hourS}">
-													<f:convertDateTime pattern="HH:mm" />
-												</h:outputText>
-											</p:column>
-											<p:column class="header" headerText="Fim Previsto">
-												<h:outputText value="#{event.hourF}">
-													<f:convertDateTime pattern="HH:mm" />
-												</h:outputText>
-											</p:column>
-											<p:column class="header" headerText="Localização">
-												<div class="tablecont">#{event.adress.name}</div>
-											</p:column>
-											<p:column class="header" headerText="Vendedor">
-												<div class="tablecont">#{event.seller.name}</div>
-											</p:column>
-											<p:column class="header" headerText="Featured">
-												<div class="tablecont">#{event.featured}</div>
-											</p:column>
-											<p:column class="header">
-
-												<p:commandButton icon="fa fa-fw fa-edit" class="bottab" update=":EditarEv:editEvent"
-													value="Editar" oncomplete="PF('EvEdit').show();">
-
-													<f:setPropertyActionListener value="#{event}"
-														target="#{eventBean.activeEvent}" />
-												</p:commandButton>
-												<p:commandButton icon="fa fa-fw fa-remove"  value="Eliminar" class="bottab"
-													action="#{eventBean.delEventInDb(event)}"
-													update="EventDisplay" />
-
-											</p:column>
-										</div>
-									</p:dataTable>
-								</h:form>
-
-								<!-- 	1.2 - Inserir detalhes do event -->
-
-
-								<h:form id="NewAd">
-									<p:dialog class="diag" header="Novo Evento" widgetVar="AdNew"
-										resizable="false">
-										<p:outputPanel id="editEvents" style="text-align:center;">
-											<p:panelGrid class="diagEdit" columns="2">
-												<h:outputText value="Evento :" />
-												<p:inputText value="#{eventBean.event.name}" required="true" />
-
-												<h:outputText value="Imagen :" />
-												<p:inputText value="#{eventBean.event.imgUrl}"
-													required="true" />
-
 
 						<div class="datatableevents">
 							<h:form id="EventDisplay">
@@ -431,11 +333,10 @@
 							</h:form>
 
 						</div>
-
+					</div>
 					</div>
 				</p:layoutUnit>
 			</p:layout>
-
 
 
 		</div>
@@ -444,5 +345,10 @@
 
 
 </ui:composition>
+
+
+
+
+
 
 
