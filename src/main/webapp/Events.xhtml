@@ -53,11 +53,13 @@
 								<p:column class="header">
 
 									<p:commandButton icon="fa fa-fw fa-file-text-o" class="bottab" update=":Inf:maisInf"
-										value="Mais Informações" oncomplete="PF('EvInf').show();">
+										value="Mais Informações" oncomplete="PF('EvInf').show();geocode();">
 									
 
 										<f:setPropertyActionListener value="#{event}"
 											target="#{eventBean.activeEvent}" />
+											
+										
 									</p:commandButton>
 
 
@@ -74,10 +76,8 @@
 								<!-- painel -->
 								<script type="text/javascript">
 										 function geocode() {
-										        PF('geoMap').geocode($("span[id='Inf:address']").text());
+										        PF('geoMap').geocode($("span[id='Inf:cpostasl']").text());
 										    }
-										 
-									        window.onload = geocode;
 									        </script>
 									        
 							<div class="eventinfomargin">
@@ -137,7 +137,7 @@
 												<br />
 												<h:outputText id="addressev" value="#{eventBean.activeEvent.adress.local}" />
 												<br />
-												<h:outputText
+												<h:outputText id="cpostasl"
 													value="#{eventBean.activeEvent.adress.codigoPostal}" />
 											
 												</div>
