@@ -20,7 +20,7 @@
 						<div id="Events">
 							<div class="center">
 								<p:commandButton class="add" icon="fa fa-fw fa-plus"
-									update="event" value="Novo" onclick="PF('AdNew').show();"
+									update="event" onclick="PF('AdNew').show();"
 									type="button" />
 							</div>
 							<div class="datatableevents">
@@ -79,12 +79,12 @@
 											</p:column>
 											<p:column class="header">
 												<p:commandButton icon="fa fa-fw fa-edit" class="bottab"
-													update=":EditarEv:editEvent" value="Editar"
+													update=":EditarEv:editEvent" 
 													oncomplete="PF('EvEdit').show();">
 													<f:setPropertyActionListener value="#{event}"
 														target="#{eventBean.activeEvent}" />
 												</p:commandButton>
-												<p:commandButton icon="fa fa-fw fa-remove" value="Eliminar"
+												<p:commandButton icon="fa fa-fw fa-remove" 
 													class="bottab" action="#{eventBean.delEventInDb(event)}"
 													update="EventDisplay" />
 											</p:column>
@@ -112,10 +112,10 @@
 												<h:outputText value="Video :" />
 												<p:inputText value="#{eventBean.event.videoLink}"
 													required="true" />
-												<p:outputLabel for="genero" value="Genero: " />
+												<p:outputLabel for="genero" value="Género: " />
 												<p:selectOneMenu id="genero"
 													value="#{eventBean.event.genre}" style="width:150px">
-													<f:selectItem itemLabel="Selecione o Genero" itemValue=""
+													<f:selectItem itemLabel="Selecione o Género" itemValue=""
 														noSelectionOption="true" />
 													<f:selectItems value="#{eventBean.selectGenre}"
 														required="true" />
@@ -192,9 +192,8 @@
 													mask="9999-999" required="true" />
 											</p:panelGrid>
 											<br />
-											<h:commandButton value="Save"
+											<h:commandButton value="Save" update="EditarEv"
 												action="#{adressBean.addAdressToDb()}" />
-											<h:commandButton value="Cancel" />
 										</p:outputPanel>
 									</p:dialog>
 								</h:form>
@@ -239,15 +238,6 @@
 													<p:commandButton class="add" icon="fa fa-fw fa-plus"
 														onclick="PF('Adress').show();" type="button" />
 												</p:column>
-												<p:outputLabel for="seller" value="Vendedor: " />
-												<p:selectOneMenu id="seller"
-													value="#{eventBean.activeEvent.seller}" style="width:150px">
-													<f:selectItem itemLabel="Selecione o Vendedor" itemValue=""
-														noSelectionOption="true" />
-													<f:selectItems value="#{sellerBean.sellerList}"
-														var="seller" itemLabel="#{seller.name}"
-														itemValue="#{seller}" />
-												</p:selectOneMenu>
 												<p:outputLabel for="calPopupS" value="Dia (1º): " />
 												<p:calendar id="calPopupS"
 													value="#{eventBean.activeEvent.dateS}" pattern="dd/MM/yyyy"
@@ -270,7 +260,7 @@
 											</p:panelGrid>
 											<br />
 											<p:commandButton value="Enviar"
-												action="#{eventBean.editEventInDb()}" update="EventDisplay" />
+												action="#{eventBean.editEventInDb()}" update="EventDisplay"  oncomplete="PF('EvEdit').hide();"/>
 										</p:outputPanel>
 									</p:dialog>
 								</h:form>
