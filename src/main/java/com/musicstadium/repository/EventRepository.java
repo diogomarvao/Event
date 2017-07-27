@@ -23,6 +23,12 @@ public class EventRepository extends EntityRepository<Event>{
 			return dbElements;
 		}
 		
+		public List<Event> getDbFeatured(){
+			Query query = getDb().createNativeQuery("SELECT * FROM Event WHERE FEATURED = 1 ", Event.class);
+			List<Event> dbFeatured = (List<Event>) query.getResultList();
+			return dbFeatured;
+		}
+			
 		// eliminar
 		@Override
 		@Transactional
