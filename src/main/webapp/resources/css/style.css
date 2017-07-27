@@ -143,12 +143,12 @@ background-image: url("#{resource['images/fundo1.jpg']}");
 
 .ui-widget-content {
     border: 0px; 
-    background-color:#020540;
+    background-color: rgba(0, 0, 0, 0.24);
     color:white;
 }
 
 .ui-widget-header{
-	background-color:#020540;
+	background-color: rgba(1, 10, 249, 0.32)!important;
 	color:white;
 	text-align: center;
 	
@@ -168,6 +168,11 @@ background-image: url("#{resource['images/fundo1.jpg']}");
 }
 ..ui-widget-header .ui-state-default{
 	background:#020540!important;
+}
+
+.ui-datatable tbody.ui-datatable-data {
+    outline: 0;
+    background-color: rgba(0, 0, 2, 0.64)!important;
 }
 
 
