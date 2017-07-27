@@ -6,6 +6,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.musicstadium.model.Adress;
 import com.musicstadium.model.Event;
 import com.musicstadium.repository.EventRepository;
 
@@ -19,7 +20,12 @@ public class EventService extends EntityService<Event>{
 public List<Event> showEntities(EventRepository eventRepository){
 	List<Event> list = eventRepository.getDbEvent();
 	return list;
-}                                                          
+}                   
+
+public List<Event> showFeatured(){
+	List<Event> list = eventRepository.getDbFeatured();
+	return list;
+}
 	
 // adicionar os dados
 	public void addEvent(Event event){

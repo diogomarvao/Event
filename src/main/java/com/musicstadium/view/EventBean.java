@@ -3,6 +3,8 @@ package com.musicstadium.view;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -16,6 +18,7 @@ import javax.transaction.Transactional;
 import com.musicstadium.model.Adress;
 import com.musicstadium.model.Event;
 import com.musicstadium.model.Seller;
+import com.musicstadium.repository.EventRepository;
 import com.musicstadium.service.EventService;
 
 @Named("eventBean")
@@ -102,4 +105,17 @@ public class EventBean implements Serializable{
 		return eventService.showEntities(eventService.getEventRepository());
 	}
 	
+	public List<Event> getFeaturedList(){
+		return eventService.showFeatured();
+	}
+	
+	public List<Event> getNextEvents(){
+		List<Event> nextEvents = new ArrayList<Event>();
+		for(int i =0; i<getEventList().size(); i++){
+			if(Calendar.getInstance().getTime().before(getEventList().get(i).getDateS())){
+				nextEvents.add(getEventList().get(i));
+			}	
+		}
+		return nextEvents;
+	}
 }
