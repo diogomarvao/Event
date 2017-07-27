@@ -92,13 +92,9 @@
 									</p:dataTable>
 								</h:form>
 								<!-- 	1.2 - Inserir detalhes do event -->
-								
 								<h:form id="NewAd">
-								
 									<p:dialog class="diag" header="Novo Evento" widgetVar="AdNew"
-										resizable="false" width="600" height="590">
-										<div class="midcenter1">
-										<h5 class="h55">A criar um novo Evento: </h5>
+										resizable="false">
 										<p:outputPanel id="editEvents" style="text-align:center;">
 											<p:panelGrid class="diagEdit" columns="2">
 												<h:outputText value="Evento :" />
@@ -166,12 +162,9 @@
 											<br />
 											<h:commandButton value="Guardar"
 												action="#{eventBean.addEventToDb()}" />
-												
 										</p:outputPanel>
-										</div>
 									</p:dialog>
 								</h:form>
-								
 								<!-- 	1.2.1 - Inserir detalhes do address -->
 								<h:form id="Adress">
 									<p:dialog class="diag" header="Novo Adress" widgetVar="Adress"
@@ -233,7 +226,7 @@
 															itemValue="" noSelectionOption="true" />
 														<f:selectItems value="#{adressBean.adressList}"
 															var="local" itemLabel="#{local.name}"
-															itemValue="#{local}" />
+															itemValue="#{local.name}" />
 													</p:selectOneMenu>
 													<p:commandButton class="add" icon="fa fa-fw fa-plus"
 														onclick="PF('Adress').show();" type="button" />
