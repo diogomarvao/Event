@@ -24,9 +24,11 @@
 
 
 				<p:layoutUnit position="center">
-					<div class="midcenter">
+					<div class="midcenter1">
 						<p:graphicImage library="images" name="musicstadium.jpg"
 							style="width:100%" />
+							</div>
+						<div class="midcenter">	
 						<h:form id="PopularSellerDisplay">
 
 							<p:carousel value="#{eventBean.getEventList()}"
@@ -64,12 +66,13 @@
 							</p:carousel>
 						</h:form>
 
-						<br />
+						<br />	<br />	<br />
 
 						<h:form id="EventDisplay">
+						
 							<p:graphicImage library="images" name="proxevent.jpg"
 								style="width:100%" />
-
+	<br />	<br />	
 							<p:dataTable headerText="PRÓXIMOS EVENTOS"
 								value="#{eventBean.getEventList()}" var="event" border="1"
 								rows="10" paginator="true"
