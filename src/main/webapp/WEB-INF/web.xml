@@ -22,7 +22,7 @@
 
 <context-param>
 	<param-name>primefaces.THEME</param-name>
-	<param-value>le-Frog</param-value>
+	<param-value>Afternoon</param-value>
 </context-param>
 	<welcome-file-list>
 		<welcome-file>index.xhtml</welcome-file>
