@@ -9,11 +9,12 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 
-	<div class="topnav">
+	<h:panelGroup id="defaultbar" layout="block" class="topnav"
+		rendered="#{sessionBean.activeUser eq null}">
 
 		<h:form>
-			<p:growl id="messages" />
-
+			<p:growl id="messages" sticky="true" showDetail="true" life="3000" />
+			
 			<p:menubar class="top" header="Music Stadium">
 
 				<p:menuitem value="MUSIC STADIUM" action="index?faces-redirect=true" style="color:black" />
@@ -25,49 +26,38 @@
 				<p:menuitem value="Sobre Nós" action="about?faces-redirect=true" style="color:black" />
 
 
-				<p:submenu icon="fa fa-user" rendered="true" label="user" style="color:black">
-					<p:menuitem icon="fa fa-music" value="Os Meus Eventos" action="indexevent?faces-redirect=true" style="color:black"/>
-					<p:menuitem icon="fa fa-map-marker" value="Editar Localizações" action="indexad?faces-redirect=true" style="color:black"/>
-					
-					<p:separator />
-					<p:menuitem icon="fa fa-pencil" value="Dados do Vendedor" action="indexseller?faces-redirect=true" style="color:black"/>
-					
-					<p:separator />
-					<p:menuitem icon="fa fa-sign-out" value="Logout" action="indexseller?faces-redirect=true" style="color:black"/>
-
-				</p:submenu>
 
 				<f:facet name="options">
 
 
-					<p:commandButton class="topbut"
-						type="button" value="Sign Up" onclick="PF('sign').show();" />
+					<p:commandButton class="topbut" type="button" value="Sign Up"
+						onclick="PF('sign').show();" />
 
-					<p:commandButton  class="topbut"
-						type="button" value="Login" onclick="PF('log').show();" />
+					<p:commandButton class="topbut" type="button" value="Login"
+						onclick="PF('log').show();" />
 				</f:facet>
 
 			</p:menubar>
-
-
-
 		</h:form>
+
 		<h:form>
 			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
 
 			<p:dialog header="Login" widgetVar="log" resizable="false">
 				<h:panelGrid columns="2" cellpadding="5">
 					<h:outputLabel for="username" value="Username:" />
-					<p:inputText id="username" value="#{userBean.user.username}"
+					<p:inputText id="username" value="#{sessionBean.user.username}"
 						required="true" label="username" />
 
 					<h:outputLabel for="password" value="Password:" />
-					<p:password id="password" value="#{userBean.user.password}"
+					<p:password id="password" value="#{sessionBean.user.password}"
 						required="true" label="password" />
 
 					<f:facet name="footer">
-						<p:commandButton value="Login" update="growl"
-							actionListener="#{userBean.login()}" oncomplete="PF('log').hide();"/>
+
+						<p:commandButton value="Login" update="@all"
+							actionListener="#{sessionBean.login()}" />
+
 
 					</f:facet>
 				</h:panelGrid>
@@ -89,16 +79,83 @@
 						required="true" label="password" />
 
 					<f:facet name="footer">
-						<p:commandButton value="Criar Utilizador" update="growl"
-							actionListener="#{userBean.addUserToDb()}"  oncomplete="PF('sign').hide();"/>
+
+						<p:commandButton value="Criar Utilizador" update="@all"
+							actionListener="#{userBean.addUserToDb()}" />
+
 
 					</f:facet>
 				</h:panelGrid>
 			</p:dialog>
 		</h:form>
+	</h:panelGroup>
 
 
-	</div>
 
+	<h:panelGroup id="adminbar" layout="block" class="topnav" rendered="#{sessionBean.activeUser.username eq 'admin'}">
+		<h:form>
+			<p:growl id="messages" sticky="true" showDetail="true" life="3000"/>
+
+			<p:menubar class="top" header="Music Stadium">
+
+				<p:menuitem value="MUSIC STADIUM" action="index" style="color:black" />
+
+				<p:menuitem value="Todos Eventos" action="Events"
+					style="color:black" />
+
+				<p:menuitem value="Contactos" action="contacts" style="color:black" />
+				<p:menuitem value="Sobre Nós" action="about" style="color:black" />
+
+
+
+				<p:submenu icon="fa fa-user" rendered="true" label="#{sessionBean.activeUser.username}"
+					style="color:black ; position:absolute;right:6px">
+					<p:menuitem icon="fa fa-music" value="Lista de Eventos"
+						outcome="indexevent" style="color:black" />
+					<p:menuitem icon="fa fa-map-marker" value="Editar Localizações"
+						outcome="indexad" style="color:black" />
+					<p:separator />
+					<p:menuitem icon="fa fa-pencil" value="Editar Vendedores"
+						outcome="indexseller" style="color:black" />
+					<p:separator />
+					<p:menuitem icon="fa fa-sign-out" value="Logout" update="@all"
+						action="#{sessionBean.logout()}" style="color:black" />
+				</p:submenu>
+
+			</p:menubar>
+		</h:form>
+	</h:panelGroup>
+
+
+	<h:panelGroup id="userbar" layout="block" class="topnav"
+		rendered="#{sessionBean.activeUser ne null and sessionBean.activeUser.username ne 'admin' }">
+
+		<h:form>
+			<p:growl id="messages" sticky="true" showDetail="true" life="3000" />
+
+			<p:menubar class="top" header="Music Stadium">
+
+				<p:menuitem value="MUSIC STADIUM" action="index" style="color:black" />
+				<p:menuitem value="Todos Eventos" action="Events"
+					style="color:black" />
+				<p:menuitem value="Contactos" action="contacts" style="color:black" />
+				<p:menuitem value="Sobre Nós" action="about" style="color:black" />
+
+				<p:submenu icon="fa fa-user" rendered="true" label="#{sessionBean.activeUser.username}"
+					style="color:black; position:absolute;right:6px">
+					<p:menuitem icon="fa fa-music" value="Os Meus Eventos"
+						action="indexevent" style="color:black" />
+
+					<p:separator />
+					<p:menuitem icon="fa fa-pencil" value="Os meus Dados"
+						action="indexseller" style="color:black" />
+					<p:separator />
+					<p:menuitem icon="fa fa-sign-out" value="Logout" update="@all"
+						action="#{sessionBean.logout()}" style="color:black" />
+				</p:submenu>
+
+			</p:menubar>
+		</h:form>
+	</h:panelGroup>
 
 </ui:composition>
