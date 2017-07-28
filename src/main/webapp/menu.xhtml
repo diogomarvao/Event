@@ -17,13 +17,14 @@
 			
 			<p:menubar class="top" header="Music Stadium">
 
-				<p:menuitem value="MUSIC STADIUM" action="index" style="color:black" />
+				<p:menuitem value="MUSIC STADIUM" action="index?faces-redirect=true" style="color:black" />
 
-				<p:menuitem value="Todos Eventos" action="Events"
+				<p:menuitem value="Todos Eventos" action="Events?faces-redirect=true"
 					style="color:black" />
 
-				<p:menuitem value="Contactos" action="contacts" style="color:black" />
-				<p:menuitem value="Sobre Nós" action="about" style="color:black" />
+				<p:menuitem value="Contactos" action="contacts?faces-redirect=true" style="color:black" />
+				<p:menuitem value="Sobre Nós" action="about?faces-redirect=true" style="color:black" />
+
 
 
 				<f:facet name="options">
@@ -53,8 +54,10 @@
 						required="true" label="password" />
 
 					<f:facet name="footer">
+
 						<p:commandButton value="Login" update="@all"
 							actionListener="#{sessionBean.login()}" />
+
 
 					</f:facet>
 				</h:panelGrid>
@@ -76,8 +79,10 @@
 						required="true" label="password" />
 
 					<f:facet name="footer">
+
 						<p:commandButton value="Criar Utilizador" update="@all"
 							actionListener="#{userBean.addUserToDb()}" />
+
 
 					</f:facet>
 				</h:panelGrid>

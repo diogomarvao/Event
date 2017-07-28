@@ -21,19 +21,22 @@
 	display: inline-block;
 }
 
-.topnav{
-	background-color: #333;
-	color:white:
-}
+
+	
 
 .midcenter{
 	margin-left:10%;
 	margin-right:10%;
 	margin-top:2%;
 	margin-bottom:100px;
-	
 }
-
+.midcenter1{
+	text-align:center;
+	margin-left:10%;
+	margin-right:10%;
+	margin-top:2%;
+	margin-bottom:10px;
+}
 .eventinfomargin{
 	margin-top:30px;
 }
@@ -42,12 +45,9 @@
 	text-align:center;
 }
 .ui-dialog{
-background-image: url("#{resource['images/dark-blue-background.jpg']}");
+background-image: url("#{resource['images/fundo1.jpg']}");
 }
 
-.top {
-	background-color: grey;
-}
 
 .header{
 	
@@ -107,8 +107,13 @@ h1 {
 	
 }
 
-h5 {
-    font-size:70%;
+h5{
+	font-size:70%;
+	color:white;
+}
+
+.h55 {
+    font-size:20px;
 	color: white;
 }
 
@@ -118,13 +123,56 @@ h5 {
 }
 .ui-layout-unit{
 
-background-image: url("#{resource['images/dark-blue-background.jpg']}");
+background-image: url("#{resource['images/fundo1.jpg']}");
 }
 
+.ui-outputpanel{
+	margin-left:10%;
+	margin-right:10%;
+	margin-top:2%;
+	margin-bottom:10px;
+}
 /*button*/
 
 .ui-icon { 
 	text-indent: 0; 
 	}
+.ui-panel-content ui-widget-content{
+	
+}
+
+.ui-widget-content {
+    border: 0px; 
+    background-color: rgba(0, 0, 0, 0.24);
+    color:white;
+}
+
+.ui-widget-header{
+	background-color: rgba(1, 10, 249, 0.32)!important;
+	color:white;
+	text-align: center;
+	
+}
+
+.label{
+	color:white;
+}
+.ui-menu .ui-menuitem-text{
+	color:white;
+}
+.ui-menu,.ui-menu.ui-menu-child{
+	background:	#020540!important;
+}
+.ui-corner-all {
+	border-radius:0px;
+}
+..ui-widget-header .ui-state-default{
+	background:#020540!important;
+}
+
+.ui-datatable tbody.ui-datatable-data {
+    outline: 0;
+    background-color: rgba(0, 0, 2, 0.64)!important;
+}
 
 
