@@ -27,6 +27,11 @@ public List<Event> showFeatured(){
 	return list;
 }
 	
+public List<Event> showNextEvent(){
+	List<Event> list = eventRepository.getDbNextEvent();
+	return list;
+}
+
 // adicionar os dados
 	public void addEvent(Event event){
 		eventRepository.addToDb(event);

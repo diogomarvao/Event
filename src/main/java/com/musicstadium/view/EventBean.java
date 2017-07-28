@@ -112,20 +112,25 @@ public class EventBean implements Serializable{
 		return eventService.showEntities(eventService.getEventRepository());
 	}
 	
+	public List<Event> getNextEventList(){
+		return eventService.showNextEvent();
+	}
+	
 	public List<Event> getFeaturedList() {
-		List<Event> featuredList = new ArrayList<Event>();
-		for (int i = 0; i < eventService.showFeatured().size(); i++) {
-			if (featuredList.size() <= 9) {
-				if (Calendar.getInstance().getTime().before(eventService.showFeatured().get(i).getDateS())) {
-					featuredList.add(eventService.showFeatured().get(i));
-				}
-			} else {
-				break;
-			}
-		}
-		return featuredList;
+//		List<Event> featuredList = new ArrayList<Event>();
+//		for (int i = 0; i < eventService.showFeatured().size(); i++) {
+//			if (featuredList.size() <= 9) {
+//				if (Calendar.getInstance().getTime().before(eventService.showFeatured().get(i).getDateS())) {
+//					featuredList.add(eventService.showFeatured().get(i));
+//				}
+//			} else {
+//				break;
+//			}
+//		}
+//		return featuredList;
+		
 
-		// return eventService.showFeatured();
+		 return eventService.showFeatured();
 	}
 	
 	public List<Event> getFutureEvents(){
@@ -135,29 +140,6 @@ public class EventBean implements Serializable{
 				nextEvents.add(getEventList().get(i));
 			}	
 		}
-		return nextEvents;
-	}
-	
-	public List<Event> getNextEvents() {
-		List<Event> nextEvents = new ArrayList<Event>();
-		
-		Collections.sort(getEventList(), new Comparator<Event>() {
-		    public int compare(Event e1, Event e2) {
-		        return e2.getDateS().compareTo(e1.getDateS());
-		    }
-		});
-		
-		
-		for (int i = 0; i < getEventList().size(); i++) {
-			if (nextEvents.size() <= 9) {
-				if (Calendar.getInstance().getTime().before(getEventList().get(i).getDateS())) {
-					nextEvents.add(getEventList().get(i));
-				}
-			} else {
-				break;
-			}
-		}
-
 		return nextEvents;
 	}
 	
