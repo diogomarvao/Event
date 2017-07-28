@@ -45,7 +45,7 @@
 	text-align:center;
 }
 .ui-dialog{
-background-image: url("#{resource['images/fundo1.jpg']}");
+background-color:black!important;
 }
 
 
