@@ -13,17 +13,6 @@ import com.musicstadium.auth.service.UserService;
 public class UserBean implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	private User activeUser = new User();
-	
-
-	public void setActiveUser(User activeUser) {
-		this.activeUser = activeUser;
-	}
-
-
-	public User getActiveUser() {
-		return activeUser;
-	}
 
 	@Inject
 	private UserService userService;
@@ -39,26 +28,9 @@ public class UserBean implements Serializable{
 		this.user = user;
 	}
 	
-	
-	
 	// adiconar users
-
 	public void addUserToDb(){
 		userService.addUser(user);	
 	}
 	
-// editar adressos
-	public void editUserInDb(){
-		userService.editUser(activeUser);
-	}
-	
-// eliminar adresso
-	public void delUserInDb(User activeUser){
-		userService.delEntity(userService.getUserRepository(), activeUser);
-	}
-
-	public void login(){
-		userService.login(user);
-	}
-
 }
