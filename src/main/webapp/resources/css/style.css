@@ -99,7 +99,7 @@
 
 
 .label{
-	color:black;
+	/*color:black;*/
 }
 
 h1 {
@@ -143,14 +143,14 @@ h5{
 }
 
 .ui-widget-content {
-    background: white;
+    /*background: white;*/
     font-size:18px;
 
     
 }
 
 .ui-widget-header{
-	background: rgba(0, 0, 0, 0.17);
+	/*background: rgba(0, 0, 0, 0.17);*/
 	text-align: center;
 	
 }
@@ -162,7 +162,7 @@ h5{
 	
 }
 .ui-menu,.ui-menu.ui-menu-child{
-	background: rgba(0, 0, 0, 0.17);
+	/*background: rgba(0, 0, 0, 0.17);*/
 }
 .ui-corner-all {
 	border-radius:7px;
@@ -171,7 +171,7 @@ h5{
 	
 }
 .ui-panel-content ui-widget-content{
-	background-color:red;
+	/*background-color:red;*/
 }
 
 .ui-datatable tbody.ui-datatable-data {
