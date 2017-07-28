@@ -97,9 +97,9 @@
 									<p:growl life="3000" />
 									
 									<p:dialog class="diag" header="Novo Evento" widgetVar="AdNew"
-										resizable="false">
+										resizable="false" width="550" height="600">
 										<p:outputPanel id="editEvents" style="text-align:center;">
-											<p:panelGrid class="diagEdit" columns="2">
+											<p:panelGrid class="diagEdit" columns="2" style="width: 100%">
 												<h:outputText value="Evento :" />
 												<p:inputText value="#{eventBean.event.name}"
 														required="true" requiredMessage="Por favor insira o Nome do Evento" />
@@ -115,7 +115,7 @@
 														required="true" requiredMessage="Por favor insira um VideoLink" />
 												<p:outputLabel for="genero" value="Género: " />
 												<p:selectOneMenu id="genero"
-													value="#{eventBean.event.genre}" style="width:150px">
+													value="#{eventBean.event.genre}" >
 													<f:selectItem itemLabel="Selecione o Género" itemValue=""
 														noSelectionOption="true" />
 													<f:selectItems value="#{eventBean.selectGenre}"
@@ -124,7 +124,7 @@
 												<p:outputLabel for="local" value="Localização: " />
 												<p:column>
 													<p:selectOneMenu id="local"
-														value="#{eventBean.event.adress}" style="width:150px"
+														value="#{eventBean.event.adress}" 
 														converter="omnifaces.SelectItemsConverter"
 														immediate="true">
 														<f:selectItem itemLabel="Selecione a Localização"
@@ -138,7 +138,7 @@
 												</p:column>
 												<p:outputLabel for="seller" value="Vendedor: " />
 												<p:selectOneMenu id="seller"
-													value="#{eventBean.event.seller}" style="width:150px"
+													value="#{eventBean.event.seller}"
 													converter="omnifaces.SelectItemsConverter" immediate="true">
 													<f:selectItem itemLabel="Selecione o Vendedor" itemValue=""
 														noSelectionOption="true" />

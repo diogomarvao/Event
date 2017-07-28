@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -95,9 +96,7 @@ public class EventBean implements Serializable{
 	
 // editar eventos
 	public void editEventInDb(){
-		System.out.println(activeEvent.getAdress());	
-		System.out.println(activeEvent.getSeller());
-		System.out.println(activeEvent.getId());
+	
 		eventService.editEvent(activeEvent);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Evento editado com sucesso", null));
 	}
@@ -113,19 +112,23 @@ public class EventBean implements Serializable{
 		return eventService.showEntities(eventService.getEventRepository());
 	}
 	
-	public List<Event> getFeaturedList(){
+	public List<Event> getFeaturedList() {
 		List<Event> featuredList = new ArrayList<Event>();
-		for(int i =0; i<eventService.showFeatured().size(); i++){
-			if(Calendar.getInstance().getTime().before(eventService.showFeatured().get(i).getDateS())){
-				featuredList.add(eventService.showFeatured().get(i));
-			}	
+		for (int i = 0; i < eventService.showFeatured().size(); i++) {
+			if (featuredList.size() <= 9) {
+				if (Calendar.getInstance().getTime().before(eventService.showFeatured().get(i).getDateS())) {
+					featuredList.add(eventService.showFeatured().get(i));
+				}
+			} else {
+				break;
+			}
 		}
 		return featuredList;
-		
-//		return eventService.showFeatured();
+
+		// return eventService.showFeatured();
 	}
 	
-	public List<Event> getNextEvents(){
+	public List<Event> getFutureEvents(){
 		List<Event> nextEvents = new ArrayList<Event>();
 		for(int i =0; i<getEventList().size(); i++){
 			if(Calendar.getInstance().getTime().before(getEventList().get(i).getDateS())){
@@ -134,7 +137,32 @@ public class EventBean implements Serializable{
 		}
 		return nextEvents;
 	}
-			
+
+	
+	public List<Event> getNextEvents() {
+		List<Event> nextEvents = new ArrayList<Event>();
+		
+		Collections.sort(getEventList(), new Comparator<Event>() {
+		    public int compare(Event e1, Event e2) {
+		        return e2.getDateS().compareTo(e1.getDateS());
+		    }
+		});
+		
+		
+		for (int i = 0; i < getEventList().size(); i++) {
+			if (nextEvents.size() <= 9) {
+				if (Calendar.getInstance().getTime().before(getEventList().get(i).getDateS())) {
+					nextEvents.add(getEventList().get(i));
+				}
+			} else {
+				break;
+			}
+		}
+
+		return nextEvents;
+	}
+	
+	
 	public String daysLeft(Event event){
 //		LocalDate eventDate = event.getDateS();
 		String daysToEvent="null";
@@ -148,6 +176,7 @@ public class EventBean implements Serializable{
 		
 		long days = diff.getDays()-1;
 		
+
 		if(days==0){
 		daysToEvent="Ao Vivo Hoje!!!";
 		}else if(days==1){
@@ -156,6 +185,7 @@ public class EventBean implements Serializable{
 		daysToEvent=String.format("Faltam %d dias!!!", days);
 		}
 		return daysToEvent;
+
 	}
 	
 	public String videoLink() {
@@ -163,6 +193,7 @@ public class EventBean implements Serializable{
 		System.out.println(activeEvent.getVideoLink());
 		String videoLink=String.format("http://www.youtube.com/v/%s", videoUrl);
 		return videoLink;
+
 	}
 	
 }
