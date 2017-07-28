@@ -45,6 +45,7 @@
 	text-align:center;
 }
 .ui-dialog{
+
 background-color:black!important;
 }
 
@@ -175,4 +176,19 @@ background-image: url("#{resource['images/fundo1.jpg']}");
     background-color: rgba(0, 0, 2, 0.64)!important;
 }
 
+.ui-panelgrid{
+		margin-left:5%;
+	margin-right:5%;
+}
+
+.ui-selectonemenu {
+    display: -webkit-box!important;
+    position: relative;
+    width: auto; 
+    zoom: 1;
+    cursor: pointer;
+    padding-right: 0%; 
+    margin-left: 12%;
+    margin-right: 1%;
+}
 
