@@ -49,7 +49,6 @@ public class SessionBean implements Serializable {
 	}
 	
 	public void logout(){
-		setActiveUser(null);
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 	}
 }
