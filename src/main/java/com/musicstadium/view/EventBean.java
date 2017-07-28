@@ -137,6 +137,7 @@ public class EventBean implements Serializable{
 		}
 		return nextEvents;
 	}
+
 	
 	public List<Event> getNextEvents() {
 		List<Event> nextEvents = new ArrayList<Event>();
@@ -175,6 +176,7 @@ public class EventBean implements Serializable{
 		
 		long days = diff.getDays()-1;
 		
+
 		if(days==0){
 		daysToEvent="Ao Vivo Hoje!!!";
 		}else if(days==1){
@@ -183,5 +185,15 @@ public class EventBean implements Serializable{
 		daysToEvent=String.format("Faltam %d dias!!!", days);
 		}
 		return daysToEvent;
+
 	}
+	
+	public String videoLink() {
+		String videoUrl =activeEvent.getVideoLink();
+		System.out.println(activeEvent.getVideoLink());
+		String videoLink=String.format("http://www.youtube.com/v/%s", videoUrl);
+		return videoLink;
+
+	}
+	
 }

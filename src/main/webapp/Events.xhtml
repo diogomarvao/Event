@@ -86,8 +86,9 @@
 								<h:outputText value="#{eventBean.activeEvent.name}" style="font-size:40px;"/>			
 									</div>
 								<div class="eventinfomargin">	
-											<p:graphicImage library="images"
-												name="festivais-de-verao.jpg" style="width:100%" />
+										<h:graphicImage  value ="#{eventBean.activeEvent.imgUrl}" /> 
+										
+											
 								</div>
 								<div class="eventinfomargin">
 											<div class="eventname">
@@ -145,8 +146,10 @@
 												</div>
 													<div class="eventinfomargin">
 									
-											<p:media value="http://www.youtube.com/v/latV0YAR-0s"
-												width="535" height="380" player="flash" />
+
+											<p:media value="#{eventBean.videoLink()}"
+												width="600" height="380" player="flash" />
+
 										
 								</div>
 												
