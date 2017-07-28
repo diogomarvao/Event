@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -57,6 +59,7 @@ public class SellerBean implements Serializable{
 	
 	public void addSellerToDb(){
 		sellerService.addSeller(seller);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Seller adicionada à base de dados", null));
 	}
 	
 	
@@ -64,12 +67,18 @@ public class SellerBean implements Serializable{
 	
 	public void editSellerInDb(){
 		sellerService.editSeller(activeSeller);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Seller editado com sucesso", null));
 	}
 	
 //	eliminar seller
 	
 	public void delSellerInDb (Seller activeSeller){
+		try {
 		sellerService.delEntity(sellerService.getSellerRepository(), activeSeller);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Seller eliminado com sucesso", null));
+		} catch (Exception e) {
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Este seller pertence a um evento", null));
+		}
 	}
 	
 	// Fazer print nas tabelas
@@ -80,4 +89,5 @@ public class SellerBean implements Serializable{
 // connections
 
 }
+
 	

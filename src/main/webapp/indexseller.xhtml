@@ -30,21 +30,21 @@
 								<p:graphicImage library="images" name="seller.jpg"
 									style="width:100%" />
 
-								<p:commandButton icon="fa fa-fw fa-plus" class="add"
-									update="seller" onclick="PF('AdNew').show();"
-									type="button" />
+								<p:commandButton class="add" icon="fa fa-fw fa-plus" 
+									update="seller" onclick="PF('AdNew').show();" type="button" />
 							</div>
 
 							<h:form id="SellerDisplay">
-
+								<p:growl life="3000" />
+								
 								<!-- 		1.1 - tabela dos sellers -->
 								<p:dataTable value="#{sellerBean.getSellerList()}" var="s"
-									border="1" widgetVar="sellerTable" rows="10" paginator="true"
+									border="1" rows="10" paginator="true"
 									paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 									rowsPerPageTemplate="5,10,15" style="margin-top:10px">
 									<div class="header">
 										<p:column class="header" headerText="Id" sortBy="#{s.id}">
-											<div class="tablecont">#{s.id}</div>
+											<div>#{s.id}</div>
 										</p:column>
 
 										<p:column class="header" headerText="Nome"
@@ -71,8 +71,8 @@
 												<f:setPropertyActionListener value="#{s}"
 													target="#{sellerBean.activeSeller}" />
 											</p:commandButton>
-											<p:commandButton icon="fa fa-fw fa-remove"
-												class="bottab" action="#{sellerBean.delSellerInDb(s)}" />
+											<p:commandButton icon="fa fa-fw fa-remove" class="bottab"
+												action="#{sellerBean.delSellerInDb(s)}" update="SellerDisplay" />
 
 										</p:column>
 									</div>
@@ -83,46 +83,50 @@
 
 
 							<h:form id="NewSe">
-								<p:dialog class="diag" header="Novo Vendedor" widgetVar="AdNew"
-									resizable="false">
+								<p:growl life="3000" />
+								<p:dialog class="diag" header="Novo Vendedor" 
+								widgetVar="AdNew" resizable="false">
 									<p:outputPanel id="editSeller" style="text-align:center;">
 										<p:panelGrid class="diagEdit" columns="2">
 											<h:outputText value="Nome: " />
 											<p:inputText value="#{sellerBean.seller.name}"
-												required="true" />
+												required="true" requiredMessage="Por favor insira um Nome" />
 
 											<h:outputText value="WebSite: " />
 											<p:inputText value="#{sellerBean.seller.sellerUrl}"
-												required="true" />
+												required="true"
+												requiredMessage="Por favor insira um WebSite" />
 											<h:outputText value="Preço: " />
 											<p:inputMask value="#{sellerBean.seller.price}"
-												required="true" />
+												required="true" requiredMessage="Por favor insira um Preço" />
 										</p:panelGrid>
 										<br />
 
-										<h:commandButton value="Gravar"
-											action="#{sellerBean.addSellerToDb()}" update="SellerDisplay" />
+										<p:commandButton value="Gravar"
+											action="#{sellerBean.addSellerToDb()}" update="SellerDisplay"
+											oncomplete="PF('AdNew').hide();" />
 									</p:outputPanel>
 								</p:dialog>
 							</h:form>
 
 							<h:form id="EditarSe">
-								<p:dialog class="diag" header="Editar Dados do Usuário" widgetVar="SeEdit"
-									resizable="false">
+								<p:dialog class="diag" header="Editar Dados do Usuário"
+									widgetVar="SeEdit" resizable="false">
 									<!-- painel -->
 									<p:outputPanel id="editSeller" style="text-align:center;">
 										<p:panelGrid class="diagEdit" columns="2">
 
 											<h:outputText value="Id: " />
-											<h:inputText value="#{sellerBean.activeSeller.id}" />
+											<h:inputText value="#{sellerBean.activeSeller.id}"  />
 
 											<h:outputText value="Nome: " />
-											<p:inputText value="#{sellerBean.activeSeller.name}" />
+											<p:inputText value="#{sellerBean.activeSeller.name}"
+											required="true" />
 
-											<h:outputText value="WebSite: "/>
-											<p:inputText value="#{sellerBean.activeSeller.sellerUrl}" />
+											<h:outputText value="WebSite: " />
+											<p:inputText value="#{sellerBean.activeSeller.sellerUrl}"  />
 
-											<h:outputText value="Preço: "/>
+											<h:outputText value="Preço: " />
 											<p:inputMask value="#{sellerBean.activeSeller.price}"
 												required="true" />
 
@@ -130,8 +134,8 @@
 										</p:panelGrid>
 										<br />
 										<p:commandButton value="Gravar Alterações"
-											action="#{sellerBean.editSellerInDb()}"
-											update="SellerDisplay" oncomplete="PF('SeEdit').hide();"/>
+											action="#{sellerBean.editSellerInDb()}" update="SellerDisplay" 
+											oncomplete="PF('SeEdit').hide();" />
 									</p:outputPanel>
 								</p:dialog>
 							</h:form>
