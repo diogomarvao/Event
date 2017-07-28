@@ -106,7 +106,15 @@ public class EventBean implements Serializable{
 	}
 	
 	public List<Event> getFeaturedList(){
-		return eventService.showFeatured();
+		List<Event> featuredList = new ArrayList<Event>();
+		for(int i =0; i<eventService.showFeatured().size(); i++){
+			if(Calendar.getInstance().getTime().before(eventService.showFeatured().get(i).getDateS())){
+				featuredList.add(eventService.showFeatured().get(i));
+			}	
+		}
+		return featuredList;
+		
+//		return eventService.showFeatured();
 	}
 	
 	public List<Event> getNextEvents(){
@@ -118,4 +126,5 @@ public class EventBean implements Serializable{
 		}
 		return nextEvents;
 	}
+	
 }
