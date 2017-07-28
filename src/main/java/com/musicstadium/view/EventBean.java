@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -85,6 +86,7 @@ public class EventBean implements Serializable{
 	// adiconar Eventos
 	public void addEventToDb(){
 		eventService.addEvent(event);	
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Evento criado com sucesso", null));
 	}
 	
 // editar eventos
@@ -93,11 +95,13 @@ public class EventBean implements Serializable{
 		System.out.println(activeEvent.getSeller());
 		System.out.println(activeEvent.getId());
 		eventService.editEvent(activeEvent);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Evento editado com sucesso", null));
 	}
 	
 // eliminar Evento
 	public void delEventInDb(Event activeEvent){
 		eventService.delEntity(eventService.getEventRepository(), activeEvent);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Evento eliminado com sucesso", null));
 	}
 	
 // Fazer print nas tabelas

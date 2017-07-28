@@ -25,6 +25,7 @@
 							</div>
 							<div class="datatableevents">
 								<h:form id="EventDisplay">
+									<p:growl life="3000" />
 									<p:dataTable value="#{eventBean.getEventList()}" var="event"
 										border="1" rows="10" paginator="true"
 										paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -93,21 +94,24 @@
 								</h:form>
 								<!-- 	1.2 - Inserir detalhes do event -->
 								<h:form id="NewAd">
+									<p:growl life="3000" />
+									
 									<p:dialog class="diag" header="Novo Evento" widgetVar="AdNew"
 										resizable="false">
 										<p:outputPanel id="editEvents" style="text-align:center;">
 											<p:panelGrid class="diagEdit" columns="2">
 												<h:outputText value="Evento :" />
-												<p:inputText value="#{eventBean.event.name}" required="true" />
+												<p:inputText value="#{eventBean.event.name}"
+														required="true" requiredMessage="Por favor insira o Nome do Evento" />
 												<h:outputText value="Imagen :" />
 												<p:inputText value="#{eventBean.event.imgUrl}"
-													required="true" />
+														required="true" requiredMessage="Por favor insira uma Imagem"/>
 												<h:outputText value="Descrição :" />
 												<p:inputText value="#{eventBean.event.description}"
-													required="true" />
+														required="true" requiredMessage="Por favor insira uma descrição" />
 												<h:outputText value="Video :" />
 												<p:inputText value="#{eventBean.event.videoLink}"
-													required="true" />
+														required="true" requiredMessage="Por favor insira um VideoLink" />
 												<p:outputLabel for="genero" value="Género: " />
 												<p:selectOneMenu id="genero"
 													value="#{eventBean.event.genre}" style="width:150px">
@@ -143,25 +147,24 @@
 												</p:selectOneMenu>
 												<p:outputLabel for="calPopupS" value="Dia (1º): " />
 												<p:calendar id="calPopupS" value="#{eventBean.event.dateS}"
-													pattern="dd/MM/yyyy" required="true" />
+													pattern="dd/MM/yyyy" required="true" requiredMessage="Por favor selecione uma Data Inicial"/>
 												<p:outputLabel for="calPopupF" value="Dia (Ultimo): " />
 												<p:calendar id="calPopupF" value="#{eventBean.event.dateF}"
-													required="true" pattern="dd/MM/yyyy" />
+														required="true" requiredMessage="Por favor selecione uma Data Final" pattern="dd/MM/yyyy" />
 
 												<p:outputLabel for="timPopupS" value="Horas (Inicio): " />
 												<p:calendar id="timPopupS" value="#{eventBean.event.hourS}"
-													pattern="HH:mm" required="true" timeOnly="true" />
+														pattern="HH:mm" required="true" requiredMessage="Por favor selecione um Horário Inicio" timeOnly="true" />
 												<p:outputLabel for="timPopupF" value="Horas (Fim): " />
 												<p:calendar id="timPopupF" value="#{eventBean.event.hourF}"
-													required="true" pattern="HH:mm" timeOnly="true" />
-
+														required="true" requiredMessage="Por favor selecione um Horário Final" pattern="HH:mm" timeOnly="true" />
 												<h:outputText value="Featured: " />
 												<p:selectBooleanCheckbox value="#{eventBean.event.featured}"
 													required="true" />
 											</p:panelGrid>
 											<br />
-											<h:commandButton value="Guardar"
-												action="#{eventBean.addEventToDb()}" />
+											<p:commandButton value="Guardar" update="EventDisplay"
+												action="#{eventBean.addEventToDb()}" oncomplete="PF('AdNew').hide();" />
 										</p:outputPanel>
 									</p:dialog>
 								</h:form>

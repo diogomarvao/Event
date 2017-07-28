@@ -1,141 +1,157 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">	
-	
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:c="http://java.sun.com/jsp/jstl/core" template="CommonLayout.xhtml">
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="CommonLayout.xhtml">
 
 
 
-		<ui:define name="content">
+	<ui:define name="content">
 
-			<div class="index">
-
-
-				<p:layout fullPage="true">
+		<div class="index">
 
 
-
-					<p:layoutUnit position="center">
-						<div class="midcenter">
-						<!-- 1 - Menu principal enderecos -->			
-				
-				<p:graphicImage library="images" name="address.jpg" 
-								style="width:100%"/>
-				
-					<p:commandButton class="add" icon="fa fa-fw fa-plus" update="adress"
-						onclick="PF('AdNew').show();" type="button"/>
-				
-
-				<h:form id="AdressDisplay">
-
-					<!-- 		1.1 - tabela dos enderecos -->
-					<p:dataTable value="#{adressBean.getAdressList()}" var="adress"
-						border="1" rows="10" paginator="true"
-						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						rowsPerPageTemplate="5,10,15" style="margin-top:10px">
-						<div class="header">
-							<p:column class="header" headerText="Id" sortBy="#{adress.id}">
-								<div>#{adress.id}</div>
-							</p:column>
-							<p:column class="header" headerText="Nome" sortBy="#{adress.name}">
-								<div>#{adress.name}</div>
-							</p:column>
-							<p:column class="header" headerText="Morada" filterBy="#{adress.street}" filterMatchMode="contains">
-								<div class="tablecont">#{adress.street}</div>
-							</p:column>
-							<p:column class="header" headerText="Localidade"  filterBy="#{adress.local}"
-							filterMatchMode="contains" sortBy="#{adress.local}">
-								<div class="tablecont">#{adress.local}</div>
-							</p:column>
-							<p:column class="header" headerText="Código Postal" sortBy="#{adress}.codigoPostal}">
-								<div class="tablecont">#{adress.codigoPostal}</div>
-							</p:column>
-							<p:column class="header">
-
-								<p:commandButton icon="fa fa-fw fa-edit" class="bottab" update=":EditarAd:editAdress"
-									oncomplete="PF('AdEdit').show();">
-									
-									<f:setPropertyActionListener value="#{adress}"
-										target="#{adressBean.activeAdress}" />
-								</p:commandButton>
-								<p:commandButton icon="fa fa-fw fa-remove" class="bottab"
-									action="#{adressBean.delAdressInDb(adress)}"
-									update="AdressDisplay" />
-
-							</p:column>
-						</div>
-					</p:dataTable>
-				</h:form>
-
-				<!-- 	1.2 - Inserir detalhes do event -->
+			<p:layout fullPage="true">
 
 
-				<h:form id="NewAd">
-					<p:dialog class="diag" header="Nova Localização" widgetVar="AdNew"
-						resizable="false">
-						<p:outputPanel id="editAdress" style="text-align:center;">
-							<p:panelGrid class="diagEdit" columns="2">
-								<h:outputText value="Nome:" />
-								<p:inputText value="#{adressBean.adress.name}" required="true" />
-								<h:outputText value="Morada:" />
-								<p:inputText value="#{adressBean.adress.street}" required="true" />
-								<h:outputText value="Localidade:" />
-								<p:inputText value="#{adressBean.adress.local}" required="true" />
-								<h:outputText value="Código-Postal:" />
-								<p:inputMask value="#{adressBean.adress.codigoPostal}"
-									mask="9999-999" required="true" />
-							</p:panelGrid>
-							<br />
-							<h:commandButton value="Gravar"
-								action="#{adressBean.addAdressToDb()}"/>
-						</p:outputPanel>
-					</p:dialog>
-				</h:form>
 
-				<h:form id="EditarAd">
-					<p:dialog class="diag" header="Editar Localização" widgetVar="AdEdit"
-						resizable="false">
-						<!-- painel -->
-						<p:outputPanel id="editAdress" style="text-align:center;">
-							<p:panelGrid class="diagEdit" columns="2">
+				<p:layoutUnit position="center">
+					<div class="midcenter">
+						<!-- 1 - Menu principal enderecos -->
 
-								<h:outputText value="Id:" />
-								<h:inputText value="#{adressBean.activeAdress.id}"
-									readonly="readonly" />
-								<h:outputText value="Nome:" />
-								<p:inputText value="#{adressBean.activeAdress.name}" />
-								<h:outputText value="Morada:" />
-								<p:inputText value="#{adressBean.activeAdress.street}" />
-								<h:outputText value="Localidade" />
-								<p:inputText value="#{adressBean.activeAdress.local}"
-									required="true" />
-								<h:outputText value="Código-Postal:" />
-								<p:inputMask value="#{adressBean.activeAdress.codigoPostal}"
-									mask="9999-999" required="true" />
-							</p:panelGrid>
-							<br />
-							<p:commandButton value="Gravar Alterações"
-								action="#{adressBean.editAdressInDb()}" update="AdressDisplay"  oncomplete="PF('AdEdit').hide();"/>
-						</p:outputPanel>
-					</p:dialog>
-				</h:form>
+						<p:graphicImage library="images" name="address.jpg"
+							style="width:100%" />
 
-			</div>
-						</p:layoutUnit>
-				</p:layout>
-						
-				
-
-			</div>
-			
-
-		</ui:define>
+						<p:commandButton class="add" icon="fa fa-fw fa-plus"
+							update="adress" onclick="PF('AdNew').show();" type="button" />
 
 
-	</ui:composition>
+						<h:form id="AdressDisplay">
+							<p:growl life="2000" />
+
+							<!-- 		1.1 - tabela dos enderecos -->
+							<p:dataTable value="#{adressBean.getAdressList()}" var="adress"
+								border="1" rows="10" paginator="true"
+								paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+								rowsPerPageTemplate="5,10,15" style="margin-top:10px">
+								<div class="header">
+									<p:column class="header" headerText="Id" sortBy="#{adress.id}">
+										<div>#{adress.id}</div>
+									</p:column>
+									<p:column class="header" headerText="Nome"
+										sortBy="#{adress.name}">
+										<div>#{adress.name}</div>
+									</p:column>
+									<p:column class="header" headerText="Morada"
+										filterBy="#{adress.street}" filterMatchMode="contains">
+										<div class="tablecont">#{adress.street}</div>
+									</p:column>
+									<p:column class="header" headerText="Localidade"
+										filterBy="#{adress.local}" filterMatchMode="contains"
+										sortBy="#{adress.local}">
+										<div class="tablecont">#{adress.local}</div>
+									</p:column>
+									<p:column class="header" headerText="Código Postal"
+										sortBy="#{adress}.codigoPostal}">
+										<div class="tablecont">#{adress.codigoPostal}</div>
+									</p:column>
+									<p:column class="header">
+
+										<p:commandButton icon="fa fa-fw fa-edit" class="bottab"
+											update=":EditarAd:editAdress"
+											oncomplete="PF('AdEdit').show();">
+
+											<f:setPropertyActionListener value="#{adress}"
+												target="#{adressBean.activeAdress}" />
+										</p:commandButton>
+										<p:commandButton icon="fa fa-fw fa-remove" class="bottab"
+											action="#{adressBean.delAdressInDb(adress)}"
+											update="AdressDisplay" />
+
+									</p:column>
+								</div>
+							</p:dataTable>
+						</h:form>
+
+						<!-- 	1.2 - Inserir detalhes do event -->
+
+
+						<h:form id="NewAd">
+							<p:growl life="2000" />
+							
+							<p:dialog class="diag" header="Nova Localização"
+								widgetVar="AdNew" resizable="false">
+								<p:outputPanel id="editAdress" style="text-align:center;">
+									<p:panelGrid class="diagEdit" columns="2">
+										<h:outputText value="Nome:" />
+										<p:inputText value="#{adressBean.adress.name}" required="true"
+											requiredMessage="Por favor insira um Nome" />
+										<h:outputText value="Morada:" />
+										<p:inputText value="#{adressBean.adress.street}"
+											required="true"
+											requiredMessage="Por favor insira uma Morada " />
+										<h:outputText value="Localidade:" />
+										<p:inputText value="#{adressBean.adress.local}"
+											required="true" requiredMessage="Por favor insira um Local" />
+										<h:outputText value="Código-Postal:" />
+										<p:inputMask value="#{adressBean.adress.codigoPostal}"
+											requiredMessage="Por favor insira um Código Postal"
+											mask="9999-999" required="true" />
+									</p:panelGrid>
+									<br />
+									<p:commandButton value="Gravar"
+										action="#{adressBean.addAdressToDb()}" update="AdressDisplay"
+										oncomplete="PF('AdNew').hide();" />
+								</p:outputPanel>
+							</p:dialog>
+						</h:form>
+
+						<h:form id="EditarAd">
+							<p:dialog class="diag" header="Editar Localização"
+								widgetVar="AdEdit" resizable="false">
+								<!-- painel -->
+								<p:outputPanel id="editAdress" style="text-align:center;">
+									<p:panelGrid class="diagEdit" columns="2">
+
+										<h:outputText value="Id:" />
+										<h:inputText value="#{adressBean.activeAdress.id}"
+											readonly="readonly" />
+										<h:outputText value="Nome:" />
+										<p:inputText value="#{adressBean.activeAdress.name}" />
+										<h:outputText value="Morada:" />
+										<p:inputText value="#{adressBean.activeAdress.street}" />
+										<h:outputText value="Localidade" />
+										<p:inputText value="#{adressBean.activeAdress.local}"
+											required="true" />
+										<h:outputText value="Código-Postal:" />
+										<p:inputMask value="#{adressBean.activeAdress.codigoPostal}"
+											mask="9999-999" required="true" />
+									</p:panelGrid>
+									<br />
+									<p:commandButton value="Gravar Alterações"
+										action="#{adressBean.editAdressInDb()}" update="AdressDisplay"
+										oncomplete="PF('AdEdit').hide();" />
+								</p:outputPanel>
+							</p:dialog>
+						</h:form>
+
+					</div>
+				</p:layoutUnit>
+			</p:layout>
+
+
+
+		</div>
+
+
+	</ui:define>
+
+
+</ui:composition>
