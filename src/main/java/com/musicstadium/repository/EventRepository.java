@@ -24,11 +24,20 @@ public class EventRepository extends EntityRepository<Event>{
 		}
 		
 		public List<Event> getDbFeatured(){
-			Query query = getDb().createNativeQuery("SELECT * FROM Event WHERE FEATURED = 1 ", Event.class);
+			Query query = getDb().createNativeQuery("SELECT * FROM Event WHERE FEATURED = 1 ORDER BY DATE_START LIMIT 9", Event.class);
 			List<Event> dbFeatured = (List<Event>) query.getResultList();
 			return dbFeatured;
 		}
-			
+		
+		public List<Event> getDbNextEvent(){
+			Query query = getDb().createNativeQuery("SELECT * FROM Event ORDER BY DATE_START LIMIT 10", Event.class);
+			List<Event> dbNextEvent = (List<Event>) query.getResultList();
+			return dbNextEvent;
+		}
+		
+		
+		
+		
 		// eliminar
 		@Override
 		@Transactional
