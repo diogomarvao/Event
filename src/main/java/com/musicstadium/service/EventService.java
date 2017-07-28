@@ -32,6 +32,12 @@ public List<Event> showNextEvent(){
 	return list;
 }
 
+public List<Event> showAllEvent(){
+	List<Event> list = eventRepository.getDbAllEvents();
+	return list;
+}
+
+
 // adicionar os dados
 	public void addEvent(Event event){
 		eventRepository.addToDb(event);
