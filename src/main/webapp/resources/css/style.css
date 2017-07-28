@@ -170,6 +170,9 @@ h5{
 ..ui-widget-header .ui-state-default{
 	
 }
+.ui-panel-content ui-widget-content{
+	background-color:red;
+}
 
 .ui-datatable tbody.ui-datatable-data {
 }
