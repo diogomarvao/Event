@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -127,4 +128,19 @@ public class EventBean implements Serializable{
 		return nextEvents;
 	}
 	
+	public long daysLeft(Event event){
+//		LocalDate endofCentury = LocalDate.of(2014, 01, 01);
+//		LocalDate now = LocalDate.now();
+//
+//		Period diff = Period.between(endofCentury, now);
+		    
+		    
+		    
+		long eventDay = event.getDateS().getTime();
+		System.out.println(eventDay);
+		long today = Calendar.getInstance().getTime().getTime();
+		long daysLeft = eventDay - today;
+		
+		return daysLeft;
+	}
 }
