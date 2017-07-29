@@ -1,5 +1,9 @@
 .ui-layout-unit .ui-layout-unit-content {
 	/*background:transparent;*/
+	
+margin-left:5%;
+	margin-right:5%;
+	
 }
 
 
@@ -123,7 +127,9 @@ h5{
 	font-size:17px;
 }
 .ui-layout-unit{
-	
+	background-image: url("#{resource['images/background.jpg']}");
+	margin-left:10%;
+	margin-right:10%;
 
 }
 
