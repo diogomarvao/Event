@@ -25,6 +25,17 @@
 	margin-bottom: 0px;
 }
 
+.midcenter4{
+	font-size: 18px;
+	background: #2191c0;
+	border-top-left-radius: 17px !important;
+	border-top-right-radius: 17px !important;
+	margin-top:30px;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 0px;
+}
+
 .midcenter {
 	margin-left: 10%;
 	margin-right: 10%;
@@ -115,7 +126,10 @@ h5 {
 }
 
 .eventname {
-	font-size: 17px;
+	font-size: 18px;
+	background: #2191c0;
+	border-top-left-radius: 17px !important;
+	border-top-right-radius: 17px !important;
 }
 
 .ui-layout-unit {
@@ -215,3 +229,11 @@ h5 {
 	border-top-left-radius: 17px !important;
 	border-top-right-radius: 17px !important;
 }
+
+
+
+
+
+
+
+
