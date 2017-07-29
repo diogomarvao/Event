@@ -155,9 +155,9 @@ public class EventBean implements Serializable{
 	
 	public List<Event> getFutureEvents(){
 		List<Event> nextEvents = new ArrayList<Event>();
-		for(int i =0; i<getEventList().size(); i++){
-			if(Calendar.getInstance().getTime().before(getEventList().get(i).getDateF())){
-				nextEvents.add(getEventList().get(i));
+		for(int i =0; i<getNextEventList().size(); i++){
+			if(Calendar.getInstance().getTime().before(getNextEventList().get(i).getDateF())){
+				nextEvents.add(getNextEventList().get(i));
 			}	
 		}
 		return nextEvents;
