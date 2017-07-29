@@ -47,7 +47,7 @@
 								</p:column>
 
 								<p:column class="header" headerText="Preço">
-									<div>#{event.seller.price}</div>
+									<div>#{event.price}</div>
 								</p:column>
 
 								<p:column class="header">
@@ -124,7 +124,7 @@
 												<h:outputText value="Comprar: " />
 												<br />
 												<h:outputText value="Valores: " />
-												<h:outputText value="#{eventBean.activeEvent.seller.price}" />
+												<h:outputText value="#{eventBean.activeEvent.price}" />
 												<br />
 												<h:outputText value="Vendedor: " />
 												<h:outputText value="#{eventBean.activeEvent.seller.name}" />

@@ -57,9 +57,14 @@
 											<div class="tablecont">#{s.sellerUrl}</div>
 										</p:column>
 
-										<p:column class="header" headerText="Preço"
-											sortBy="#{s.price}">
-											<div class="tablecont">#{s.price}</div>
+										<p:column class="header" headerText="Email"
+											sortBy="#{s.email}">
+											<div class="tablecont">#{s.email}</div>
+										</p:column>
+										
+										<p:column class="header" headerText="Password"
+											sortBy="#{s.password}">
+											<div class="tablecont">#{s.password}</div>
 										</p:column>
 
 										<p:column class="header">
@@ -91,14 +96,16 @@
 											<h:outputText value="Nome: " />
 											<p:inputText value="#{sellerBean.seller.name}"
 												required="true" requiredMessage="Por favor insira um Nome" />
-
 											<h:outputText value="WebSite: " />
 											<p:inputText value="#{sellerBean.seller.sellerUrl}"
 												required="true"
 												requiredMessage="Por favor insira um WebSite" />
-											<h:outputText value="Preço: " />
-											<p:inputMask value="#{sellerBean.seller.price}"
-												required="true" requiredMessage="Por favor insira um Preço" />
+											<h:outputText value="E-mail: " />
+											<p:inputMask value="#{sellerBean.seller.email}"
+												required="true" requiredMessage="Por favor insira um E-mail"/>
+											<h:outputText value="Password: " />
+											<p:inputMask value="#{sellerBean.seller.password}"
+												required="true" requiredMessage="Por favor insira uma Password"/>
 										</p:panelGrid>
 										<br />
 
@@ -117,20 +124,25 @@
 										<p:panelGrid class="diagEdit" columns="2">
 
 											<h:outputText value="Id: " />
-											<h:inputText value="#{sellerBean.activeSeller.id}"  />
+											<h:inputText value="#{sellerBean.activeSeller.id}"
+												required="true"/>
 
 											<h:outputText value="Nome: " />
 											<p:inputText value="#{sellerBean.activeSeller.name}"
-											required="true" />
-
-											<h:outputText value="WebSite: " />
-											<p:inputText value="#{sellerBean.activeSeller.sellerUrl}"  />
-
-											<h:outputText value="Preço: " />
-											<p:inputMask value="#{sellerBean.activeSeller.price}"
 												required="true" />
 
-
+											<h:outputText value="WebSite: " />
+											<p:inputText value="#{sellerBean.activeSeller.sellerUrl}"
+												required="true"/>
+												
+											<h:outputText value="E-mail: " />
+											<p:inputMask value="#{sellerBean.activeSeller.email}"
+												required="true" />
+											
+											<h:outputText value="Password: " />
+											<p:inputMask value="#{sellerBean.activeSeller.password}"
+												required="true" />
+												
 										</p:panelGrid>
 										<br />
 										<p:commandButton value="Gravar Alterações"
