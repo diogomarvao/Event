@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.musicstadium.model.Event;
+import com.musicstadium.model.Seller;
 import com.musicstadium.repository.EventRepository;
 
 @Named("eventService")
@@ -30,6 +31,12 @@ public List<Event> showNextEvent(){
 	List<Event> list = eventRepository.getDbNextEvent();
 	return list;
 }
+
+public List<Event> showSellersEvent(Seller activeSeller){
+	List<Event> list = eventRepository.getDbSellerEvent(activeSeller);
+	return list;
+}
+
 
 // adicionar os dados
 	public void addEvent(Event event){

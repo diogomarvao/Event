@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 
 import com.musicstadium.model.Adress;
 import com.musicstadium.model.Event;
+import com.musicstadium.model.Seller;
 
 @Named("eventRepository")
 @ApplicationScoped
@@ -36,6 +37,14 @@ public class EventRepository extends EntityRepository<Event>{
 		}
 		
 		
+		
+		
+		//sacar cenas do seller 
+		public List<Event> getDbSellerEvent(Seller activeSeller){
+			Query query = getDb().createNativeQuery("SELECT * FROM Event WHERE seller_id = " + activeSeller.getId() + " ORDER BY DATE_START ", Event.class);
+			List<Event> dbNextEvent = (List<Event>) query.getResultList();
+			return dbNextEvent;
+		}
 		
 		
 		// eliminar
