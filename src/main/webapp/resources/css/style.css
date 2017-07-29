@@ -154,6 +154,7 @@ h5 {
 .ui-menu, .ui-menu.ui-menu-child {
 	/*background: rgba(0, 0, 0, 0.17);*/
 	background: #2191c0;
+	font-size:17px;
 }
 
 .ui-corner-all {
