@@ -121,7 +121,7 @@ public class EventBean implements Serializable{
 		List<Event> featuredList = new ArrayList<Event>();
 		for (int i = 0; i < eventService.showFeatured().size(); i++) {
 //			if (featuredList.size() <= 9) {
-				if (Calendar.getInstance().getTime().before(eventService.showFeatured().get(i).getDateS())) {
+				if (Calendar.getInstance().getTime().before(eventService.showFeatured().get(i).getDateF())) {
 					featuredList.add(eventService.showFeatured().get(i));
 				}
 //			} else {
@@ -145,7 +145,7 @@ public class EventBean implements Serializable{
 	public List<Event> getAllEvents(){
 		List<Event> nextEvents = new ArrayList<Event>();
 		for(int i =0; i<eventService.showAllEvent().size(); i++){
-			if(Calendar.getInstance().getTime().before(eventService.showAllEvent().get(i).getDateS())){
+			if(Calendar.getInstance().getTime().before(eventService.showAllEvent().get(i).getDateF())){
 				nextEvents.add(eventService.showAllEvent().get(i));
 			}	
 		}
@@ -156,7 +156,7 @@ public class EventBean implements Serializable{
 	public List<Event> getFutureEvents(){
 		List<Event> nextEvents = new ArrayList<Event>();
 		for(int i =0; i<getEventList().size(); i++){
-			if(Calendar.getInstance().getTime().before(getEventList().get(i).getDateS())){
+			if(Calendar.getInstance().getTime().before(getEventList().get(i).getDateF())){
 				nextEvents.add(getEventList().get(i));
 			}	
 		}
