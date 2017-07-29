@@ -6,7 +6,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.musicstadium.model.Adress;
 import com.musicstadium.model.Event;
 import com.musicstadium.repository.EventRepository;
 

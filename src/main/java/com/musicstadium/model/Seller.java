@@ -1,15 +1,7 @@
 package com.musicstadium.model;
 
 import java.io.Serializable;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @javax.persistence.Entity
@@ -17,16 +9,6 @@ import javax.persistence.Table;
 public class Seller extends Entity implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-
-//	variaveis
-//	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//	@JoinTable(
-//		      name="event_id",
-//		      joinColumns=@JoinColumn(name="EVENT_ID", referencedColumnName="id"),
-//		      inverseJoinColumns=@JoinColumn(name="SELLER_ID", referencedColumnName="id"))
-//	@OneToMany(mappedBy="seller")
-//	//@JoinColumn(name = "ID" ,  insert="false", update="false")
-//	private List<Event> event;
 	
 	@Column(name="NAME")
 	private String name;
@@ -34,18 +16,30 @@ public class Seller extends Entity implements Serializable {
 	@Column(name="SELLERURL")
 	private String sellerUrl;
 	
-	@Column(name="PRICE")
-	private double price;
+	@Column(name="EMAIL")
+	private String email;
+	
+	@Column(name="PASSWORD")
+	private String password;
 
 //	setter & getter
 
-
+	
+	
 	public String getName() {
 		return name;
 	}
-
+	
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getSellerUrl() {
@@ -55,32 +49,19 @@ public class Seller extends Entity implements Serializable {
 	public void setSellerUrl(String sellerUrl) {
 		this.sellerUrl = sellerUrl;
 	}
-
-	public double getPrice() {
-		return price;
+	
+	public String getPassword() {
+		return password;
 	}
-
-	public void setPrice(double price) {
-		this.price = price;
+	
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 //	construtor
 	public Seller(){
 		
 	}
-
-//	@Override
-//	public boolean equals(Object seller){
-//		return this.name.equals(((Seller) seller).getName());
-//	}
-	
-//	public List<Event> getEvent() {
-//		return event;
-//	}
-//
-//	public void setEvent(List<Event> event) {
-//		this.event = event;
-//	}
 	
 	@Override
 	public String toString() {
