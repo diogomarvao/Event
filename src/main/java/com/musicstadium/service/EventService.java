@@ -52,5 +52,9 @@ public List<Event> showAllEvent(){
 		return eventRepository;
 	}
 	
-
+	public void removeEvent(Event event){
+		eventRepository.removeFromDb(event);
+	}
+	
+	
 }

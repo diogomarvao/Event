@@ -96,8 +96,9 @@ public class EventBean implements Serializable{
 	
 // editar eventos
 	public void editEventInDb(){
-	
-		eventService.editEvent(activeEvent);
+//		delEventInDb(activeEvent);
+		
+		eventService.editEvent(activeEvent);	
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Evento editado com sucesso", null));
 	}
 	
