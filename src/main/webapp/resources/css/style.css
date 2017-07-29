@@ -1,15 +1,14 @@
 .ui-layout-unit .ui-layout-unit-content {
-    background-color:transparent;
+	/*background:transparent;*/
+	
 }
-
-
 
 .bottomnav {
 	position: fixed;
 	width: 100%;
 	bottom: 0;
 	left: 0;
-	border-radius:5px;
+	border-radius: 5px;
 	border-color: transparent;
 	box-shadow: 5px 5px 5px #000000;
 	text-align: center;
@@ -17,180 +16,197 @@
 	font-size: 10px;
 	color: white;
 	background-color: #333;
-	 z-index: 1000;
+	z-index: 1000;
 	display: inline-block;
 }
 
-
-	
-
-.midcenter{
-	margin-left:10%;
-	margin-right:10%;
-	margin-top:2%;
-	margin-bottom:100px;
+.midcenter {
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 100px;
 }
-.midcenter1{
-	text-align:center;
-	margin-left:10%;
-	margin-right:10%;
-	margin-top:2%;
-	margin-bottom:10px;
-}
-.eventinfomargin{
+.midcenter2 {
 	margin-top:30px;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 0px;
 }
 
-.eventinfopopup{
-	text-align:center;
+.midcenter1 {
+	text-align: center;
+	margin-left: 10%; margin-right : 10%;
+	margin-bottom: 0px;
+	margin-right: 10%;
 }
-.ui-dialog{
 
-background-color:black!important;
+.eventinfomargin {
+	margin-top: 30px;
 }
 
+.eventinfopopup {
+	text-align: center;
+}
 
-.header{
+.ui-dialog {
 	
-	width:100%;
-	height:100%;
 }
 
-.Buy{
+.header {
+	width: 100%;
+	height: 100%;
+}
+
+.Buy {
 	border-style: solid;
-	border-color: transparent;
-	box-shadow: 5px 5px 5px 5px  grey;
+	/*border-color: transparent;*/
+	box-shadow: 5px 5px 5px 5px grey;
 	text-align: center;
 	font-family: "Lucida Console", Monaco, monospace;
 }
 
-.Buy1{
-	
+.Buy1 {
 	border-style: solid;
-	border-color: transparent;
-	box-shadow: 5px 5px  grey;
+	/*border-color: transparent;*/
+	box-shadow: 5px 5px grey;
 	text-align: center;
 	font-family: "Lucida Console", Monaco, monospace;
 }
 
-.datatableevents{
-	margin-left:10px;
-	margin-right:10px;
+.datatableevents {
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
-
-.menu{
-	width:100%;
-	height:100%;
-}
-.content{
-	width:100%;
-	height:100%;
-	background-color:transparent;
+.menu {
+	width: 100%;
+	height: 100%;
 }
 
-.index{
-	position:fixed;
-	width:100%;
-	height:100%;
-	background-color:grey;
+.content {
+	width: 100%;
+	height: 100%;
 }
 
+.index {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
 
-
-.label{
-	color:black;
+.label {
+	color: black;
 }
 
 h1 {
-	color: black;
 	font-size: 200%;
-	
 }
 
-h5{
-	font-size:70%;
-	color:white;
+h5 {
+	font-size: 70%;
 }
 
 .h55 {
-    font-size:20px;
-	color: white;
+	font-size: 20px;
 }
 
-.eventname{
-	color:white;
-	font-size:17px;
-}
-.ui-layout-unit{
-
-background-image: url("#{resource['images/fundo1.jpg']}");
+.eventname {
+	font-size: 17px;
 }
 
-.ui-outputpanel{
-	margin-left:10%;
-	margin-right:10%;
-	margin-top:2%;
-	margin-bottom:10px;
+.ui-layout-unit {
+	/*background-image: url("#{resource['images/background.jpg']}");*/
+	
 }
-/*button*/
 
-.ui-icon { 
-	text-indent: 0; 
-	}
-.ui-panel-content ui-widget-content{
+.ui-outputpanel {
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 2%;
+	margin-bottom: 10px;
+}
+
+.ui-icon {
+	text-indent: 0;
+}
+
+.ui-panel-content ui-widget-content {
 	
 }
 
 .ui-widget-content {
-    border: 0px; 
-    background-color: rgba(0, 0, 0, 0.24);
-    color:white;
+	/*background: white;*/
+	font-size: 18px;
 }
 
-.ui-widget-header{
-	background-color: rgba(1, 10, 249, 0.32)!important;
-	color:white;
+.ui-widget-header {
+	/*background: rgba(0, 0, 0, 0.17);*/
 	text-align: center;
+}
+
+.label {
 	
 }
 
-.label{
-	color:white;
+.ui-menu .ui-menuitem-text {
+	
 }
-.ui-menu .ui-menuitem-text{
-	color:white;
+
+.ui-menu, .ui-menu.ui-menu-child {
+	/*background: rgba(0, 0, 0, 0.17);*/
+	background: #2191c0;
+	font-size:17px;
 }
-.ui-menu,.ui-menu.ui-menu-child{
-	background:	#020540!important;
-}
+
 .ui-corner-all {
-	border-radius:0px;
+	border-radius: 7px;
 }
-..ui-widget-header .ui-state-default{
-	background:#020540!important;
+
+.
+.ui-widget-header .ui-state-default {
+	
+}
+
+.ui-panel-content ui-widget-content {
+	/*background-color:red;*/
+	
 }
 
 .ui-datatable tbody.ui-datatable-data {
-    outline: 0;
-    background-color: rgba(0, 0, 2, 0.64)!important;
+	
 }
 
-.ui-panelgrid{
-		margin-left:5%;
-	margin-right:5%;
+.h1about{
+	margin-left:30px; font-size:17px;
+}
+
+.ui-panelgrid {
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
 .ui-selectonemenu {
-    display: -webkit-box!important;
-    position: relative;
-    width: auto; 
-    zoom: 1;
-    cursor: pointer;
-    padding-right: 0%; 
-    margin-left: 12%;
-    margin-right: 1%;
+	display: -webkit-box !important;
+	position: relative;
+	width: auto;
+	zoom: 1;
+	cursor: pointer;
+	padding-right: 0%;
+	margin-left: 12%;
+	margin-right: 1%;
 }
-.ui-menubar .ui-menu-child{
-    background-color: black!important;
+
+.ui-menubar .ui-menu-child {
+	
+}
+
+.ui-menu .ui-menuitem-text {
+	color:black!important;
+	float: left;
+	margin-left: 20px;
+	color: white;
+}
+
+.img {
+	border-top-left-radius: 17px !important;
+	border-top-right-radius: 17px !important;
 }

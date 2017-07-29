@@ -25,10 +25,10 @@
 
 				<p:layoutUnit position="center">
 					<div class="midcenter1">
-						<p:graphicImage library="images" name="musicstadium2.png"
-							style="width:100%" />
-							</div>
-						<div class="midcenter">	
+						<p:graphicImage library="images" name="musicstadium.jpg"
+							style="width:100%;border-top-left-radius:17px;border-top-right-radius:17px" />
+					</div>
+					<div class="midcenter">
 						<h:form id="PopularSellerDisplay">
 
 							<p:carousel value="#{eventBean.getFeaturedList()}"
@@ -39,7 +39,8 @@
 										columnClasses="label,value" layout="grid"
 										styleClass="ui-panelgrid-blank">
 										<f:facet name="header">
-											<h:graphicImage  value = "#{e.imgUrl}" style="width:300px; heigh:300px;"/> 
+											<h:graphicImage value="#{e.imgUrl}"
+												style="width:300px; heigh:300px;border-radius:7px" />
 										</f:facet>
 
 										<h:outputText value="Data:" />
@@ -64,17 +65,17 @@
 								</p:panel>
 							</p:carousel>
 						</h:form>
+					</div>
 
-						<br />	<br />	<br />
 
-						<h:form id="EventDisplay">
-						
+					<h:form id="EventDisplay">
+						<div class="midcenter1">
 							<p:graphicImage library="images" name="proxevent.jpg"
-								style="width:100%" />
-	<br />	<br />	
+								style="width:100%;border-top-left-radius:17px;border-top-right-radius:17px" />
+						</div>
+						<div class="midcenter">
 							<p:dataTable headerText="PRÓXIMOS EVENTOS"
-								value="#{eventBean.getNextEventList()}" var="event" border="1"
-								 style="margin-top:10px">
+								value="#{eventBean.getNextEventList()}" var="event" border="1">
 
 								<div class="header">
 
@@ -111,11 +112,12 @@
 									</p:column>
 								</div>
 							</p:dataTable>
-						</h:form>
+						</div>
+					</h:form>
 
 
 
-					</div>
+
 
 
 				</p:layoutUnit>
