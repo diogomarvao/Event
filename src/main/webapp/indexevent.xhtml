@@ -14,22 +14,23 @@
 		<div class="index">
 			<p:layout fullPage="true">
 				<p:layoutUnit position="center">
-					<div class="midcenter">
+					<div class="midcenter2">
 						<p:graphicImage library="images" name="events.jpg"
-							style="width:100%" />
+							style="width:100%; border-top-left-radius:17px;border-top-right-radius: 17px"  />
 						<div id="Events">
-							<div class="center">
-								<p:commandButton class="add" icon="fa fa-fw fa-plus"
+							<div class="midcenter3">
+								<p:commandButton class="add" value="Adicionar Evento"
 									update="event" onclick="PF('AdNew').show();"
-									type="button" />
+									type="button" style="width:100%;height:50px;" />
 							</div>
-							<div class="datatableevents">
+							
+							<div class="midcenter3">
 								<h:form id="EventDisplay">
 									<p:growl life="3000" />
 									<p:dataTable value="#{eventBean.getEventList()}" var="event"
 										border="1" rows="10" paginator="true"
 										paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-										rowsPerPageTemplate="5,10,15" style="margin-top:10px">
+										rowsPerPageTemplate="5,10,15">
 										<div class="header">
 											<p:column class="header" headerText="Id">
 												<div>#{event.id}</div>
@@ -83,7 +84,9 @@
 										</div>
 									</p:dataTable>
 								</h:form>
+								</div>
 								<!-- 	1.2 - Inserir detalhes do event -->
+								<div>
 								<h:form id="NewAd">
 									<p:growl life="3000" />
 									
@@ -160,7 +163,9 @@
 										</p:outputPanel>
 									</p:dialog>
 								</h:form>
+								</div>
 								<!-- 	1.2.1 - Inserir detalhes do address -->
+								
 								<h:form id="Adress">
 									<p:dialog class="diag" header="Novo Adress" widgetVar="Adress"
 										resizable="false">
@@ -252,7 +257,7 @@
 										</p:outputPanel>
 									</p:dialog>
 								</h:form>
-							</div>
+							
 						</div>
 					</div>
 				</p:layoutUnit>
