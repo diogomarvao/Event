@@ -74,25 +74,25 @@
 						required="true" label="username" />
 						
 					<h:outputLabel for="URL" value="Introduza URL :" />
-					<p:inputText id="name" value="#{sessionBean.seller.sellerUrl}"
-						required="true" label="username" />
+					<p:inputText id="name" value="#{sellerBean.seller.sellerUrl}"
+						required="true" label="username"/>
 						
-					<h:outputLabel for="URL" value="Introduza E-mail :" />
-					<p:inputText id="name" value="#{sessionBean.seller.email}"
+					<h:outputLabel for="Email" value="Introduza E-mail :" />
+					<p:inputText id="Email" value="#{sellerBean.seller.email}"
 						required="true" label="username" />
 
 					<h:outputLabel for="pwd1" value="Password : *" />
         			<p:password id="pwd1" value="#{sellerBean.seller.password}" 
-        					match="pwd2" label="Password" required="true" />
+        					match="pwd2" label="Password" required="true"/>
  
         			<h:outputLabel for="pwd2" value="Confirme Password : *" />
        			 	<p:password id="pwd2" value="#{sellerBean.seller.password}" 
-       			 			label="PasswordConfirm" required="true" />
+       			 			label="PasswordConfirm" required="true"/>
 					
 					<f:facet name="footer">
 
-						<p:commandButton value="Criar Utilizador" update="@all"
-							actionListener="#{userBean.addUserToDb()}" oncomplete="sign.hide()" />
+						<p:commandButton value="Criar Utilizador"
+							actionListener="#{sellerBean.addSellerToDb()}" oncomplete="sign.hide()" />
 
 					</f:facet>
 				</h:panelGrid>
@@ -167,7 +167,7 @@
 		<h:form>
 			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
 
-			<p:dialog header="Login" widgetVar="log" resizable="false">
+			<p:dialog header="Login" widgetVar="SeEdit" resizable="false">
 				<p:outputPanel id="editSeller" style="text-align:center;">
 					<p:panelGrid class="diagEdit" columns="2">
 
@@ -185,11 +185,11 @@
 						<p:inputText value="#{sellerBean.activeSeller.sellerUrl}"  />
 
 						<h:outputLabel for="pwd1" value="Password : *" />
-        				<p:password id="pwd1" value="#{sellerBean.seller.password}" 
+        				<p:password id="pwd1" value="#{sellerBean.activeSeller.password}" 
         					match="pwd2" label="Password" required="true" />
  
         				<h:outputLabel for="pwd2" value="Confirme Password : *" />
-       			 		<p:password id="pwd2" value="#{sellerBean.seller.password}" 
+       			 		<p:password id="pwd2" value="#{sellerBean.activeSeller.password}" 
        			 			label="PasswordConfirm" required="true" />
 
 					</p:panelGrid>
