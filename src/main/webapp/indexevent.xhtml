@@ -37,24 +37,15 @@
 											<p:column class="header" headerText="Evento">
 												<div class="tablecont">#{event.name}</div>
 											</p:column>
-											<p:column class="header" headerText="Descrição">
-												<div class="tablecont">#{event.description}</div>
-											</p:column>
-											<p:column class="header" headerText="LinkImagem">
-												<div class="tablecont">#{event.imgUrl}</div>
-											</p:column>
-											<p:column class="header" headerText="LinkVideo">
-												<div class="tablecont">#{event.videoLink}</div>
-											</p:column>
 											<p:column class="header" headerText="Género">
 												<div class="tablecont">#{event.genre}</div>
 											</p:column>
-											<p:column class="header" headerText="Dia Inicial">
+											<p:column class="header" headerText="Começa">
 												<h:outputText value="#{event.dateS}">
 													<f:convertDateTime pattern="dd/MM/yyyy" />
 												</h:outputText>
 											</p:column>
-											<p:column class="header" headerText="Dia Final">
+											<p:column class="header" headerText="Termina">
 												<h:outputText value="#{event.dateF}">
 													<f:convertDateTime pattern="dd/MM/yyyy" />
 												</h:outputText>
@@ -64,7 +55,7 @@
 													<f:convertDateTime pattern="HH:mm" />
 												</h:outputText>
 											</p:column>
-											<p:column class="header" headerText="Fim Pervisto">
+											<p:column class="header" headerText="Fim">
 												<h:outputText value="#{event.hourF}">
 													<f:convertDateTime pattern="HH:mm" />
 												</h:outputText>
