@@ -178,4 +178,10 @@ public class EventBean implements Serializable{
 
 	}
 	
+	
+	//eventos dos sellers
+	public List<Event> getSellersEvent(Seller activeSeller){
+		return eventService.showSellersEvent(activeSeller);
+	}
+	
 }
