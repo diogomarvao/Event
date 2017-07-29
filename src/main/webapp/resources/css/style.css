@@ -168,7 +168,9 @@ h5 {
 	
 }
 
-
+.h1about{
+	margin-left:30px; font-size:17px;
+}
 
 .ui-panelgrid {
 	margin-left: 5%;
