@@ -39,6 +39,10 @@ public List<Event> showSellersEvent(Seller activeSeller){
   	return list;
 }
 
+public List<Event> showLastAdded(){
+	List<Event> list = eventRepository.getDbLastAdded();
+	return list;
+}
 
 public List<Event> showAllEvent(){
 	List<Event> list = eventRepository.getDbAllEvents();

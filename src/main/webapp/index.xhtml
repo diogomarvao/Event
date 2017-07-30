@@ -65,6 +65,57 @@
 								</p:panel>
 							</p:carousel>
 						</h:form>
+						
+						<h:form id="LastAdded" style="width:100%;">
+						
+						<div class="midcenter">
+		
+							<p:dataTable headerText="Ultimos Eventos Adicionados"
+								value="#{eventBean.lastAddedEvents}" var="event" border="1">
+
+									<f:facet name="header">
+           Últimos Eventos Adicionados
+        </f:facet>
+									<div class="header">
+				
+									<p:column class="header" headerText="Evento">
+										<div class="tablecont">#{event.name}</div>
+									</p:column>
+
+
+									<p:column class="header" headerText="Dia Inicial">
+										<h:outputText value="#{event.dateS}">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:outputText>
+									</p:column>
+									<p:column class="header" headerText="Dia Final">
+										<h:outputText value="#{event.dateF}">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:outputText>
+									</p:column>
+									<p:column class="header" headerText="Inicio">
+										<h:outputText value="#{event.hourS}">
+											<f:convertDateTime pattern="HH:mm" />
+										</h:outputText>
+									</p:column>
+									<p:column class="header" headerText="Localização">
+										<div class="tablecont">#{event.adress.name}</div>
+									</p:column>
+									<p:column class="header" headerText="Vendedor">
+										<h:commandLink style="text-decoration: underline;" action="#{event.seller.sellerUrl}" value="#{event.seller.name}"/>
+									</p:column>
+									
+									
+								</div>
+							</p:dataTable>
+						</div>
+					</h:form>
+						
+						
+						
+						
+						
+						
 					</div>
 
 
@@ -79,32 +130,27 @@
 
 								<div class="header">
 
-									<p:column class="header" headerText="Evento"
-										filterBy="#{event.name}" filterMatchMode="contains">
+									<p:column class="header" headerText="Evento">
 										<div class="tablecont">#{event.name}</div>
 									</p:column>
 
 
-									<p:column class="header" headerText="Dia Inicial"
-										sortBy="#{event.dateS}">
+									<p:column class="header" headerText="Dia Inicial">
 										<h:outputText value="#{event.dateS}">
 											<f:convertDateTime pattern="dd/MM/yyyy" />
 										</h:outputText>
 									</p:column>
-									<p:column class="header" headerText="Dia Final"
-										sortBy="#{event.dateF}">
+									<p:column class="header" headerText="Dia Final">
 										<h:outputText value="#{event.dateF}">
 											<f:convertDateTime pattern="dd/MM/yyyy" />
 										</h:outputText>
 									</p:column>
-									<p:column class="header" headerText="Inicio"
-										sortBy="#{event.hourS}">
+									<p:column class="header" headerText="Inicio">
 										<h:outputText value="#{event.hourS}">
 											<f:convertDateTime pattern="HH:mm" />
 										</h:outputText>
 									</p:column>
-									<p:column class="header" headerText="Localização"
-										filterBy="#{event.adress}" filterMatchMode="contains">
+									<p:column class="header" headerText="Localização">
 										<div class="tablecont">#{event.adress.name}</div>
 									</p:column>
 									<p:column class="header">

@@ -43,7 +43,11 @@ public class EventRepository extends EntityRepository<Event>{
 			return dbNextEvent;
 		}
 		
-		
+		public List<Event> getDbLastAdded(){
+			Query query = getDb().createNativeQuery("SELECT * FROM Event ORDER BY id DESC LIMIT 10", Event.class);
+			List<Event> dbLastAdded = (List<Event>) query.getResultList();
+			return dbLastAdded;
+		}
 		
 		//sacar cenas do seller 
 		public List<Event> getDbSellerEvent(Seller activeSeller){
@@ -52,7 +56,7 @@ public class EventRepository extends EntityRepository<Event>{
 			return dbNextEvent;
 		}
 		
-		
+	
 		// eliminar
 		@Override
 		@Transactional

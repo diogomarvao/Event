@@ -164,6 +164,13 @@ public class EventBean implements Serializable{
 		return nextEvents;
 	}
 	
+	public List<Event> getLastAddedEvents(){
+		return eventService.showLastAdded();
+	}
+	
+	
+	
+	
 	public Seller getActiveSeller(){
 		return sessionBean.getActiveSeller();
 	}
