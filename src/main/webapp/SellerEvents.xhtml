@@ -14,16 +14,16 @@
 		<div class="index">
 			<p:layout fullPage="true">
 				<p:layoutUnit position="center">
-					<div class="midcenter">
+					<div class="midcenter2">
 						<p:graphicImage library="images" name="events.jpg"
 							style="width:100%" />
 						<div id="Events">
-							<div class="center">
-								<p:commandButton class="add" icon="fa fa-fw fa-plus"
+							<div class="midcenter3">
+								<p:commandButton class="add" value="Adicionar Evento"
 									update="event" onclick="PF('AdNew').show();"
-									type="button" />
+									type="button" style="width:100%;height:50px;" />
 							</div>
-							<div class="datatableevents">
+							<div class="midcenter3">
 								<h:form id="EventDisplay">
 									<p:growl life="3000" />
 									<p:dataTable value="#{sessionBean.getSellersEvent()}" var="event"

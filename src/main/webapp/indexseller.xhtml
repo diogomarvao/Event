@@ -30,7 +30,11 @@
 							<p:graphicImage library="images" name="seller.jpg"
 								style="width:100%; border-top-left-radius:17px;border-top-right-radius: 17px" />
 
-
+<div class="midcenter3">
+								<p:commandButton class="add" value="Adicionar Evento"
+									update="event" onclick="PF('AdNew').show();"
+									type="button" style="width:100%;height:50px;" />
+							</div>
 							<h:form id="SellerDisplay">
 								<p:growl life="3000" />
 								
@@ -78,25 +82,6 @@
 
 										</p:column>
 
-											<p:column class="header" headerText="Preço"
-												sortBy="#{s.price}">
-												<div class="tablecont">#{s.price}</div>
-											</p:column>
-
-											<p:column class="header">
-
-												<p:commandButton icon="fa fa-fw fa-edit" class="bottab"
-													update=":EditarSe:editSeller"
-													oncomplete="PF('SeEdit').show();">
-
-													<f:setPropertyActionListener value="#{s}"
-														target="#{sellerBean.activeSeller}" />
-												</p:commandButton>
-												<p:commandButton icon="fa fa-fw fa-remove" class="bottab"
-													action="#{sellerBean.delSellerInDb(s)}"
-													update="SellerDisplay" />
-
-											</p:column>
 										</div>
 									</p:dataTable>
 								</h:form>
