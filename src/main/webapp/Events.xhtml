@@ -88,7 +88,6 @@
 										    }
 									        </script>
 
-									<div class="eventinfomargin">
 
 
 										<p:outputPanel id="maisInf">
@@ -98,13 +97,15 @@
 											</div>
 
 
-											<div class="eventinfomargin">
-												<h:graphicImage value="#{eventBean.activeEvent.imgUrl}"
-													width="513" height="350" />
-											</div>
 											
-											<div class="eventinfomargin">
-												<div class="eventname">
+										
+												<h:graphicImage value="#{eventBean.activeEvent.imgUrl}"
+													width="519" height="350" />
+											
+											
+											
+											
+												<div class="midcenter4">
 													<div class="Buy">
 														<h:outputText value="Descrição: " />
 														<br/>
@@ -162,7 +163,7 @@
 
 													</div>
 												</div>
-											</div>
+											
 											<div class="eventinfomargin">
 
 
@@ -171,12 +172,12 @@
 
 
 											</div>
-
-											<div class="eventinfomargin">
-												<div class="eventname">
-													<h:outputText id="add"
-														value="#{eventBean.activeEvent.adress.local}" />
-													<br /> <br />
+													
+													<div class="midcenter6">
+												<h:outputText value="#{eventBean.activeEvent.adress.local}"
+													style="font-size:40px;width:1000px" />
+											</div>
+													<div class="midcenter5">
 													<p:gmap id="geoMap" widgetVar="geoMap"
 														center="#{geocodeView.centerGeoMap}" zoom="15"
 														type="ROADMAP" model="#{geocodeView.geoModel}"
@@ -188,12 +189,12 @@
 
 												</div>
 
-											</div>
+										
 
 
 
 										</p:outputPanel>
-									</div>
+									
 								</p:dialog>
 							</h:form>
 						</div>
