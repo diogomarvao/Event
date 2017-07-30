@@ -23,71 +23,72 @@
 
 
 				<p:layoutUnit position="center">
-					<div class="midcenter">
+					<div class="midcenter2">
 						<!-- 1 - Menu principal enderecos -->
 
 						<p:graphicImage library="images" name="address.jpg"
-							style="width:100%" />
+							style="width:100%; border-top-left-radius:17px;border-top-right-radius: 17px" />
+						<div class="midcenter3">
+							<p:commandButton class="add" value="Adicionar Localização"
+								update="adress" onclick="PF('AdNew').show();" type="button"
+								style="width:100%;height:50px;" />
+						</div>
+						<div class="midcenter3">
+							<h:form id="AdressDisplay">
+								<p:growl life="2000" />
 
-						<p:commandButton class="add" icon="fa fa-fw fa-plus"
-							update="adress" onclick="PF('AdNew').show();" type="button" />
+								<!-- 		1.1 - tabela dos enderecos -->
+								<p:dataTable value="#{adressBean.getAdressList()}" var="adress"
+									border="1" rows="10" paginator="true"
+									paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+									rowsPerPageTemplate="5,10,15">
+									<div class="header">
+										<p:column class="header" headerText="Id" sortBy="#{adress.id}">
+											<div>#{adress.id}</div>
+										</p:column>
+										<p:column class="header" headerText="Nome"
+											sortBy="#{adress.name}">
+											<div>#{adress.name}</div>
+										</p:column>
+										<p:column class="header" headerText="Morada"
+											filterBy="#{adress.street}" filterMatchMode="contains">
+											<div class="tablecont">#{adress.street}</div>
+										</p:column>
+										<p:column class="header" headerText="Localidade"
+											filterBy="#{adress.local}" filterMatchMode="contains"
+											sortBy="#{adress.local}">
+											<div class="tablecont">#{adress.local}</div>
+										</p:column>
+										<p:column class="header" headerText="Código Postal"
+											sortBy="#{adress}.codigoPostal}">
+											<div class="tablecont">#{adress.codigoPostal}</div>
+										</p:column>
+										<p:column class="header">
 
+											<p:commandButton icon="fa fa-fw fa-edit" class="bottab"
+												update=":EditarAd:editAdress"
+												oncomplete="PF('AdEdit').show();">
 
-						<h:form id="AdressDisplay">
-							<p:growl life="2000" />
+												<f:setPropertyActionListener value="#{adress}"
+													target="#{adressBean.activeAdress}" />
+											</p:commandButton>
+											<p:commandButton icon="fa fa-fw fa-remove" class="bottab"
+												action="#{adressBean.delAdressInDb(adress)}"
+												update="AdressDisplay" />
 
-							<!-- 		1.1 - tabela dos enderecos -->
-							<p:dataTable value="#{adressBean.getAdressList()}" var="adress"
-								border="1" rows="10" paginator="true"
-								paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-								rowsPerPageTemplate="5,10,15" style="margin-top:10px">
-								<div class="header">
-									<p:column class="header" headerText="Id" sortBy="#{adress.id}">
-										<div>#{adress.id}</div>
-									</p:column>
-									<p:column class="header" headerText="Nome"
-										sortBy="#{adress.name}">
-										<div>#{adress.name}</div>
-									</p:column>
-									<p:column class="header" headerText="Morada"
-										filterBy="#{adress.street}" filterMatchMode="contains">
-										<div class="tablecont">#{adress.street}</div>
-									</p:column>
-									<p:column class="header" headerText="Localidade"
-										filterBy="#{adress.local}" filterMatchMode="contains"
-										sortBy="#{adress.local}">
-										<div class="tablecont">#{adress.local}</div>
-									</p:column>
-									<p:column class="header" headerText="Código Postal"
-										sortBy="#{adress}.codigoPostal}">
-										<div class="tablecont">#{adress.codigoPostal}</div>
-									</p:column>
-									<p:column class="header">
-
-										<p:commandButton icon="fa fa-fw fa-edit" class="bottab"
-											update=":EditarAd:editAdress"
-											oncomplete="PF('AdEdit').show();">
-
-											<f:setPropertyActionListener value="#{adress}"
-												target="#{adressBean.activeAdress}" />
-										</p:commandButton>
-										<p:commandButton icon="fa fa-fw fa-remove" class="bottab"
-											action="#{adressBean.delAdressInDb(adress)}"
-											update="AdressDisplay" />
-
-									</p:column>
-								</div>
-							</p:dataTable>
-						</h:form>
-
+										</p:column>
+									</div>
+								</p:dataTable>
+							</h:form>
+						</div>
 						<!-- 	1.2 - Inserir detalhes do event -->
 
 
 						<h:form id="NewAd">
 							<p:growl life="2000" />
-							
+
 							<p:dialog class="diag" header="Nova Localização"
-								widgetVar="AdNew" resizable="false" width="425" height="270">
+								widgetVar="AdNew" resizable="false" width="480" height="270">
 								<p:outputPanel id="editAdress" style="text-align:center;">
 									<p:panelGrid class="diagEdit" columns="2">
 										<h:outputText value="Nome:" />
@@ -115,7 +116,7 @@
 
 						<h:form id="EditarAd">
 							<p:dialog class="diag" header="Editar Localização"
-								widgetVar="AdEdit" resizable="false">
+								widgetVar="AdEdit" resizable="false" width="480" height="320" >
 								<!-- painel -->
 								<p:outputPanel id="editAdress" style="text-align:center;">
 									<p:panelGrid class="diagEdit" columns="2">

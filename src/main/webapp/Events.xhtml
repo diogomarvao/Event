@@ -9,7 +9,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	template="CommonLayout.xhtml">
-	
+
 
 	<ui:define name="content">
 		<div class="index">
@@ -20,170 +20,194 @@
 
 
 				<p:layoutUnit position="center">
-				<div class="midcenter">
-				
-
-					<p:graphicImage library="images" name="events.jpg"
-						style="width:100%;border-top-left-radius:17px;border-top-right-radius:17px" />
-
-					<h:form id="EventDisplay">
-
-						<!-- 		1.1 - tabela dos produtos -->
-						<p:dataTable value="#{eventBean.getAllEvents()}" var="event"
-							border="1">
-							<div class="header">
-								<p:column class="header" headerText="Eventos">
-									<div>#{event.name}</div>
-								</p:column>
-
-								<p:column class="header" headerText="Data Inicio">
-									<h:outputText value="#{event.dateS}">
-										<f:convertDateTime pattern="dd/MM/yyyy" />
-									</h:outputText>
-								</p:column>
-
-								<p:column class="header" headerText="Localidade">
-									<div>#{event.adress.name}</div>
-								</p:column>
-
-								<p:column class="header" headerText="Preço">
-									<div>#{event.seller.price}</div>
-								</p:column>
-
-								<p:column class="header">
-
-									<p:commandButton icon="fa fa-fw fa-file-text-o" class="bottab" update=":Inf:maisInf"
-										value="Mais Informações" oncomplete="PF('EvInf').show();geocode();">
-									
-
-										<f:setPropertyActionListener value="#{event}"
-											target="#{eventBean.activeEvent}" />
-											
-										
-									</p:commandButton>
+					<div class="midcenter2">
 
 
-								</p:column>
-							</div>
-						</p:dataTable>
-					</h:form>
-<div class="eventinfopopup">
-					
-						<h:form id="Inf">
-					
-							<p:dialog class="diag" header="Informações Do Evento"
-								widgetVar="EvInf" resizable="false" width="700" height="600">
-								<!-- painel -->
-								<script type="text/javascript">
+						<p:graphicImage library="images" name="events.jpg"
+							style="width:100%;border-top-left-radius:17px;border-top-right-radius:17px" />
+						<div class="midcenter3">
+							<h:form id="EventDisplay">
+
+								<!-- 		1.1 - tabela dos produtos -->
+								<p:dataTable value="#{eventBean.getFutureEvents()}" var="event"
+									border="1">
+									<div class="header">
+										<p:column class="header" headerText="Eventos">
+											<div>#{event.name}</div>
+										</p:column>
+
+										<p:column class="header" headerText="Data Inicio">
+											<h:outputText value="#{event.dateS}">
+												<f:convertDateTime pattern="dd/MM/yyyy" />
+											</h:outputText>
+										</p:column>
+
+										<p:column class="header" headerText="Localidade">
+											<div>#{event.adress.name}</div>
+										</p:column>
+
+
+										<p:column class="header" headerText="Preço">
+											<div>#{event.seller.price}</div>
+										</p:column>
+
+										<p:column class="header">
+
+											<p:commandButton icon="fa fa-fw fa-file-text-o"
+												class="bottab" update=":Inf:maisInf"
+												value="Mais Informações"
+												oncomplete="PF('EvInf').show();geocode();">
+
+
+												<f:setPropertyActionListener value="#{event}"
+													target="#{eventBean.activeEvent}" />
+
+
+											</p:commandButton>
+
+
+										</p:column>
+									</div>
+								</p:dataTable>
+							</h:form>
+						</div>
+						<div class="eventinfopopup">
+
+							<h:form id="Inf">
+
+								<p:dialog class="diag" header="Informações Do Evento"
+									widgetVar="EvInf" resizable="false" width="700" height="600">
+									<!-- painel -->
+									<script type="text/javascript">
 										 function geocode() {
 										        PF('geoMap').geocode($("span[id='Inf:cpostasl']").text());
 										    }
 									        </script>
-									        
-							<div class="eventinfomargin">
-								<p:outputPanel id="maisInf">
-								<div class="eventname">
-								<h:outputText value="#{eventBean.activeEvent.name}" style="font-size:40px;"/>			
-									</div>
-								<div class="eventinfomargin">	
-										<h:graphicImage  value ="#{eventBean.activeEvent.imgUrl}" width="535" height="350"/> 
-										
+
+									<div class="eventinfomargin">
+
+
+
+
+
+
+
+
+										<p:outputPanel id="maisInf">
+											<div class="midcenter4">
+												<h:outputText value="#{eventBean.activeEvent.name}"
+													style="font-size:40px;" />
+											</div>
+
+
+											<div class="eventinfomargin">
+												<h:graphicImage value="#{eventBean.activeEvent.imgUrl}"
+													width="513" height="350" />
+											</div>
 											
-								</div>
-								<div class="eventinfomargin">
-											<div class="eventname">
-										<div class="Buy">
-											<h:outputText value="Descrição: " />
-											<h:outputText value="#{eventBean.activeEvent.description}" />
-											<br />
-											<h:outputText value="Género: " />
-											<h:outputText value="#{eventBean.activeEvent.genre}" />
-											<br />
-											<h:outputText value="Sessões" />
-											<h:outputText value="Periodo do Envento: " />
-											<h:outputText value="#{eventBean.activeEvent.dateS}">
-											<f:convertDateTime pattern="dd/MM/yyyy" />
-											</h:outputText>
-											<h:outputText value=" até " />
-											<h:outputText value="#{eventBean.activeEvent.dateF}">
-												<f:convertDateTime pattern="dd/MM/yyyy" />
-											</h:outputText>
-											<br />
-
-											<h:outputText value="Inicio: " />
-
-											<h:outputText value="#{eventBean.activeEvent.hourS}">
-												<f:convertDateTime pattern="HH:mm" />
-											</h:outputText>
-											<br />
-											<h:outputText value="Fim: " />
-											<h:outputText value="#{eventBean.activeEvent.hourF}">
-												<f:convertDateTime pattern="HH:mm" />
-											</h:outputText>
-											<br />
-												<h:outputText value="Comprar: " />
-												<br />
-												<h:outputText value="Valores: " />
-												<h:outputText value="#{eventBean.activeEvent.seller.price}" />
-												<br />
-												<h:outputText value="Vendedor: " />
-												<h:outputText value="#{eventBean.activeEvent.seller.name}" />
-												<a href="#{eventBean.activeEvent.seller.sellerUrl}" /> <br />
-											
-
-										
-												<h:outputText value="Localização: " />
-												<br />
-												<h:outputText id="address" value="#{eventBean.activeEvent.adress.street}" />
-												<br />
-												<h:outputText id="addressev" value="#{eventBean.activeEvent.adress.local}" />
-												<br />
-												<h:outputText id="cpostasl"
-													value="#{eventBean.activeEvent.adress.codigoPostal}" />
-											
-												</div>
-												</div>
-												</div>
-													<div class="eventinfomargin">
-									
-
-											<p:media value="#{eventBean.videoLink()}"
-												width="535" height="350" player="flash" />
-
-										
-								</div>
-												
-												<div class="eventinfomargin">
+											<div class="eventinfomargin">
 												<div class="eventname">
-												<h:outputText id="add" value="#{eventBean.activeEvent.adress.local}" />
-												<br /><br />
-												<p:gmap id="geoMap" widgetVar="geoMap" center="#{geocodeView.centerGeoMap}" zoom="15" type="ROADMAP" model="#{geocodeView.geoModel}" style="width:535px;height:380px">
- <p:ajax event="geocode" listener="#{geocodeView.onGeocode}" update="@this" />
-    </p:gmap>
-												
-												
+													<div class="Buy">
+														<h:outputText value="Descrição: " />
+														<h:outputText value="#{eventBean.activeEvent.description}" />
+														<br />
+														<h:outputText value="Género: " />
+														<h:outputText value="#{eventBean.activeEvent.genre}" />
+														<br />
+														<h:outputText value="Sessões" />
+														<h:outputText value="Periodo do Envento: " />
+														<h:outputText value="#{eventBean.activeEvent.dateS}">
+															<f:convertDateTime pattern="dd/MM/yyyy" />
+														</h:outputText>
+														<h:outputText value=" até " />
+														<h:outputText value="#{eventBean.activeEvent.dateF}">
+															<f:convertDateTime pattern="dd/MM/yyyy" />
+														</h:outputText>
+														<br />
+
+														<h:outputText value="Inicio: " />
+
+														<h:outputText value="#{eventBean.activeEvent.hourS}">
+															<f:convertDateTime pattern="HH:mm" />
+														</h:outputText>
+														<br />
+														<h:outputText value="Fim: " />
+														<h:outputText value="#{eventBean.activeEvent.hourF}">
+															<f:convertDateTime pattern="HH:mm" />
+														</h:outputText>
+														<br />
+														<h:outputText value="Comprar: " />
+														<br />
+														<h:outputText value="Valores: " />
+														<h:outputText
+															value="#{eventBean.activeEvent.seller.price}" />
+														<br />
+														<h:outputText value="Vendedor: " />
+														<h:outputText value="#{eventBean.activeEvent.seller.name}" />
+														<a href="#{eventBean.activeEvent.seller.sellerUrl}" /> <br />
+
+
+
+														<h:outputText value="Localização: " />
+														<br />
+														<h:outputText id="address"
+															value="#{eventBean.activeEvent.adress.street}" />
+														<br />
+														<h:outputText id="addressev"
+															value="#{eventBean.activeEvent.adress.local}" />
+														<br />
+														<h:outputText id="cpostasl"
+															value="#{eventBean.activeEvent.adress.codigoPostal}" />
+
+													</div>
 												</div>
-												
+											</div>
+											<div class="eventinfomargin">
+
+
+												<p:media value="#{eventBean.videoLink()}" width="535"
+													height="350" player="flash" />
+
+
+											</div>
+
+											<div class="eventinfomargin">
+												<div class="eventname">
+													<h:outputText id="add"
+														value="#{eventBean.activeEvent.adress.local}" />
+													<br /> <br />
+													<p:gmap id="geoMap" widgetVar="geoMap"
+														center="#{geocodeView.centerGeoMap}" zoom="15"
+														type="ROADMAP" model="#{geocodeView.geoModel}"
+														style="width:535px;height:380px">
+														<p:ajax event="geocode"
+															listener="#{geocodeView.onGeocode}" update="@this" />
+													</p:gmap>
+
+
 												</div>
 
-											
+											</div>
 
-								</p:outputPanel>
-								</div>
-							</p:dialog>
-						</h:form>
+
+
+										</p:outputPanel>
+									</div>
+								</p:dialog>
+							</h:form>
+						</div>
 					</div>
-					</div>
-					
-					
+
+
 				</p:layoutUnit>
-				
+
 			</p:layout>
 
 
 		</div>
-		  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBD7R1UD7EiJzH6kMA9IUPz3eOw_oBlqkU"
-  type="text/javascript"></script>
+		<script
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBD7R1UD7EiJzH6kMA9IUPz3eOw_oBlqkU"
+			type="text/javascript"></script>
 	</ui:define>
 
 
