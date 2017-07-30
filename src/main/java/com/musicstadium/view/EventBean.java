@@ -96,8 +96,9 @@ public class EventBean implements Serializable{
 	
 // editar eventos
 	public void editEventInDb(){
-	
-		eventService.editEvent(activeEvent);
+//		delEventInDb(activeEvent);
+		
+		eventService.editEvent(activeEvent);	
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Evento editado com sucesso", null));
 	}
 	
@@ -117,27 +118,46 @@ public class EventBean implements Serializable{
 	}
 	
 	public List<Event> getFeaturedList() {
-//		List<Event> featuredList = new ArrayList<Event>();
-//		for (int i = 0; i < eventService.showFeatured().size(); i++) {
+		List<Event> featuredList = new ArrayList<Event>();
+		for (int i = 0; i < eventService.showFeatured().size(); i++) {
 //			if (featuredList.size() <= 9) {
-//				if (Calendar.getInstance().getTime().before(eventService.showFeatured().get(i).getDateS())) {
-//					featuredList.add(eventService.showFeatured().get(i));
-//				}
+				if (Calendar.getInstance().getTime().before(eventService.showFeatured().get(i).getDateF())) {
+					featuredList.add(eventService.showFeatured().get(i));
+				}
 //			} else {
 //				break;
-//			}
+			}
 //		}
 //		return featuredList;
 		
+//		List<Event> nextEvents = new ArrayList<Event>();
+//		for(int i =0; i<eventService.showAllEvent().size(); i++){
+//			if(Calendar.getInstance().getTime().before(eventService.showAllEvent().get(i).getDateS())){
+//				nextEvents.add(eventService.showAllEvent().get(i));
+//			}	
+//		}
+		return featuredList;
 
-		 return eventService.showFeatured();
+//		 return eventService.showFeatured();
 	}
+	
+	
+	public List<Event> getAllEvents(){
+		List<Event> nextEvents = new ArrayList<Event>();
+		for(int i =0; i<eventService.showAllEvent().size(); i++){
+			if(Calendar.getInstance().getTime().before(eventService.showAllEvent().get(i).getDateF())){
+				nextEvents.add(eventService.showAllEvent().get(i));
+			}	
+		}
+		return nextEvents;
+	}
+	
 	
 	public List<Event> getFutureEvents(){
 		List<Event> nextEvents = new ArrayList<Event>();
-		for(int i =0; i<getEventList().size(); i++){
-			if(Calendar.getInstance().getTime().before(getEventList().get(i).getDateS())){
-				nextEvents.add(getEventList().get(i));
+		for(int i =0; i<getNextEventList().size(); i++){
+			if(Calendar.getInstance().getTime().before(getNextEventList().get(i).getDateF())){
+				nextEvents.add(getNextEventList().get(i));
 			}	
 		}
 		return nextEvents;

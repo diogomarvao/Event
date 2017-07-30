@@ -217,20 +217,31 @@
 													<f:selectItems value="#{eventBean.selectGenre}"
 														required="true" />
 												</p:selectOneMenu>
-												<p:outputLabel for="local" value="Localidade: " />
+												<p:outputLabel for="localEdit" value="Localidade: " />
 												<p:column>
-													<p:selectOneMenu id="local"
+													<p:selectOneMenu id="localEdit"
 														value="#{eventBean.activeEvent.adress}"
+														converter="omnifaces.SelectItemsConverter"
 														style="width:150px">
 														<f:selectItem itemLabel="Selecione a Localidade"
 															itemValue="" noSelectionOption="true" />
 														<f:selectItems value="#{adressBean.adressList}"
 															var="local" itemLabel="#{local.name}"
-															itemValue="#{local.name}" />
+															itemValue="#{local}" />
 													</p:selectOneMenu>
 													<p:commandButton class="add" icon="fa fa-fw fa-plus"
 														onclick="PF('Adress').show();" type="button" />
 												</p:column>
+												<p:outputLabel for="sellerEdit" value="Vendedor: " />
+												<p:selectOneMenu id="sellerEdit"
+													value="#{eventBean.activeEvent.seller}"
+													converter="omnifaces.SelectItemsConverter" immediate="true">
+													<f:selectItem itemLabel="Selecione o Vendedor" itemValue=""
+														noSelectionOption="true" />
+													<f:selectItems value="#{sellerBean.sellerList}"
+														var="seller" itemLabel="#{seller.name}"
+														itemValue="#{seller}" />
+												</p:selectOneMenu>
 												<p:outputLabel for="calPopupS" value="Dia (1º): " />
 												<p:calendar id="calPopupS"
 													value="#{eventBean.activeEvent.dateS}" pattern="dd/MM/yyyy"
