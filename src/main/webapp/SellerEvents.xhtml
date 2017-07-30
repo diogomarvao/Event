@@ -243,9 +243,11 @@
 														<f:selectItem itemLabel="Vendedor"
 															itemValue="" noSelectionOption="true" />
 														<f:selectItems value="#{sellerBean.sellerList}"
-															var="local" itemLabel="#{seller.name}"
-															itemValue="#{local}" />
+															var="seller" itemLabel="#{seller.name}"
+															itemValue="#{seller}" />
 													</p:selectOneMenu>
+													<h:outputText value="Preço :" />
+												<p:inputText value="#{eventBean.activeEvent.price}" required="true"/>
 												<p:outputLabel for="calPopupS" value="Dia (1º): " />
 												<p:calendar id="calPopupS"
 													value="#{eventBean.activeEvent.dateS}" pattern="dd/MM/yyyy"
