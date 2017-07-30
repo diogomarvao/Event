@@ -26,7 +26,7 @@
 							<div class="datatableevents">
 								<h:form id="EventDisplay">
 									<p:growl life="3000" />
-									<p:dataTable value="#{eventBean.getSellersEvent(activeSeller)}" var="event"
+									<p:dataTable value="#{sessionBean.getSellersEvent()}" var="event"
 										border="1" rows="10" paginator="true"
 										paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 										rowsPerPageTemplate="5,10,15" style="margin-top:10px">
@@ -64,6 +64,9 @@
 											<p:column class="header" headerText="Localização">
 												<div class="tablecont">#{event.adress.name}</div>
 											</p:column>
+											<p:column class="header" headerText="Vendedor">
+												<div class="tablecont">#{event.seller.name}</div>
+											</p:column>
 											
 										
 											<p:column class="header">
@@ -85,22 +88,24 @@
 									<p:growl life="3000" />
 									
 									<p:dialog class="diag" header="Novo Evento" widgetVar="AdNew"
-										resizable="false" width="550" height="600">
+										resizable="false" width="800" height="600">
 										<p:outputPanel id="editEvents" style="text-align:center;">
 											<p:panelGrid class="diagEdit" columns="2" style="width: 100%">
 												<h:outputText value="Evento :" />
 												<p:inputText value="#{eventBean.event.name}"
 														required="true" requiredMessage="Por favor insira o Nome do Evento" />
-												
-												<h:outputText value="Imagen :" />
+												<h:outputText value="Imagem :" />
 												<p:inputText value="#{eventBean.event.imgUrl}"
 														required="true" requiredMessage="Por favor insira uma Imagem"/>
 												<h:outputText value="Descrição :" />
 												<p:inputText value="#{eventBean.event.description}"
-														required="true" requiredMessage="Por favor insira uma descrição" />
+														required="true" requiredMessage="Por favor insira uma Descrição" />
 												<h:outputText value="Video :" />
 												<p:inputText value="#{eventBean.event.videoLink}"
 														required="true" requiredMessage="Por favor insira um VideoLink" />
+												<h:outputText value="Preço :" />
+												<p:inputText value="#{eventBean.event.price}"
+														required="true" requiredMessage="Por favor insira um Preço" />
 												<p:outputLabel for="genero" value="Género: " />
 												<p:selectOneMenu id="genero"
 													value="#{eventBean.event.genre}" >
@@ -125,17 +130,24 @@
 														onclick="PF('Adress').show();" type="button" />
 												</p:column>
 												<p:outputLabel for="seller" value="Vendedor: " />
-												<p:inputText value="#{eventBean.event.videoLink}"
-														required="true" requiredMessage="Por favor insira um VideoLink" />
+											
+												<p:selectOneMenu id="seller"
+													value="#{eventBean.event.seller}"
+													converter="omnifaces.SelectItemsConverter" immediate="true">
+													<f:selectItem itemLabel="Selecione o Vendedor" itemValue=""
+														noSelectionOption="true" />
+													<f:selectItems value="#{sellerBean.sellerList}"
+														var="seller" itemLabel="#{seller.name}"
+														itemValue="#{seller}" />
+												</p:selectOneMenu>
+												
 												<p:outputLabel for="calPopupS" value="Dia (1º): " />
 												<p:calendar id="calPopupS" value="#{eventBean.event.dateS}"
 													pattern="dd/MM/yyyy" required="true" requiredMessage="Por favor selecione uma Data Inicial"/>
 												<p:outputLabel for="calPopupF" value="Dia (Ultimo): " />
 												<p:calendar id="calPopupF" value="#{eventBean.event.dateF}"
 														required="true" requiredMessage="Por favor selecione uma Data Final" pattern="dd/MM/yyyy" />
-													<p:outputLabel for="calPopupF" value="Vendedor: " />
-														<p:inputText value="#{sellerBean.activeSeller}"
-														required="true" />
+
 												<p:outputLabel for="timPopupS" value="Horas (Inicio): " />
 												<p:calendar id="timPopupS" value="#{eventBean.event.hourS}"
 														pattern="HH:mm" required="true" requiredMessage="Por favor selecione um Horário Inicio" timeOnly="true" />
@@ -145,6 +157,7 @@
 												<h:outputText value="Featured: " />
 												<p:selectBooleanCheckbox value="#{eventBean.event.featured}"
 													required="true" />
+												
 											</p:panelGrid>
 											<br />
 											<p:commandButton value="Guardar" update="EventDisplay"
@@ -220,8 +233,16 @@
 														onclick="PF('Adress').show();" type="button" />
 												</p:column>
 												<p:outputLabel for="calPopupF" value="Vendedor: " />
-														<p:inputText value="#{sellerBean.activeSeller}"
-														required="true" />
+														<p:selectOneMenu id="sellerEdit"
+														value="#{eventBean.activeEvent.seller}"
+														converter="omnifaces.SelectItemsConverter"
+														style="width:150px">
+														<f:selectItem itemLabel="Vendedor"
+															itemValue="" noSelectionOption="true" />
+														<f:selectItems value="#{sellerBean.sellerList}"
+															var="local" itemLabel="#{seller.name}"
+															itemValue="#{local}" />
+													</p:selectOneMenu>
 												<p:outputLabel for="calPopupS" value="Dia (1º): " />
 												<p:calendar id="calPopupS"
 													value="#{eventBean.activeEvent.dateS}" pattern="dd/MM/yyyy"

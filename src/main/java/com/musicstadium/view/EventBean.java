@@ -40,7 +40,8 @@ public class EventBean implements Serializable{
 	public void setActiveEvent(Event activeEvent) {
 		this.activeEvent = activeEvent;
 	}
-		
+	@Inject
+	private SessionBean	sessionBean;
 	@Inject
 	private EventService eventService;
 	
@@ -142,6 +143,10 @@ public class EventBean implements Serializable{
 		}
 		return nextEvents;
 	}
+	
+	public Seller getActiveSeller(){
+		return sessionBean.getActiveSeller();
+	}
 
 	
 	
@@ -178,10 +183,5 @@ public class EventBean implements Serializable{
 
 	}
 	
-	
-	//eventos dos sellers
-	public List<Event> getSellersEvent(Seller activeSeller){
-		return eventService.showSellersEvent(activeSeller);
-	}
 	
 }

@@ -152,10 +152,10 @@
 				<p:submenu icon="fa fa-user" rendered="true" label="#{sessionBean.activeSeller.name}"
 					style="color:black; position:absolute;right:10px">
 					<p:menuitem icon="fa fa-music" value="Os Meus Eventos"
-						action="indexevent?faces-redirect=true" style="color:black" />
+						action="SellerEvents?faces-redirect=true" style="color:black" />
 					<p:separator />
 					<p:menuitem icon="fa fa-pencil" value="Os meus Dados"
-						action="PF('sign').show();" style="color:black" />
+						action="PF('SeEdit').show();" style="color:black" />
 					<p:separator />
 					<p:menuitem icon="fa fa-sign-out" value="Logout" update="@all"
 						action="#{sessionBean.logout()}" style="color:black" />

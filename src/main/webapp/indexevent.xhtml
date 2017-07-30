@@ -244,6 +244,17 @@
 													<p:commandButton class="add" icon="fa fa-fw fa-plus"
 														onclick="PF('Adress').show();" type="button" />
 												</p:column>
+												<p:outputLabel for="calPopupF" value="Vendedor: " />
+														<p:selectOneMenu id="sellerEdit"
+														value="#{eventBean.activeEvent.seller}"
+														converter="omnifaces.SelectItemsConverter"
+														style="width:150px">
+														<f:selectItem itemLabel="Vendedor"
+															itemValue="" noSelectionOption="true" />
+														<f:selectItems value="#{sellerBean.sellerList}"
+															var="local" itemLabel="#{seller.name}"
+															itemValue="#{local}" />
+													</p:selectOneMenu>
 												<p:outputLabel for="calPopupS" value="Dia (1º): " />
 												<p:calendar id="calPopupS"
 													value="#{eventBean.activeEvent.dateS}" pattern="dd/MM/yyyy"
