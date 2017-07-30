@@ -13,7 +13,7 @@
 		rendered="#{sessionBean.activeSeller.name eq null}">
 
 		<h:form>
-			<p:growl id="messages" sticky="true" showDetail="true" life="3000" />
+			<p:growl showDetail="true" life="3000" />
 
 			<p:menubar class="top" header="Music Stadium">
 
@@ -43,7 +43,7 @@
 		</h:form>
 
 		<h:form>
-			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+			<p:growl showDetail="true" life="3000" />
 
 			<p:dialog header="Login" widgetVar="log" resizable="false">
 				<h:panelGrid columns="2" cellpadding="5">
@@ -58,7 +58,7 @@
 					<f:facet name="footer">
 
 						<p:commandButton value="Login" update="@all"
-							actionListener="#{sessionBean.login()}" />
+							action="#{sessionBean.login()}" />
 
 					</f:facet>
 				</h:panelGrid>
@@ -67,7 +67,7 @@
 
 
 		<h:form>
-			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+			<p:growl showDetail="true" life="3000" />
 
 			<p:dialog header="Novo Utilizador" widgetVar="sign" resizable="false">
 				<h:panelGrid columns="2" cellpadding="5">
@@ -94,7 +94,7 @@
 					<f:facet name="footer">
 
 						<p:commandButton value="Criar Utilizador"
-actionListener="#{sellerBean.addSellerToDb()}" oncomplete="PF('sign').hide()" />
+action="#{sellerBean.addSellerToDb()}" oncomplete="PF('sign').hide()" />
 
 					</f:facet>
 				</h:panelGrid>
@@ -108,7 +108,7 @@ actionListener="#{sellerBean.addSellerToDb()}" oncomplete="PF('sign').hide()" />
 	<h:panelGroup id="adminbar" layout="block" class="topnav" rendered="#{sessionBean.activeSeller.name eq 'admin'}">
 
 		<h:form>
-			<p:growl id="messages" sticky="true" showDetail="true" life="3000" />
+			<p:growl showDetail="true" life="3000" />
 
 			<p:menubar class="top" header="Music Stadium">
 
@@ -149,7 +149,7 @@ actionListener="#{sellerBean.addSellerToDb()}" oncomplete="PF('sign').hide()" />
 		rendered="#{sessionBean.activeSeller.name ne null and sessionBean.activeSeller.name ne 'admin' }">
 
 		<h:form>
-			<p:growl id="messages" sticky="true" showDetail="true" life="3000" />
+			<p:growl  showDetail="true" life="3000" />
 
 			<p:menubar class="top" header="Music Stadium">
 
@@ -183,7 +183,7 @@ actionListener="#{sellerBean.addSellerToDb()}" oncomplete="PF('sign').hide()" />
 		</h:form>
 		
 		<h:form>
-			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+			<p:growl  showDetail="true" life="3000" />
 
 			<p:dialog header="Login" widgetVar="SeEdit" resizable="false">
 				<p:outputPanel id="editSeller" style="text-align:center;">
