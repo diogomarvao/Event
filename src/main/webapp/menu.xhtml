@@ -128,15 +128,16 @@ actionListener="#{sellerBean.addSellerToDb()}" oncomplete="PF('sign').hide()" />
 					style="color:black ; position:absolute;right:6px">
 
 					<p:menuitem icon="fa fa-music" value="Lista de Eventos"
-						outcome="indexevent?faces-redirect=true" style="color:black" />
+						outcome="indexevent?faces-redirect=true" style="color:black;width:300px" />
+						<p:separator />
 					<p:menuitem icon="fa fa-map-marker" value="Editar Localizações"
-						outcome="indexad?faces-redirect=true" style="color:black" />
+						outcome="indexad?faces-redirect=true" style="color:black;width:300px"  />
 					<p:separator />
 					<p:menuitem icon="fa fa-pencil" value="Editar Vendedores"
-						outcome="indexseller?faces-redirect=true" style="color:black" />
+						outcome="indexseller?faces-redirect=true" style="color:black;width:300px" />
 					<p:separator />
 					<p:menuitem icon="fa fa-sign-out" value="Logout" update="@all"
-						action="#{sessionBean.logout()}" style="color:black"/>
+						action="#{sessionBean.logout()}" style="color:black;width:300px" />
 				</p:submenu>
 
 			</p:menubar>
@@ -167,13 +168,13 @@ actionListener="#{sellerBean.addSellerToDb()}" oncomplete="PF('sign').hide()" />
 					style="color:black; position:absolute;right:6px">
 
 					<p:menuitem icon="fa fa-music" value="Os Meus Eventos"
-						action="SellerEvents?faces-redirect=true" style="color:black" />
+						action="SellerEvents?faces-redirect=true" style="color:black;width:200px"  />
 					<p:separator />
 					<p:menuitem icon="fa fa-pencil" value="Os meus Dados"
-						action="PF('SeEdit').show();" style="color:black" />
+						action="PF('SeEdit').show();" style="color:black;width:200px"  />
 					<p:separator />
 					<p:menuitem icon="fa fa-sign-out" value="Logout" update="@all"
-						action="#{sessionBean.logout()}" style="color:black" />
+						action="#{sessionBean.logout()}" style="color:black;width:200px" />
 				</p:submenu>
 
 			</p:menubar>
