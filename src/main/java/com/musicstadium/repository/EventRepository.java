@@ -44,7 +44,7 @@ public class EventRepository extends EntityRepository<Event>{
 		}
 		
 		public List<Event> getDbLastAdded(){
-			Query query = getDb().createNativeQuery("SELECT * FROM Event ORDER BY id DESC LIMIT 10", Event.class);
+			Query query = getDb().createNativeQuery("SELECT * FROM Event ORDER BY id DESC LIMIT 5", Event.class);
 			List<Event> dbLastAdded = (List<Event>) query.getResultList();
 			return dbLastAdded;
 		}

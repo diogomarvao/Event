@@ -27,47 +27,50 @@
 								<h:form id="EventDisplay">
 									<p:growl life="3000" />
 									<p:dataTable value="#{sessionBean.getSellersEvent()}" var="event"
-										border="1" rows="10" paginator="true"
+										border="1" rows="5" paginator="true"
 										paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-										rowsPerPageTemplate="5,10,15" style="margin-top:10px">
+										rowsPerPageTemplate="5,10,25,50,100">
 										<div class="header">
-											<p:column class="header" headerText="Id">
+											<p:column class="header" headerText="Id" sortBy="#{event.id}">
 												<div>#{event.id}</div>
 											</p:column>
-											<p:column class="header" headerText="Evento">
+											<p:column class="header" headerText="Evento" filterBy="#{event.name}" filterMatchMode="contains"
+											sortBy="#{event.name}">
 												<div class="tablecont">#{event.name}</div>
 											</p:column>
 											
-											<p:column class="header" headerText="Género">
+											<p:column class="header" headerText="Género" sortBy="#{event.genre}">
 												<div class="tablecont">#{event.genre}</div>
 											</p:column>
-											<p:column class="header" headerText="Dia Inicial">
+											<p:column class="header" headerText="Começa" sortBy="#{event.dateS}">
 												<h:outputText value="#{event.dateS}">
 													<f:convertDateTime pattern="dd/MM/yyyy" />
 												</h:outputText>
 											</p:column>
-											<p:column class="header" headerText="Dia Final">
+											<p:column class="header" headerText="Termina" sortBy="#{event.dateF}">
 												<h:outputText value="#{event.dateF}">
 													<f:convertDateTime pattern="dd/MM/yyyy" />
 												</h:outputText>
 											</p:column>
-											<p:column class="header" headerText="Inicio">
+											<p:column class="header" headerText="Inicio" sortBy="#{event.hourS}">
 												<h:outputText value="#{event.hourS}">
 													<f:convertDateTime pattern="HH:mm" />
 												</h:outputText>
 											</p:column>
-											<p:column class="header" headerText="Fim Pervisto">
+											<p:column class="header" headerText="Fim" sortBy="#{event.hourF}">
 												<h:outputText value="#{event.hourF}">
 													<f:convertDateTime pattern="HH:mm" />
 												</h:outputText>
 											</p:column>
-											<p:column class="header" headerText="Localização">
+											<p:column class="header" headerText="Localização" sortBy="#{event.adress.name}">
 												<div class="tablecont">#{event.adress.name}</div>
 											</p:column>
-											<p:column class="header" headerText="Vendedor">
+											<p:column class="header" headerText="Vendedor" sortBy="#{event.seller.name}">
 												<div class="tablecont">#{event.seller.name}</div>
 											</p:column>
-											
+												<p:column class="header" headerText="Preço" sortBy="#{event.price}">
+												<div class="tablecont">#{event.price}</div>
+											</p:column>
 										
 											<p:column class="header">
 												<p:commandButton icon="fa fa-fw fa-edit" class="bottab"

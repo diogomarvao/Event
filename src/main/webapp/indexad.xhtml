@@ -39,9 +39,9 @@
 
 								<!-- 		1.1 - tabela dos enderecos -->
 								<p:dataTable value="#{adressBean.getAdressList()}" var="adress"
-									border="1" rows="10" paginator="true"
-									paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-									rowsPerPageTemplate="5,10,15">
+									border="1" rows="5" paginator="true"
+										paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+										rowsPerPageTemplate="5,10,25,50,100">
 									<div class="header">
 										<p:column class="header" headerText="Id" sortBy="#{adress.id}">
 											<div>#{adress.id}</div>
