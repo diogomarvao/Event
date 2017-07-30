@@ -146,9 +146,7 @@
 														<p:separator />
 														<h:outputText value="Vendedor: " style="color:white"/>
 														
-														<h:commandLink style="text-decoration: underline;" action="#{eventBean.activeEvent.seller.sellerUrl}" 
-														value="#{eventBean.activeEvent.seller.name}"/>
-														<p:separator />
+														<a style="text-decoration: underline;" href="#{eventBean.activeEvent.seller.sellerUrl}">#{eventBean.activeEvent.seller.name}</a>										<p:separator />
 
 														<h:outputText value="Localização: " style="color:white"/>
 														<br />
