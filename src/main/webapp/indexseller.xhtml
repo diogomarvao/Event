@@ -30,33 +30,53 @@
 							<p:graphicImage library="images" name="seller.jpg"
 								style="width:100%; border-top-left-radius:17px;border-top-right-radius: 17px" />
 
-							<p:commandButton class="add" value="Adicionar Vendedor"
-								update="seller" onclick="PF('AdNew').show();" type="button"
-								style="width:100%;height:50px;" />
 
-							<div class="midcenter3">
-								<h:form id="SellerDisplay">
-									<p:growl life="3000" />
+							<h:form id="SellerDisplay">
+								<p:growl life="3000" />
+								
+								<!-- 		1.1 - tabela dos sellers -->
+								<p:dataTable value="#{sellerBean.getSellerList()}" var="s"
+									border="1" rows="10" paginator="true"
+									paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+									rowsPerPageTemplate="5,10,15" style="margin-top:10px">
+									<div class="header">
+										<p:column class="header" headerText="Id" sortBy="#{s.id}">
+											<div>#{s.id}</div>
+										</p:column>
 
-									<!-- 		1.1 - tabela dos sellers -->
-									<p:dataTable value="#{sellerBean.getSellerList()}" var="s"
-										border="1" rows="10" paginator="true"
-										paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-										rowsPerPageTemplate="5,10,15">
-										<div class="header">
-											<p:column class="header" headerText="Id" sortBy="#{s.id}">
-												<div>#{s.id}</div>
-											</p:column>
+										<p:column class="header" headerText="Nome"
+											filterBy="#{s.name}" filterMatchMode="contains"
+											sortBy="#{s.name}">
+											<div class="tablecont">#{s.name}</div>
+										</p:column>
 
-											<p:column class="header" headerText="Nome"
-												filterBy="#{s.name}" filterMatchMode="contains"
-												sortBy="#{s.name}">
-												<div class="tablecont">#{s.name}</div>
-											</p:column>
+										<p:column class="header" headerText="WebSite">
+											<div class="tablecont">#{s.sellerUrl}</div>
+										</p:column>
 
-											<p:column class="header" headerText="WebSite">
-												<div class="tablecont">#{s.sellerUrl}</div>
-											</p:column>
+										<p:column class="header" headerText="Email"
+											sortBy="#{s.email}">
+											<div class="tablecont">#{s.email}</div>
+										</p:column>
+										
+										<p:column class="header" headerText="Password"
+											sortBy="#{s.password}">
+											<div class="tablecont">#{s.password}</div>
+										</p:column>
+
+										<p:column class="header">
+
+											<p:commandButton icon="fa fa-fw fa-edit" class="bottab"
+												update=":EditarSe:editSeller"
+												oncomplete="PF('SeEdit').show();">
+
+												<f:setPropertyActionListener value="#{s}"
+													target="#{sellerBean.activeSeller}" />
+											</p:commandButton>
+											<p:commandButton icon="fa fa-fw fa-remove" class="bottab"
+												action="#{sellerBean.delSellerInDb(s)}" update="SellerDisplay" />
+
+										</p:column>
 
 											<p:column class="header" headerText="Preço"
 												sortBy="#{s.price}">
@@ -93,14 +113,16 @@
 											<h:outputText value="Nome: " />
 											<p:inputText value="#{sellerBean.seller.name}"
 												required="true" requiredMessage="Por favor insira um Nome" />
-
 											<h:outputText value="WebSite: " />
 											<p:inputText value="#{sellerBean.seller.sellerUrl}"
 												required="true"
 												requiredMessage="Por favor insira um WebSite" />
-											<h:outputText value="Preço: " />
-											<p:inputMask value="#{sellerBean.seller.price}"
-												required="true" requiredMessage="Por favor insira um Preço" />
+											<h:outputText value="E-mail: " />
+											<p:inputMask value="#{sellerBean.seller.email}"
+												required="true" requiredMessage="Por favor insira um E-mail"/>
+											<h:outputText value="Password: " />
+											<p:inputMask value="#{sellerBean.seller.password}"
+												required="true" requiredMessage="Por favor insira uma Password"/>
 										</p:panelGrid>
 										<br />
 
@@ -119,20 +141,29 @@
 										<p:panelGrid class="diagEdit" columns="2">
 
 											<h:outputText value="Id: " />
-											<h:inputText value="#{sellerBean.activeSeller.id}" />
+
+											<h:inputText value="#{sellerBean.activeSeller.id}"
+												required="true"/>
+
 
 											<h:outputText value="Nome: " />
 											<p:inputText value="#{sellerBean.activeSeller.name}"
 												required="true" />
 
 											<h:outputText value="WebSite: " />
-											<p:inputText value="#{sellerBean.activeSeller.sellerUrl}" />
 
-											<h:outputText value="Preço: " />
-											<p:inputMask value="#{sellerBean.activeSeller.price}"
+											<p:inputText value="#{sellerBean.activeSeller.sellerUrl}"
+												required="true"/>
+												
+											<h:outputText value="E-mail: " />
+											<p:inputMask value="#{sellerBean.activeSeller.email}"
+
 												required="true" />
-
-
+											
+											<h:outputText value="Password: " />
+											<p:inputMask value="#{sellerBean.activeSeller.password}"
+												required="true" />
+												
 										</p:panelGrid>
 										<br />
 										<p:commandButton value="Gravar Alterações"
@@ -143,7 +174,7 @@
 							</h:form>
 
 						</div>
-					</div>
+					
 				</p:layoutUnit>
 			</p:layout>
 

@@ -10,7 +10,7 @@
 
 
 	<h:panelGroup id="defaultbar" layout="block" class="topnav"
-		rendered="#{sessionBean.activeUser eq null}">
+		rendered="#{sessionBean.activeSeller.name eq null}">
 
 		<h:form>
 			<p:growl id="messages" sticky="true" showDetail="true" life="3000" />
@@ -47,19 +47,18 @@
 
 			<p:dialog header="Login" widgetVar="log" resizable="false">
 				<h:panelGrid columns="2" cellpadding="5">
-					<h:outputLabel for="username" value="Username:" />
-					<p:inputText id="username" value="#{sessionBean.user.username}"
+					<h:outputLabel for="name" value="Username:" />
+					<p:inputText id="name" value="#{sessionBean.seller.name}"
 						required="true" label="username" />
 
 					<h:outputLabel for="password" value="Password:" />
-					<p:password id="password" value="#{sessionBean.user.password}"
+					<p:password id="password" value="#{sessionBean.seller.password}"
 						required="true" label="password" />
 
 					<f:facet name="footer">
 
 						<p:commandButton value="Login" update="@all"
 							actionListener="#{sessionBean.login()}" />
-
 
 					</f:facet>
 				</h:panelGrid>
@@ -73,18 +72,29 @@
 			<p:dialog header="Novo Utilizador" widgetVar="sign" resizable="false">
 				<h:panelGrid columns="2" cellpadding="5">
 					<h:outputLabel for="username" value="Username" />
-					<p:inputText id="username" value="#{userBean.user.username}"
+					<p:inputText id="username" value="#{sellerBean.seller.name}"
+						required="true" label="username" />
+						
+					<h:outputLabel for="URL" value="Introduza URL :" />
+					<p:inputText id="name" value="#{sellerBean.seller.sellerUrl}"
+						required="true" label="username"/>
+						
+					<h:outputLabel for="Email" value="Introduza E-mail :" />
+					<p:inputText id="Email" value="#{sellerBean.seller.email}"
 						required="true" label="username" />
 
-					<h:outputLabel for="password" value="Password:" />
-					<p:password id="password" value="#{userBean.user.password}"
-						required="true" label="password" />
-
+					<h:outputLabel for="pwd1" value="Password : *" />
+        			<p:password id="pwd1" value="#{sellerBean.seller.password}" 
+        					match="pwd2" label="Password" required="true"/>
+ 
+        			<h:outputLabel for="pwd2" value="Confirme Password : *" />
+       			 	<p:password id="pwd2" value="#{sellerBean.seller.password}" 
+       			 			label="PasswordConfirm" required="true"/>
+					
 					<f:facet name="footer">
 
-						<p:commandButton value="Criar Utilizador" update="@all"
-							actionListener="#{userBean.addUserToDb()}" />
-
+						<p:commandButton value="Criar Utilizador"
+							actionListener="#{sellerBean.addSellerToDb()}" oncomplete="sign.hide()" />
 
 					</f:facet>
 				</h:panelGrid>
@@ -94,8 +104,9 @@
 
 
 
-	<h:panelGroup id="adminbar" layout="block" class="topnav"
-		rendered="#{sessionBean.activeUser.username eq 'admin'}">
+
+	<h:panelGroup id="adminbar" layout="block" class="topnav" rendered="#{sessionBean.activeSeller.name eq 'admin'}">
+
 		<h:form>
 			<p:growl id="messages" sticky="true" showDetail="true" life="3000" />
 
@@ -106,16 +117,16 @@
 
 				<p:menuitem value="Todos Eventos"
 					action="Events?faces-redirect=true" style="color:black" />
-
-				<p:menuitem value="Sobre Nós" action="about?faces-redirect=true"
+        
+        <p:menuitem value="Sobre Nós" action="about?faces-redirect=true"
 					style="color:black" />
 				<p:menuitem value="Contactos" action="contactos?faces-redirect=true"
 					style="color:black" />
 
 
-				<p:submenu icon="fa fa-user" rendered="true"
-					label="#{sessionBean.activeUser.username}"
+				<p:submenu icon="fa fa-user" rendered="true" label="#{sessionBean.activeSeller.name}"
 					style="color:black ; position:absolute;right:6px">
+
 					<p:menuitem icon="fa fa-music" value="Lista de Eventos"
 						outcome="indexevent?faces-redirect=true" style="color:black" />
 					<p:menuitem icon="fa fa-map-marker" value="Editar Localizações"
@@ -134,7 +145,7 @@
 
 
 	<h:panelGroup id="userbar" layout="block" class="topnav"
-		rendered="#{sessionBean.activeUser ne null and sessionBean.activeUser.username ne 'admin' }">
+		rendered="#{sessionBean.activeSeller.name ne null and sessionBean.activeSeller.name ne 'admin' }">
 
 		<h:form>
 			<p:growl id="messages" sticky="true" showDetail="true" life="3000" />
@@ -151,15 +162,15 @@
 				<p:menuitem value="Contactos" action="contactos?faces-redirect=true"
 					style="color:black" />
 
-				<p:submenu icon="fa fa-user" rendered="true"
-					label="#{sessionBean.activeUser.username}"
-					style="color:black; position:absolute;right:6px">
-					<p:menuitem icon="fa fa-music" value="Os Meus Eventos"
-						action="indexevent?faces-redirect=true" style="color:black" />
 
+				<p:submenu icon="fa fa-user" rendered="true" label="#{sessionBean.activeSeller.name}"
+					style="color:black; position:absolute;right:6px">
+
+					<p:menuitem icon="fa fa-music" value="Os Meus Eventos"
+						action="SellerEvents?faces-redirect=true" style="color:black" />
 					<p:separator />
 					<p:menuitem icon="fa fa-pencil" value="Os meus Dados"
-						action="indexseller?faces-redirect=true" style="color:black" />
+						action="PF('SeEdit').show();" style="color:black" />
 					<p:separator />
 					<p:menuitem icon="fa fa-sign-out" value="Logout" update="@all"
 						action="#{sessionBean.logout()}" style="color:black" />
@@ -167,6 +178,43 @@
 
 			</p:menubar>
 		</h:form>
+		
+		<h:form>
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+			<p:dialog header="Login" widgetVar="SeEdit" resizable="false">
+				<p:outputPanel id="editSeller" style="text-align:center;">
+					<p:panelGrid class="diagEdit" columns="2">
+
+						<h:outputText value="Id: " />
+						<h:inputText value="#{sellerBean.activeSeller.id}"  />
+
+						<h:outputText value="Nome: " />
+						<p:inputText value="#{sellerBean.activeSeller.name}"
+											required="true" />
+
+						<h:outputText value="WebSite: " />
+						<p:inputText value="#{sellerBean.activeSeller.sellerUrl}"  />
+						
+						<h:outputText value="E-mail :" />
+						<p:inputText value="#{sellerBean.activeSeller.sellerUrl}"  />
+
+						<h:outputLabel for="pwd1" value="Password : *" />
+        				<p:password id="pwd1" value="#{sellerBean.activeSeller.password}" 
+        					match="pwd2" label="Password" required="true" />
+ 
+        				<h:outputLabel for="pwd2" value="Confirme Password : *" />
+       			 		<p:password id="pwd2" value="#{sellerBean.activeSeller.password}" 
+       			 			label="PasswordConfirm" required="true" />
+
+					</p:panelGrid>
+					<br />
+					<p:commandButton value="Gravar Alterações" action="#{sellerBean.editSellerInDb()}"
+						oncomplete="PF('SeEdit').hide();" />
+				</p:outputPanel>
+			</p:dialog>
+		</h:form>
+		
 	</h:panelGroup>
 
 </ui:composition>

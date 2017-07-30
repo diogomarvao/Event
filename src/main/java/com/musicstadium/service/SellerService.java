@@ -3,8 +3,8 @@ package com.musicstadium.service;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -27,7 +27,29 @@ public class SellerService extends EntityService<Seller>{
 	
 	//adicionar
 	public void addSeller(Seller seller){
-		sellerRepository.addToDb(seller);
+		List<Seller> duplicateList = sellerRepository.duplicate(seller);
+		if (duplicateList.isEmpty()) {
+			sellerRepository.addToDb(seller);
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro!", "Nome de Utilizador indisponivel!"));
+		}
+	}
+	
+	public Seller login(Seller seller){
+		List<Seller> duplicateList = sellerRepository.duplicate(seller);
+		if (duplicateList.isEmpty()){
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro!", "Utilizador Invalido!"));
+				return null;
+		}else{
+			if(duplicateList.get(0).getPassword().equals(seller.getPassword())){
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Olá!!", "Bem Vindo "+ seller.getName() + "!"));
+				return duplicateList.get(0);
+			}else{
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro!", "Password Invalida!"));
+				return null;
+			}
+		}
 	}
 	
 	//editar

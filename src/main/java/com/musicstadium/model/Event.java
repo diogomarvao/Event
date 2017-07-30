@@ -2,17 +2,8 @@ package com.musicstadium.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Future;
@@ -51,8 +42,6 @@ public class Event extends Entity implements Serializable {
 	private String videoLink;
 
 	@ManyToOne
-//	@JoinTable (name = "EVADRESS" , joinColumns = @JoinColumn(name = "adress_id"),inverseJoinColumns=@JoinColumn(name = "event_id"))
-//	@JoinColumn(name="ADRESS_ID")
 	private Adress adress;
 
 	@Column(name = "GENRE")
@@ -61,20 +50,11 @@ public class Event extends Entity implements Serializable {
 	@Column(name = "FEATURED")
 	private boolean featured;
 
-//	@ManyToMany(fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
-//	@JoinTable(
-//		      name="seller_id",
-//		      joinColumns=@JoinColumn(name="SELLER_ID", referencedColumnName="id"),
-//		      inverseJoinColumns=@JoinColumn(name="EVENT_ID", referencedColumnName="id"))
-//	@JoinTable (name = "EVSELLER" , joinColumns = @JoinColumn(name = "seller_id"),inverseJoinColumns=@JoinColumn(name = "event_id"))
-	//@JoinColumn(name = "ID" ,  insert="false", update="false")
-//	private List<Seller> sellerList;
-	
 	@OneToOne
-	//@JoinColumn(name = "ID" ,  insert="false", update="false")
-//	@JoinColumn(name="SELLER_ID")
-//	@MapsId
 	private Seller seller;
+	
+	@Column(name="PRICE")
+	private double price;
 
 	// getter & setters
 	public String getName() {
@@ -181,6 +161,14 @@ public class Event extends Entity implements Serializable {
 
 	public void setSeller(Seller seller) {
 		this.seller = seller;
+	}
+	
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 	

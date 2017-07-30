@@ -47,11 +47,12 @@
 										</p:column>
 
 
-										<p:column class="header" headerText="Preço">
-											<div>#{event.seller.price}</div>
-										</p:column>
+								<p:column class="header" headerText="Preço">
+									<div>#{event.price}</div>
+								</p:column>
 
 										<p:column class="header">
+
 
 											<p:commandButton icon="fa fa-fw fa-file-text-o"
 												class="bottab" update=":Inf:maisInf"
@@ -85,12 +86,6 @@
 									        </script>
 
 									<div class="eventinfomargin">
-
-
-
-
-
-
 
 
 										<p:outputPanel id="maisInf">
@@ -140,7 +135,7 @@
 														<br />
 														<h:outputText value="Valores: " />
 														<h:outputText
-															value="#{eventBean.activeEvent.seller.price}" />
+															value="#{eventBean.activeEvent.price}" />
 														<br />
 														<h:outputText value="Vendedor: " />
 														<h:outputText value="#{eventBean.activeEvent.seller.name}" />

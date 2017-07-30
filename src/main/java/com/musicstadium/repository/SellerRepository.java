@@ -3,11 +3,9 @@ package com.musicstadium.repository;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
-
 import com.musicstadium.model.Seller;
 
 @Named("sellerRepository")
@@ -21,6 +19,11 @@ public class SellerRepository extends EntityRepository<Seller>{
 		return dbElements; 
 	}
 	
+	public List<Seller> duplicate (Seller seller){
+		Query query = getDb().createNativeQuery("SELECT * FROM Seller WHERE NAME = '" + seller.getName() + "'",Seller.class);
+		List<Seller> dbElements = (List<Seller>) query.getResultList();
+		return dbElements;
+	}
 	
 	// eliminar
 		@Override
