@@ -104,13 +104,16 @@
 												<div class="eventname">
 													<div class="Buy">
 														<h:outputText value="Descrição: " />
+														<br/>
 														<h:outputText value="#{eventBean.activeEvent.description}" />
 														<br />
 														<h:outputText value="Género: " />
 														<h:outputText value="#{eventBean.activeEvent.genre}" />
 														<br />
-														<h:outputText value="Sessões" />
+														<h:outputText value="Sessões:" />
+														<br/>
 														<h:outputText value="Periodo do Envento: " />
+														<br/>
 														<h:outputText value="#{eventBean.activeEvent.dateS}">
 															<f:convertDateTime pattern="dd/MM/yyyy" />
 														</h:outputText>
@@ -138,10 +141,10 @@
 															value="#{eventBean.activeEvent.price}" />
 														<br />
 														<h:outputText value="Vendedor: " />
-														<h:outputText value="#{eventBean.activeEvent.seller.name}" />
-														<a href="#{eventBean.activeEvent.seller.sellerUrl}" /> <br />
-
-
+														
+														<h:commandLink style="text-decoration: underline;" action="#{eventBean.activeEvent.seller.sellerUrl}" 
+														value="#{eventBean.activeEvent.seller.name}"/>
+														<br/>
 
 														<h:outputText value="Localização: " />
 														<br />
