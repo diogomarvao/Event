@@ -37,6 +37,12 @@ public class EventRepository extends EntityRepository<Event>{
 		}
 		
 		
+		public List<Event> getDbAllEvents(){
+			Query query = getDb().createNativeQuery("SELECT * FROM Event ORDER BY DATE_START", Event.class);
+			List<Event> dbNextEvent = (List<Event>) query.getResultList();
+			return dbNextEvent;
+		}
+		
 		
 		
 		//sacar cenas do seller 

@@ -32,8 +32,17 @@ public List<Event> showNextEvent(){
 	return list;
 }
 
+
 public List<Event> showSellersEvent(Seller activeSeller){
 	List<Event> list = eventRepository.getDbSellerEvent(activeSeller);
+  
+  	return list;
+}
+
+
+public List<Event> showAllEvent(){
+	List<Event> list = eventRepository.getDbAllEvents();
+
 	return list;
 }
 
@@ -52,5 +61,9 @@ public List<Event> showSellersEvent(Seller activeSeller){
 		return eventRepository;
 	}
 	
-
+	public void removeEvent(Event event){
+		eventRepository.removeFromDb(event);
+	}
+	
+	
 }
