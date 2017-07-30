@@ -1,9 +1,11 @@
 package com.musicstadium.view;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -11,6 +13,7 @@ import javax.inject.Named;
 
 import com.musicstadium.model.Event;
 import com.musicstadium.model.Seller;
+import com.musicstadium.repository.EntityRepository;
 import com.musicstadium.service.EventService;
 import com.musicstadium.service.SellerService;
 
@@ -45,6 +48,17 @@ public class SessionBean implements Serializable {
 			else{
 				return activeSeller;
 			}
+	}
+	
+	public List<Seller> ActiveSellerToList(){
+		List<Seller> activeSellerList = new ArrayList<Seller>();
+		activeSellerList.add(activeSeller);
+		return activeSellerList;
+	}
+	
+	public void alterActiveSellerInDb(){
+		sellerService.editSeller(activeSeller);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Seller editado com sucesso", null));
 	}
 	
 	public void login(){
