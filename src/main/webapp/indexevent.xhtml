@@ -147,6 +147,8 @@
 														var="seller" itemLabel="#{seller.name}"
 														itemValue="#{seller}" />
 												</p:selectOneMenu>
+												<h:outputText value="Preço :" />
+												<p:inputText value="#{eventBean.activeEvent.price}" required="true"/>
 												<p:outputLabel for="calPopupS" value="Dia (1º): " />
 												<p:calendar id="calPopupS" value="#{eventBean.event.dateS}"
 													pattern="dd/MM/yyyy" required="true" requiredMessage="Por favor selecione uma Data Inicial"/>
@@ -209,9 +211,7 @@
 												<h:inputText value="#{eventBean.activeEvent.id}" />
 												<h:outputText value="Evento :" />
 												<p:inputText value="#{eventBean.activeEvent.name}" />
-												<h:outputText value="Imagem :" />
-												<p:inputText value="#{eventBean.activeEvent.price}" />
-												<h:outputText value="Preço :" />
+												<h:outputText value="Imagem:" />
 												<p:inputText value="#{eventBean.activeEvent.imgUrl}"
 													required="true" />
 												<h:outputText value="Descrição:" />
@@ -254,7 +254,8 @@
 															var="seller" itemLabel="#{seller.name}"
 															itemValue="#{local}" />
 													</p:selectOneMenu>
-
+							<h:outputText value="Preço:" />
+												<p:inputText value="#{eventBean.activeEvent.price}" />
 												<p:outputLabel for="calPopupS" value="Dia (1º): " />
 												<p:calendar id="calPopupS"
 													value="#{eventBean.activeEvent.dateS}" pattern="dd/MM/yyyy"

@@ -31,8 +31,30 @@
 	border-top-left-radius: 17px !important;
 	border-top-right-radius: 17px !important;
 	margin-top:30px;
-	margin-left: 10%;
-	margin-right: 10%;
+	margin-left: 1px;
+	margin-right: 1px;
+	margin-bottom: 0px;
+}
+
+.midcenter5{
+	font-size: 18px;
+	background: #2191c0;
+	border-top-left-radius: 17px !important;
+	border-top-right-radius: 17px !important;
+	margin-top:0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+
+.midcenter6{
+		font-size: 18px;
+	background: #2191c0;
+	border-top-left-radius: 17px !important;
+	border-top-right-radius: 17px !important;
+	margin-top:10px;
+	margin-left: 0px;
+	margin-right: -14px;
 	margin-bottom: 0px;
 }
 
@@ -141,7 +163,7 @@ h5 {
 	margin-left: 10%;
 	margin-right: 10%;
 	margin-top: 2%;
-	margin-bottom: 10px;
+	margin-bottom: 100px;
 }
 
 .ui-icon {
@@ -230,7 +252,9 @@ h5 {
 	border-top-right-radius: 17px !important;
 }
 
-
+.index{
+	margin-bottom:200px;
+}
 
 
 

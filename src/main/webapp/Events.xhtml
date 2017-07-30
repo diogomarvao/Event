@@ -88,7 +88,6 @@
 										    }
 									        </script>
 
-									<div class="eventinfomargin">
 
 
 										<p:outputPanel id="maisInf">
@@ -98,58 +97,60 @@
 											</div>
 
 
-											<div class="eventinfomargin">
-												<h:graphicImage value="#{eventBean.activeEvent.imgUrl}"
-													width="513" height="350" />
-											</div>
 											
-											<div class="eventinfomargin">
-												<div class="eventname">
-													<div class="Buy">
-														<h:outputText value="Descrição: " />
+										
+												<h:graphicImage value="#{eventBean.activeEvent.imgUrl}"
+													width="519" height="350" />
+											
+											
+											
+											
+												<div class="midcenter4">
+													<br />
+														<h:outputText value="Descrição: " style="color:white"/>
 														<br/>
 														<h:outputText value="#{eventBean.activeEvent.description}" />
-														<br />
-														<h:outputText value="Género: " />
+														<p:separator />
+														<h:outputText value="Género: " style="color:white"/>
+														
 														<h:outputText value="#{eventBean.activeEvent.genre}" />
-														<br />
-														<h:outputText value="Sessões:" />
-														<br/>
-														<h:outputText value="Periodo do Envento: " />
+														<p:separator />
+														
+														<h:outputText value="Periodo do Envento: " style="color:white"/>
 														<br/>
 														<h:outputText value="#{eventBean.activeEvent.dateS}">
 															<f:convertDateTime pattern="dd/MM/yyyy" />
 														</h:outputText>
-														<h:outputText value=" até " />
+														<h:outputText value=" até " style="color:white"/>
 														<h:outputText value="#{eventBean.activeEvent.dateF}">
 															<f:convertDateTime pattern="dd/MM/yyyy" />
 														</h:outputText>
-														<br />
+														<p:separator />
 
-														<h:outputText value="Inicio: " />
-
+														<h:outputText value="Inicio: " style="color:white"/>
+														
 														<h:outputText value="#{eventBean.activeEvent.hourS}">
 															<f:convertDateTime pattern="HH:mm" />
 														</h:outputText>
-														<br />
-														<h:outputText value="Fim: " />
+														<p:separator />
+														<h:outputText value="Fim: " style="color:white"/>
+														
 														<h:outputText value="#{eventBean.activeEvent.hourF}">
 															<f:convertDateTime pattern="HH:mm" />
 														</h:outputText>
-														<br />
-														<h:outputText value="Comprar: " />
-														<br />
-														<h:outputText value="Valores: " />
+														<p:separator />
+														<h:outputText value="Valores: " style="color:white"/>
+														
 														<h:outputText
 															value="#{eventBean.activeEvent.price}" />
-														<br />
-														<h:outputText value="Vendedor: " />
+														<p:separator />
+														<h:outputText value="Vendedor: " style="color:white"/>
 														
 														<h:commandLink style="text-decoration: underline;" action="#{eventBean.activeEvent.seller.sellerUrl}" 
 														value="#{eventBean.activeEvent.seller.name}"/>
-														<br/>
+														<p:separator />
 
-														<h:outputText value="Localização: " />
+														<h:outputText value="Localização: " style="color:white"/>
 														<br />
 														<h:outputText id="address"
 															value="#{eventBean.activeEvent.adress.street}" />
@@ -160,9 +161,9 @@
 														<h:outputText id="cpostasl"
 															value="#{eventBean.activeEvent.adress.codigoPostal}" />
 
-													</div>
+												
 												</div>
-											</div>
+											
 											<div class="eventinfomargin">
 
 
@@ -171,12 +172,12 @@
 
 
 											</div>
-
-											<div class="eventinfomargin">
-												<div class="eventname">
-													<h:outputText id="add"
-														value="#{eventBean.activeEvent.adress.local}" />
-													<br /> <br />
+													
+													<div class="midcenter6">
+												<h:outputText value="#{eventBean.activeEvent.adress.local}"
+													style="font-size:40px;width:1000px" />
+											</div>
+													<div class="midcenter5">
 													<p:gmap id="geoMap" widgetVar="geoMap"
 														center="#{geocodeView.centerGeoMap}" zoom="15"
 														type="ROADMAP" model="#{geocodeView.geoModel}"
@@ -188,12 +189,12 @@
 
 												</div>
 
-											</div>
+										
 
 
 
 										</p:outputPanel>
-									</div>
+									
 								</p:dialog>
 							</h:form>
 						</div>

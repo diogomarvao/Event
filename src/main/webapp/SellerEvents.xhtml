@@ -16,7 +16,7 @@
 				<p:layoutUnit position="center">
 					<div class="midcenter2">
 						<p:graphicImage library="images" name="events.jpg"
-							style="width:100%" />
+							style="width:100%;border-top-left-radius:17px;border-top-right-radius: 17px" />
 						<div id="Events">
 							<div class="midcenter3">
 								<p:commandButton class="add" value="Adicionar Evento"
@@ -242,10 +242,14 @@
 														style="width:150px">
 														<f:selectItem itemLabel="Vendedor"
 															itemValue="" noSelectionOption="true" />
+
 														<f:selectItems value="#{sessionBean.ActiveSellerToList()}"
 															var="Seller" itemLabel="#{activeEvent.Seller.name}"
-															itemValue="#{local}" />
+															itemValue="#{seller}" />
+
 													</p:selectOneMenu>
+													<h:outputText value="Preço :" />
+												<p:inputText value="#{eventBean.activeEvent.price}" required="true"/>
 												<p:outputLabel for="calPopupS" value="Dia (1º): " />
 												<p:calendar id="calPopupS"
 													value="#{eventBean.activeEvent.dateS}" pattern="dd/MM/yyyy"
