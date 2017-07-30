@@ -106,51 +106,51 @@
 											
 											
 												<div class="midcenter4">
-													<div class="Buy">
-														<h:outputText value="Descrição: " />
+													<br />
+														<h:outputText value="Descrição: " style="color:white"/>
 														<br/>
 														<h:outputText value="#{eventBean.activeEvent.description}" />
+														<p:separator />
+														<h:outputText value="Género: " style="color:white"/>
 														<br />
-														<h:outputText value="Género: " />
 														<h:outputText value="#{eventBean.activeEvent.genre}" />
-														<br />
-														<h:outputText value="Sessões:" />
-														<br/>
-														<h:outputText value="Periodo do Envento: " />
+														<p:separator />
+														
+														<h:outputText value="Periodo do Envento: " style="color:white"/>
 														<br/>
 														<h:outputText value="#{eventBean.activeEvent.dateS}">
 															<f:convertDateTime pattern="dd/MM/yyyy" />
 														</h:outputText>
-														<h:outputText value=" até " />
+														<h:outputText value=" até " style="color:white"/>
 														<h:outputText value="#{eventBean.activeEvent.dateF}">
 															<f:convertDateTime pattern="dd/MM/yyyy" />
 														</h:outputText>
+														<p:separator />
+
+														<h:outputText value="Inicio: " style="color:white"/>
 														<br />
-
-														<h:outputText value="Inicio: " />
-
 														<h:outputText value="#{eventBean.activeEvent.hourS}">
 															<f:convertDateTime pattern="HH:mm" />
 														</h:outputText>
+														<p:separator />
+														<h:outputText value="Fim: " style="color:white"/>
 														<br />
-														<h:outputText value="Fim: " />
 														<h:outputText value="#{eventBean.activeEvent.hourF}">
 															<f:convertDateTime pattern="HH:mm" />
 														</h:outputText>
+														<p:separator />
+														<h:outputText value="Valores: " style="color:white"/>
 														<br />
-														<h:outputText value="Comprar: " />
-														<br />
-														<h:outputText value="Valores: " />
 														<h:outputText
 															value="#{eventBean.activeEvent.price}" />
+														<p:separator />
+														<h:outputText value="Vendedor: " style="color:white"/>
 														<br />
-														<h:outputText value="Vendedor: " />
-														
 														<h:commandLink style="text-decoration: underline;" action="#{eventBean.activeEvent.seller.sellerUrl}" 
 														value="#{eventBean.activeEvent.seller.name}"/>
-														<br/>
+														<p:separator />
 
-														<h:outputText value="Localização: " />
+														<h:outputText value="Localização: " style="color:white"/>
 														<br />
 														<h:outputText id="address"
 															value="#{eventBean.activeEvent.adress.street}" />
@@ -161,7 +161,7 @@
 														<h:outputText id="cpostasl"
 															value="#{eventBean.activeEvent.adress.codigoPostal}" />
 
-													</div>
+												
 												</div>
 											
 											<div class="eventinfomargin">
