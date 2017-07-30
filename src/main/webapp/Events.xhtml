@@ -30,28 +30,32 @@
 
 								<!-- 		1.1 - tabela dos produtos -->
 								<p:dataTable value="#{eventBean.getFutureEvents()}" var="event"
-									border="1">
+									border="1" rows="5" paginator="true"
+										paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+										rowsPerPageTemplate="5,10,25,50,100">
 									<div class="header">
-										<p:column class="header" headerText="Eventos">
+										<p:column class="header" headerText="Eventos" filterBy="#{event.name}" filterMatchMode="contains"
+											sortBy="#{event.name}">
 											<div>#{event.name}</div>
 										</p:column>
 
-										<p:column class="header" headerText="Data Inicio">
+										<p:column class="header" headerText="Data Inicio"  sortBy="#{event.dateS}">
 											<h:outputText value="#{event.dateS}">
 												<f:convertDateTime pattern="dd/MM/yyyy" />
 											</h:outputText>
 										</p:column>
 
-										<p:column class="header" headerText="Localidade">
+										<p:column class="header" headerText="Localidade" sortBy="#{event.name}">
 											<div>#{event.adress.name}</div>
 										</p:column>
 
 
-										<p:column class="header" headerText="Preço">
-											<div>#{event.seller.price}</div>
-										</p:column>
+								<p:column class="header" headerText="Preço" sortBy="#{event.price}">
+									<div>#{event.price}</div>
+								</p:column>
 
 										<p:column class="header">
+
 
 											<p:commandButton icon="fa fa-fw fa-file-text-o"
 												class="bottab" update=":Inf:maisInf"
@@ -84,7 +88,7 @@
 										    }
 									        </script>
 
-							
+
 
 										<p:outputPanel id="maisInf">
 											<div class="midcenter4">
@@ -104,13 +108,16 @@
 												<div class="midcenter4">
 													<div class="Buy">
 														<h:outputText value="Descrição: " />
+														<br/>
 														<h:outputText value="#{eventBean.activeEvent.description}" />
 														<br />
 														<h:outputText value="Género: " />
 														<h:outputText value="#{eventBean.activeEvent.genre}" />
 														<br />
-														<h:outputText value="Sessões" />
+														<h:outputText value="Sessões:" />
+														<br/>
 														<h:outputText value="Periodo do Envento: " />
+														<br/>
 														<h:outputText value="#{eventBean.activeEvent.dateS}">
 															<f:convertDateTime pattern="dd/MM/yyyy" />
 														</h:outputText>
@@ -135,13 +142,13 @@
 														<br />
 														<h:outputText value="Valores: " />
 														<h:outputText
-															value="#{eventBean.activeEvent.seller.price}" />
+															value="#{eventBean.activeEvent.price}" />
 														<br />
 														<h:outputText value="Vendedor: " />
-														<h:outputText value="#{eventBean.activeEvent.seller.name}" />
-														<a href="#{eventBean.activeEvent.seller.sellerUrl}" /> <br />
-
-
+														
+														<h:commandLink style="text-decoration: underline;" action="#{eventBean.activeEvent.seller.sellerUrl}" 
+														value="#{eventBean.activeEvent.seller.name}"/>
+														<br/>
 
 														<h:outputText value="Localização: " />
 														<br />

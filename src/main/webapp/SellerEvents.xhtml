@@ -16,19 +16,18 @@
 				<p:layoutUnit position="center">
 					<div class="midcenter2">
 						<p:graphicImage library="images" name="events.jpg"
-							style="width:100%; border-top-left-radius:17px;border-top-right-radius: 17px"  />
+							style="width:100%" />
 						<div id="Events">
 							<div class="midcenter3">
 								<p:commandButton class="add" value="Adicionar Evento"
 									update="event" onclick="PF('AdNew').show();"
 									type="button" style="width:100%;height:50px;" />
 							</div>
-							
 							<div class="midcenter3">
 								<h:form id="EventDisplay">
 									<p:growl life="3000" />
-									<p:dataTable value="#{eventBean.getEventList()}" var="event"
-										border="1"  rows="5" paginator="true"
+									<p:dataTable value="#{sessionBean.getSellersEvent()}" var="event"
+										border="1" rows="5" paginator="true"
 										paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 										rowsPerPageTemplate="5,10,25,50,100">
 										<div class="header">
@@ -39,6 +38,7 @@
 											sortBy="#{event.name}">
 												<div class="tablecont">#{event.name}</div>
 											</p:column>
+											
 											<p:column class="header" headerText="Género" sortBy="#{event.genre}">
 												<div class="tablecont">#{event.genre}</div>
 											</p:column>
@@ -68,12 +68,10 @@
 											<p:column class="header" headerText="Vendedor" sortBy="#{event.seller.name}">
 												<div class="tablecont">#{event.seller.name}</div>
 											</p:column>
-											<p:column class="header" headerText="Preço">
+												<p:column class="header" headerText="Preço" sortBy="#{event.price}">
 												<div class="tablecont">#{event.price}</div>
 											</p:column>
-											<p:column class="header" headerText="Featured">
-												<div class="tablecont">#{event.featured}</div>
-											</p:column>
+										
 											<p:column class="header">
 												<p:commandButton icon="fa fa-fw fa-edit" class="bottab"
 													update=":EditarEv:editEvent" 
@@ -88,20 +86,17 @@
 										</div>
 									</p:dataTable>
 								</h:form>
-								</div>
 								<!-- 	1.2 - Inserir detalhes do event -->
-								<div>
 								<h:form id="NewAd">
 									<p:growl life="3000" />
 									
 									<p:dialog class="diag" header="Novo Evento" widgetVar="AdNew"
-										resizable="false" width="550" height="600">
+										resizable="false" width="800" height="600">
 										<p:outputPanel id="editEvents" style="text-align:center;">
 											<p:panelGrid class="diagEdit" columns="2" style="width: 100%">
 												<h:outputText value="Evento :" />
 												<p:inputText value="#{eventBean.event.name}"
 														required="true" requiredMessage="Por favor insira o Nome do Evento" />
-												
 												<h:outputText value="Imagem :" />
 												<p:inputText value="#{eventBean.event.imgUrl}"
 														required="true" requiredMessage="Por favor insira uma Imagem"/>
@@ -138,6 +133,7 @@
 														onclick="PF('Adress').show();" type="button" />
 												</p:column>
 												<p:outputLabel for="seller" value="Vendedor: " />
+											
 												<p:selectOneMenu id="seller"
 													value="#{eventBean.event.seller}"
 													converter="omnifaces.SelectItemsConverter" immediate="true">
@@ -147,6 +143,7 @@
 														var="seller" itemLabel="#{seller.name}"
 														itemValue="#{seller}" />
 												</p:selectOneMenu>
+												
 												<p:outputLabel for="calPopupS" value="Dia (1º): " />
 												<p:calendar id="calPopupS" value="#{eventBean.event.dateS}"
 													pattern="dd/MM/yyyy" required="true" requiredMessage="Por favor selecione uma Data Inicial"/>
@@ -171,9 +168,7 @@
 										</p:outputPanel>
 									</p:dialog>
 								</h:form>
-								</div>
 								<!-- 	1.2.1 - Inserir detalhes do address -->
-								
 								<h:form id="Adress">
 									<p:dialog class="diag" header="Novo Adress" widgetVar="Adress"
 										resizable="false">
@@ -201,7 +196,7 @@
 								<!-- 	1.2 - Editar detalhes do event -->
 								<h:form id="EditarEv">
 									<p:dialog class="diag" header="Editar Event" widgetVar="EvEdit"
-										resizable="false" width="550" height="550">
+										resizable="false">
 										<!-- painel -->
 										<p:outputPanel id="editEvent" style="text-align:center;">
 											<p:panelGrid class="diagEdit" columns="2">
@@ -209,9 +204,7 @@
 												<h:inputText value="#{eventBean.activeEvent.id}" />
 												<h:outputText value="Evento :" />
 												<p:inputText value="#{eventBean.activeEvent.name}" />
-												<h:outputText value="Imagem :" />
-												<p:inputText value="#{eventBean.activeEvent.price}" />
-												<h:outputText value="Preço :" />
+												<h:outputText value="Imagen :" />
 												<p:inputText value="#{eventBean.activeEvent.imgUrl}"
 													required="true" />
 												<h:outputText value="Descrição:" />
@@ -242,7 +235,6 @@
 													<p:commandButton class="add" icon="fa fa-fw fa-plus"
 														onclick="PF('Adress').show();" type="button" />
 												</p:column>
-
 												<p:outputLabel for="calPopupF" value="Vendedor: " />
 														<p:selectOneMenu id="sellerEdit"
 														value="#{eventBean.activeEvent.seller}"
@@ -251,10 +243,9 @@
 														<f:selectItem itemLabel="Vendedor"
 															itemValue="" noSelectionOption="true" />
 														<f:selectItems value="#{sellerBean.sellerList}"
-															var="seller" itemLabel="#{seller.name}"
+															var="local" itemLabel="#{seller.name}"
 															itemValue="#{local}" />
 													</p:selectOneMenu>
-
 												<p:outputLabel for="calPopupS" value="Dia (1º): " />
 												<p:calendar id="calPopupS"
 													value="#{eventBean.activeEvent.dateS}" pattern="dd/MM/yyyy"
@@ -281,7 +272,7 @@
 										</p:outputPanel>
 									</p:dialog>
 								</h:form>
-							
+							</div>
 						</div>
 					</div>
 				</p:layoutUnit>
@@ -289,8 +280,6 @@
 		</div>
 	</ui:define>
 </ui:composition>
-
-
 
 
 

@@ -6,8 +6,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.musicstadium.model.Adress;
 import com.musicstadium.model.Event;
+import com.musicstadium.model.Seller;
 import com.musicstadium.repository.EventRepository;
 
 @Named("eventService")
@@ -32,8 +32,21 @@ public List<Event> showNextEvent(){
 	return list;
 }
 
+
+public List<Event> showSellersEvent(Seller activeSeller){
+	List<Event> list = eventRepository.getDbSellerEvent(activeSeller);
+  
+  	return list;
+}
+
+public List<Event> showLastAdded(){
+	List<Event> list = eventRepository.getDbLastAdded();
+	return list;
+}
+
 public List<Event> showAllEvent(){
 	List<Event> list = eventRepository.getDbAllEvents();
+
 	return list;
 }
 
