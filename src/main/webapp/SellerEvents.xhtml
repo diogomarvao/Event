@@ -139,7 +139,7 @@
 													converter="omnifaces.SelectItemsConverter" immediate="true">
 													<f:selectItem itemLabel="Selecione o Vendedor" itemValue=""
 														noSelectionOption="true" />
-													<f:selectItems value="#{sellerBean.sellerList}"
+													<f:selectItems value="#{sessionBean.ActiveSellerToList()}"
 														var="seller" itemLabel="#{seller.name}"
 														itemValue="#{seller}" />
 												</p:selectOneMenu>
@@ -242,8 +242,8 @@
 														style="width:150px">
 														<f:selectItem itemLabel="Vendedor"
 															itemValue="" noSelectionOption="true" />
-														<f:selectItems value="#{sellerBean.sellerList}"
-															var="local" itemLabel="#{seller.name}"
+														<f:selectItems value="#{sessionBean.ActiveSellerToList()}"
+															var="Seller" itemLabel="#{activeEvent.Seller.name}"
 															itemValue="#{local}" />
 													</p:selectOneMenu>
 												<p:outputLabel for="calPopupS" value="Dia (1º): " />
