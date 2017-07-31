@@ -11,10 +11,10 @@
 
 	<h:panelGroup id="defaultbar" layout="block" class="topnav"
 		rendered="#{sessionBean.activeSeller.name eq null}">
-
+	
 		<h:form>
 			<p:growl showDetail="true" life="3000" />
-
+<div class="divmenubranco">
 			<p:menubar class="top" header="Music Stadium">
 
 				<p:menuitem value="MUSIC STADIUM" action="index?faces-redirect=true"
@@ -40,6 +40,7 @@
 				</f:facet>
 
 			</p:menubar>
+			</div>
 		</h:form>
 
 		<h:form>

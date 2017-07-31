@@ -245,8 +245,12 @@ h5 {
 	
 }
 
-.ui-menu .ui-menuitem-text {
+.divmenubranco{
 	color:white!important;
+}
+
+.ui-menu .ui-menuitem-text {
+	color:black!important;
 	float: left;
 	margin-left: 20px;
 	color: white;
