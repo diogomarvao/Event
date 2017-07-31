@@ -157,9 +157,7 @@
 												<p:outputLabel for="timPopupF" value="Horas (Fim): " />
 												<p:calendar id="timPopupF" value="#{eventBean.event.hourF}"
 														required="true" requiredMessage="Por favor selecione um Horário Final" pattern="HH:mm" timeOnly="true" />
-												<h:outputText value="Featured: " />
-												<p:selectBooleanCheckbox value="#{eventBean.event.featured}"
-													required="true" />
+												
 												
 											</p:panelGrid>
 											<br />
@@ -267,8 +265,7 @@
 													value="#{eventBean.activeEvent.hourF}" required="true"
 													pattern="HH:mm" timeOnly="true" />
 												<h:outputText value="Featured: " />
-												<p:selectBooleanCheckbox
-													value="#{eventBean.activeEvent.featured}" required="true" />
+												
 											</p:panelGrid>
 											<br />
 											<p:commandButton value="Enviar"

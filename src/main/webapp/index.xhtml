@@ -56,12 +56,8 @@
 										<h:outputText value="Localização:" />
 										<h:outputText value="#{e.adress.local}" />
 
-										<h:outputText value="Compra Agora:" />
-										<a style="text-decoration: underline;" href="#{e.seller.sellerUrl}?faces-redirect=true">#{e.seller.name}</a>
-
-
-
-									</p:panelGrid>
+								</p:panelGrid>
+								<a style="text-decoration: underline;text-position:center;" href="#{e.seller.sellerUrl}?faces-redirect=true">Compre Agora!!!</a>
 								</p:panel>
 							</p:carousel>
 						</h:form>
@@ -103,8 +99,8 @@
 									<p:column class="header" headerText="Localização">
 										<div class="tablecont">#{event.adress.name}</div>
 									</p:column>
-									<p:column class="header" headerText="Vendedor">
-										<a style="text-decoration: underline;" href="#{event.seller.sellerUrl}">#{event.seller.name}</a>
+									<p:column class="header">
+										<a style="text-decoration: underline;" href="#{event.seller.sellerUrl}">Comprar</a>
 									</p:column>
 									
 									
