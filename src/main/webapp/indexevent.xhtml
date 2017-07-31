@@ -81,9 +81,15 @@
 													<f:setPropertyActionListener value="#{event}"
 														target="#{eventBean.activeEvent}" />
 												</p:commandButton>
-												<p:commandButton icon="fa fa-fw fa-remove" 
-													class="bottab" action="#{eventBean.delEventInDb(event)}"
-													update="EventDisplay" />
+												<p:commandButton icon="fa fa-fw fa-remove" class="bottab" action="#{eventBean.delEventInDb(event)}" update="EventDisplay" >							
+												   <p:confirm header="Confirmação" message="Tem a certeza?" icon="ui-icon-alert" />									        
+										    	</p:commandButton>
+										 
+										    	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+										        	<p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+										        	<p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+										    	</p:confirmDialog>
+											
 											</p:column>
 										</div>
 									</p:dataTable>
