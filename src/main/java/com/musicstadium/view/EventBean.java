@@ -179,7 +179,7 @@ public class EventBean implements Serializable{
 	
 	public String daysLeft(Event event){
 //		LocalDate eventDate = event.getDateS();
-		String daysToEvent="null";
+		String daysToEvent="Ao Vivo Hoje!!!";
 		
 		Date input = event.getDateS();
 		LocalDate eventDate = input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
