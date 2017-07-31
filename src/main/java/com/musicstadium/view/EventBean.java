@@ -118,6 +118,14 @@ public class EventBean implements Serializable{
 		return eventService.showNextEvent();
 	}
 	
+	public String featureMessage(Event event){
+		if (event.isFeatured() == true){
+			return "Sim!";
+		}else{
+			return "Não";
+		}
+	}
+			
 	public List<Event> getFeaturedList() {
 		List<Event> featuredList = new ArrayList<Event>();
 		for (int i = 0; i < eventService.showFeatured().size(); i++) {
