@@ -117,9 +117,7 @@
 												<h:outputText value="Video :" />
 												<p:inputText value="#{eventBean.event.videoLink}"
 														required="true" requiredMessage="Por favor insira um VideoLink" />
-												<h:outputText value="Preço :" />
-												<p:inputText value="#{eventBean.event.price}"
-														required="true" requiredMessage="Por favor insira um Preço" />
+												
 												<p:outputLabel for="genero" value="Género: " />
 												<p:selectOneMenu id="genero"
 													value="#{eventBean.event.genre}" >
@@ -154,7 +152,8 @@
 														itemValue="#{seller}" />
 												</p:selectOneMenu>
 												<h:outputText value="Preço :" />
-												<p:inputText value="#{eventBean.activeEvent.price}" required="true"/>
+												<p:inputText value="#{eventBean.event.price}"
+														required="true" requiredMessage="Por favor insira um Preço" />
 												<p:outputLabel for="calPopupS" value="Dia (1º): " />
 												<p:calendar id="calPopupS" value="#{eventBean.event.dateS}"
 													pattern="dd/MM/yyyy" required="true" requiredMessage="Por favor selecione uma Data Inicial"/>
